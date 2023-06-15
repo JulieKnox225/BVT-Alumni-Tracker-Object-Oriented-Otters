@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+// import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import {  Link } from 'react-router-dom';
 
 
@@ -9,7 +10,7 @@ export const Login = () => {
     <Form className='login--container' style={{marginTop: '45px'}}>
       <div>
       <div className='logo'>
-        <a href='/'><img className='pokemon--logo' src="images/logo3.png" alt="Pokemon in it's Iconic Design" /></a>
+        <a href='/'><img className='bvt--logo' src='images/bvt.png' alt="Logo saying Bay Valley Tech with a lightbulb" /></a>
       </div>
       <Form.Group  className="form-basic-email" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>

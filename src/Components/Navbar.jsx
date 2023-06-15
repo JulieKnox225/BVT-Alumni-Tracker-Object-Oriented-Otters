@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
-
 export const Navbar = () => {
   const [theme, setTheme] = useState('light')
  const toggleTheme = () => {
