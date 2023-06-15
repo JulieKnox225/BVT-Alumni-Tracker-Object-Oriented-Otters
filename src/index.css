@@ -1,0 +1,47 @@
+/* Login Page*/
+
+form {
+    margin-bottom: 10px;
+  }
+  
+  .pokemon--logo{
+    width: 200px;
+    margin: 15px;
+  }
+  
+  .form-basic-email,
+  .form-basic-password {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .form-label {
+    color: white;
+  }
+  
+  .login-text {
+    color:rgb(255, 255, 255);
+    font-size: medium;
+  }
+  
+  .btn-el{
+    margin: 20px auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    padding: 10px;
+  }
+  
+  .login--container {
+    padding-bottom: 50px;
+  }
+  
+  .login-buttons {
+    margin-bottom: 10px;
+  }
+  
+  /* End of Login*/
