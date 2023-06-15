@@ -1,7 +1,23 @@
-/* Login Page*/
-form {
-    margin-bottom: 10px;
+#root {
+  text-align: center;
+  background-color: #56585a;
 }
+
+body {
+  background-color: #2a2b2c;
+}
+
+/* App.jsx */
+.site--container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 76px);
+  
+}
+
+/* End of App.jsx */
+
+/* Login Page*/
   
 .pokemon--logo{
     width: 200px;
@@ -44,3 +60,179 @@ form {
 }
   
 /* End of Login*/
+
+/* Start of Nav Bar */
+
+.drop {
+  background-color: #2a2e30;
+}
+
+
+.home-button {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  text-decoration: none;
+  margin-right:auto;
+  margin-left: auto;
+  color: #B3A125;
+  font-size: small;
+  text-shadow: black -4px  3px;
+}
+.login-button {
+  text-decoration: none;
+}
+
+.home-button-text {
+  font-family: serif;
+  font-size: 35px;
+  color: #B3A125;
+  text-shadow: black -4px  3px 3px;
+}
+
+.home-button-text:hover {
+  color:#CC0000;
+  text-shadow: black 4px 3px 3px;
+}
+
+.login--text {
+  font-weight: 500;
+  font-family: serif;
+  color: #B3A125;
+  font-size: 25px;
+  text-shadow: black -4px  3px 2px;
+}
+
+.login--text:hover {
+  color:#CC0000;
+  text-shadow: black 4px 3px 3px;
+}
+
+.sideMenu:hover {
+  color:#f9f9f9
+}
+
+.nav-home{
+  padding: 20px;
+  display: flex;
+  background-color: #084c61;
+  max-height: 86px;
+}
+
+ .light-dark-btn{
+    font-size: 15px;
+    font-weight: 500;
+    font-family: serif;
+    text-shadow: black -4px  3px;
+    margin-left: 5px;
+    margin-right: 0px;
+    border-radius: 5px;
+    padding: 8px;
+    color: #B3A125;
+    background-color: #2a2e30;
+  }
+  .light-dark-btn:hover{
+    color:#CC0000;
+    text-shadow: black 4px 3px 3px;
+  }
+/* End of Nav Bar */
+
+/* Footer */
+
+.footer {
+  padding: 25px;
+  color: white;
+  background-color: grey;
+  
+}
+
+/* Footer end */
+
+/* Search Page */
+
+.avatar-for-search {
+  height: 7em;
+}
+
+.search-results {
+  display: flex;
+  justify-content: space-around;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  margin: 15px;
+}
+
+.outer-id-card {
+  background-color: #242424;
+  font-size: larger;
+  margin: 10px; 
+}
+
+.inner-id-card {
+  margin: 15px;
+  min-width: 250px;
+}
+
+.modal-content {
+  background: #1a1a1a;
+}
+
+
+.modal-title {
+  background-color: #2a2e30;
+  color:white;
+}
+
+.surrounding-box {
+  background-color:#2a2e30;
+  margin: 25px 55px 0 55px;
+  box-shadow: #1a1a1a -7px 7px 15px;
+  border-radius: 10px;
+}
+
+.container-search {
+  height: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2a2e30;
+  margin-top: 25px;
+  border-radius: 10px
+}
+
+.sp-search-bar-n-btn {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+
+.SP-searchBar {
+  border: none;
+  width: 300px;
+}
+
+.BVT-results {
+  background-color:#2a2e30;
+  margin: 25px 55px 25px 55px;
+  min-height: calc(100vh - 450px);
+  box-shadow: #1a1a1a -7px 7px 15px;
+  max-height: max-content;
+  border-radius: 10px;
+}
+
+
+.sp-results-header {
+  color: white;
+  margin: 25px;
+}
+
+/* End Search Page */
+
+/* Add entry Page */
+
+.add-entry {
+  display: flex;
+  align-items: center;
+}
+
+/* End of add entry */
