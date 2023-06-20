@@ -1,5 +1,5 @@
 require('dotenv').config();
-// const db = require('./config/pokedexConfig'); //NEEDS TO BE CONNECTED TO ENV
+// const db = require('./config/alumniConfig'); //NEEDS TO BE CONNECTED TO ENV
 const cookieParser = require('cookie-parser')
 const cors = require('cors');
 const express = require('express');
@@ -11,6 +11,6 @@ app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 // app.use(db);
-app.use('/', require('./routes/api/pokedex'));
+app.use('/', require('./routes/api/alumni'));
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
