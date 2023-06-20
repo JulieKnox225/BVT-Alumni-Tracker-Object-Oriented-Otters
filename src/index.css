@@ -81,6 +81,15 @@
   text-decoration: none;
 }
 
+.nav-login-image {
+  width: 59px;
+  border-radius: 150px;
+}
+
+.nav-login-image:hover {
+  box-shadow: black 0px 3px 15px;
+}
+
 .home-button-text {
   font-family: serif;
   font-size: 35px;
@@ -234,7 +243,7 @@
   margin: 25px;
 }
 
-.default-profile-edit-pic {
+.default-profile-pic {
   width: 200px;
   border-radius: 125px;
   box-shadow: black -3px 3px 16px;
@@ -300,6 +309,23 @@
   padding: 15px;
   box-shadow: black -3px 3px 10px;
 }
+
+/* End of Profile */
+
+/* Profile edit */
+
+
+
+.profile-page-edit-container {
+  margin-top: 25px;
+  
+
+
+
+
+}
+
+/* end of Profile edit */
 
 /* Password Reset*/
 .h1-fpp{

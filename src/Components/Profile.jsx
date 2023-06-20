@@ -5,12 +5,12 @@ import { MDBIcon } from 'mdb-react-ui-kit'
 export const Profile = () => {
   return (
     <>
-    <Container className="profile-page-container">
+    <Container fluid='md' className="profile-page-container">
     <Row >
     <Col>
         <div className="profile-pic">
             <h4 className="profile-name">Jane Smith</h4>
-            <img className="default-profile-edit-pic" src="images/pic.png" alt="Default profile picture edit image" />
+            <img className="default-profile-edit-pic" src="images/pic.png" alt="Default profile picture" />
         </div>
             <h4 className="profile-email">User Name</h4>
         <div className="contact-header">

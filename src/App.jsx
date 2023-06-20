@@ -8,6 +8,7 @@ import { ForgotPassword } from './Components/ForgotPassword'
 import { Home } from './Components/Home'
 import { Register } from './Components/Register'
 import { Profile } from './Components/Profile'
+import { EditProfile } from './Components/EditProfile'
 
 function App() {
   
@@ -23,7 +24,7 @@ function App() {
         <Route path ='/forgotPassword' element = {<ForgotPassword/>}/>
         <Route path='/register' element= {< Register/> } />
         <Route path='/profile' element= {< Profile/> } />
-      
+        <Route path='/editProfile' element= {<EditProfile />} />
       </Routes>
     </div>
     <Footer />
