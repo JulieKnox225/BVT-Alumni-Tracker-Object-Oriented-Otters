@@ -7,12 +7,10 @@ import { Footer } from './Components/Footer'
 import { ForgotPassword } from './Components/ForgotPassword'
 import { Home } from './Components/Home'
 import { Register } from './Components/Register'
-<<<<<<< Updated upstream
+// <<<<<<< Updated upstream
 import { Profile } from './Components/Profile'
-=======
 import { createContext, useState } from "react"; 
 import ReactSwitch from 'react-switch'
->>>>>>> Stashed changes
 
 export const ThemeContext = createContext(null);
 function App() {
@@ -23,7 +21,7 @@ function App() {
   };
   return (
     <>
-    <ThemeContext.Provider value={{theme, toggleTheme}}>
+    <ThemeContext.Provider value={{theme, toggleTheme}}> {/* Toggle Theme  */}
     <div className='site--container' id = {theme}>
       <Navbar />
       <div className='switch'>
@@ -32,21 +30,13 @@ function App() {
       </div>
       <Routes>
         <Route path='/' element ={ <Home />} />
-<<<<<<< Updated upstream
+{/* <<<<<<< Updated upstream */}
         <Route path='/login' element={ <Login/> } />
         <Route path='/addEntryPage' element ={ <AddEntryPage />} />
         <Route path='/searchPage' element= { <SearchPage /> } />
         <Route path ='/forgotPassword' element = {<ForgotPassword/>}/>
         <Route path='/register' element= {< Register/> } />
         <Route path='/profile' element= {< Profile/> } />
-      
-=======
-        <Route path='/Login' element={ <Login/> } />
-        <Route path='/AddEntryPage' element ={ <AddEntryPage />} />
-        <Route path='/SearchPage' element= { <SearchPage /> } />
-        <Route path ='/ForgotPassword' element = {<ForgotPassword/>}/>
-        <Route path='/Register' element= {< Register/> } />
->>>>>>> Stashed changes
       </Routes>
     </div>
     <Footer />
