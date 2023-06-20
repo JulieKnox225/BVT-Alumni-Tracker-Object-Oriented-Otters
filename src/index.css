@@ -12,7 +12,13 @@
   min-height: calc(100vh - 76px);
   
 }
-
+.switch{
+  display: flex;
+  margin-left: 10px;
+}
+label{
+  margin-right: 20px;
+}
 /* End of App.jsx */
 
 /* Login Page*/
@@ -116,7 +122,24 @@
   background-color: #084c61;
   max-height: 86px;
 }
+#light .nav-home{
+  background-color: #778da9;
+  color: #1a1a1a;
+}
 
+#dark .nav-home{
+  background-color: #0d1b2a;
+  color: #f9f9f9;
+}
+/* Toggle Theme Nav */
+#dark{
+  background-color: #1b263b;
+  color: #FBFBFB;
+  }
+#light{
+    background-color: #e0e1dd;
+    color: #332D2D;
+  }
  .light-dark-btn{
     font-size: 15px;
     font-weight: 500;

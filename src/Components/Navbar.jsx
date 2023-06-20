@@ -1,17 +1,7 @@
-import { useState, useEffect } from 'react'
+
 import Dropdown from 'react-bootstrap/Dropdown'
 export const Navbar = () => {
-  const [theme, setTheme] = useState('light')
- const toggleTheme = () => {
-   if (theme === 'light') {
-     setTheme ('dark');
-   } else{
-     setTheme('light');
-   }
- }
- useEffect(()=> {
-   document.body.className = theme;
- }, [theme]);
+
  return (
    <div>
      <nav className='nav-home'>
@@ -28,9 +18,12 @@ export const Navbar = () => {
 
        </Dropdown.Menu>
      </Dropdown>
+<<<<<<< Updated upstream
        <a className={`App ${theme}`}>
        <button className="light-dark-btn"onClick={toggleTheme}></button>
        </a>
+=======
+>>>>>>> Stashed changes
        <a href= "/" className="home-button">
        <h2 className="home-button-text">BVT Alumni Tracker</h2>
        </a>

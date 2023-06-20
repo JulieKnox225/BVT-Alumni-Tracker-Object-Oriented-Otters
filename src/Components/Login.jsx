@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-// import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import {  Link } from 'react-router-dom';
 
 
