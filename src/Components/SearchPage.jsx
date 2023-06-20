@@ -6,7 +6,11 @@ import { IDCards } from './BVT.ID';
 export const SearchPage = () => {
   
   const [search, setSearch] = useState('')
-  const [searchResults, setSearchResults] = useState([])
+  const [searchResults, setSearchResults] = useState({
+    data: [],
+    currentPage: 1,
+    resultsPerPage: 20
+  })
   const [BvtData, setBvtData] = useState([])
 
   useEffect(() => {
@@ -18,7 +22,7 @@ export const SearchPage = () => {
     e.preventDefault();
     //Prevents empty search, ex: "    " or ""
     if (search.trim() === '') {
-      return; 
+      return;
     }   
   const filteredResults = FakeData.filter((info) => {
     const searchValue = search.toLowerCase();
@@ -55,8 +59,7 @@ export const SearchPage = () => {
     </div>     
     <div className='BVT-results'>
       <h2 className="sp-results-header">Results</h2>
-      
-
+      {/* As long as there is an input when search is submitted results will display */}
       {searchResults.length > 0 && (
         <div style={{ marginTop: '20px' }}>
           <p>These are the results for {search}:</p>

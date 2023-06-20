@@ -23,11 +23,13 @@ export const IDCards = (props) => {
   return (
     <div className="outer-id-card">
       <div className='inner-id-card'>
-        <img className="avatar-for-search" src={avatar} />
+        <a href='/profile'>
+        <img className="avatar-for-search" src={avatar}  />
+        </a>
         <div className='card--stats'>
             <p className='id--fullName'>{firstName} {lastName}</p>
             <p>{email}</p>
-            <Button style={{color: 'gray'}}
+            <Button style={{color: 'white', backgroundColor: 'grey'}}
               variant='link' 
               onClick={() => setSmShow(true)}
               className='me-2'>
@@ -38,14 +40,17 @@ export const IDCards = (props) => {
             size="lg"
             show={smShow}
             onHide={() => setSmShow(false)}
-            aria-labelledby="contained-modal-title-vcenter" centered>
+            aria-labelledby="contained-modal-title-vcenter"
+            
+            centered>
               
-            <Modal.Header closeButton>
+            <Modal.Header closeButton style={{color: 'white', backgroundColor: '#2a2e30'}}>
+              
               <Modal.Title>
                 {firstName} {lastName}
               </Modal.Title>
             </Modal.Header>
-            <ModalBody>
+            <ModalBody style={{color: 'white', backgroundColor: '#2a2e30'}}>
               <p>
                 <strong>Highest Degree: </strong>
                 <br/>
@@ -82,7 +87,6 @@ export const IDCards = (props) => {
                 </ul>
             </ModalBody>
           </Modal>
-        
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ export const AddEntryPage = () => {
             firstName: '',
             lastName: '',
             email: '',
+            phoneNumber: '',
             degree: '',
             additionalInfo: '',
             experience: '',
@@ -28,8 +29,9 @@ export const AddEntryPage = () => {
     
       const handleSubmit = (e) => {
         e.preventDefault();
+        // submit to Database instead of Console log eventually
         console.log('Form Data:', formData);
-        // submit to Database 
+        // resets data field
         setFormData({
           firstName: '',
           lastName: '',
@@ -59,7 +61,6 @@ export const AddEntryPage = () => {
                 placeholder="John"
                 onChange={handleChange}
                 value={formData.firstName}
-                required
               />
             </div>
             <div>
@@ -71,7 +72,6 @@ export const AddEntryPage = () => {
                 onChange={handleChange}
                 name="lastName"
                 value={formData.lastName}
-                required
               />
             </div>
           </div>

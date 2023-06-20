@@ -20,16 +20,16 @@ export const Navbar = () => {
        </Dropdown.Toggle>
        <Dropdown.Menu variant="dark">
          <Dropdown.Item href="/">Home</Dropdown.Item>
-         <Dropdown.Item href="/SearchPage">Search Page</Dropdown.Item>
-         <Dropdown.Item href="/AddEntryPage">Add Entry</Dropdown.Item>
-         <Dropdown.Item href="/Profile">Profile</Dropdown.Item>
-         <Dropdown.Item href="/EditProfile">Edit Profile</Dropdown.Item>
-         <Dropdown.Item href="/Register">Create Profile</Dropdown.Item>
+         <Dropdown.Item href="/searchPage">Search Page</Dropdown.Item>
+         <Dropdown.Item href="/addEntryPage">Add Entry</Dropdown.Item>
+         <Dropdown.Item href="/profile">Profile</Dropdown.Item>
+         <Dropdown.Item href="/editProfile">Edit Profile</Dropdown.Item>
+         <Dropdown.Item href="/register">Create Profile</Dropdown.Item>
 
        </Dropdown.Menu>
      </Dropdown>
        <a className={`App ${theme}`}>
-       <button className = "light-dark-btn"onClick={toggleTheme}></button>
+       <button className="light-dark-btn"onClick={toggleTheme}></button>
        </a>
        <a href= "/" className="home-button">
        <h2 className="home-button-text">BVT Alumni Tracker</h2>

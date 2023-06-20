@@ -1,11 +1,9 @@
 #root {
   text-align: center;
-  background-color: #56585a;
+  background-color: #1a1a1a;
+  color:white;
 }
 
-body {
-  background-color: #2a2b2c;
-}
 
 /* App.jsx */
 .site--container {
@@ -142,7 +140,7 @@ body {
 .footer {
   padding: 25px;
   color: white;
-  background-color: grey;
+  background-color: #2a2b2c;
   
 }
 
@@ -159,8 +157,9 @@ body {
   justify-content: space-around;
   align-content: flex-start;
   flex-wrap: wrap;
-  margin: 15px;
+ 
 }
+
 
 .outer-id-card {
   background-color: #242424;
@@ -170,6 +169,7 @@ body {
 
 .inner-id-card {
   margin: 15px;
+  padding: 10px;
   min-width: 250px;
 }
 
@@ -206,7 +206,7 @@ body {
   background-color:#2a2e30;
   margin: 25px 55px 25px 55px;
   min-height: calc(100vh - 450px);
-  box-shadow: #1a1a1a -7px 7px 15px;
+  box-shadow: black -7px 7px 15px;
   max-height: max-content;
   border-radius: 10px;
 }
@@ -227,3 +227,104 @@ body {
 }
 
 /* End of add entry */
+
+/* Profile */
+
+.profile-page-container {
+  margin: 25px;
+}
+
+.default-profile-edit-pic {
+  width: 200px;
+  border-radius: 125px;
+  box-shadow: black -3px 3px 16px;
+}
+
+.profile-email,
+.profile-name {
+  color: #B3A125;
+  margin: 25px 0px 5px 0px;
+}
+
+
+.about-me-header,
+.projects-header,
+.achievements-header,
+.contact-header {
+  background-color: #2a2b2c;
+  width: 350px;
+  height: 50px;
+  border-radius: 5px;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: larger;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #B3A125;
+  box-shadow: black -3px 3px 10px;
+}
+
+
+.contact-container {
+  color:rgb(255, 255, 255);
+  background-color: #2a2b2c;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 35px;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 350px;
+  height: 150px;
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  box-shadow: black -3px 3px 10px;
+}
+
+.projects-text,
+.about-me-text,
+.achievements-text {
+  color:rgb(255, 255, 255);
+  background-color: #2a2b2c;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 350px;
+  height: 150px;
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  box-shadow: black -3px 3px 10px;
+}
+
+/* Password Reset*/
+.h1-fpp{
+  color: white;
+  margin: 50px;
+}
+.p-fpp{
+  font-size: medium;
+  margin-bottom: 50px;
+}
+.fp-email{
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.p-text{
+  color: white;
+}
+
+.forgot-pw-submit {
+  background-color: #1a1a1a;
+  margin-bottom: 50px;
+
+}
+
+/* End of password reset */
