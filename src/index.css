@@ -1,3 +1,8 @@
+/* Some BVT Colors */
+/* #FF4F2D, #E21304, #FF3B1F, #E11204, #C10B00 */
+
+/* #FB3E20, #FD4C2B, #FE872F, #FF7A45, #FB622F */
+
 #root {
   text-align: center;
   /* background-color: #1a1a1a; */
@@ -37,14 +42,23 @@ label{
   margin-right: auto;
 }
   
-.form-label {
-  color: white;
+#light .form-label {
+  color: rgb(0, 0, 0);
+}
+
+#dark .form-label {
+  color: rgb(255, 255, 255);
 }
   
-.login-text {
+#dark .login-text {
   color:rgb(255, 255, 255);
   font-size: medium;
 }
+#light .login-text {
+  color:rgb(2, 2, 2);
+  font-size: medium;
+}
+  
   
 .btn-el{
   margin: 20px auto 20px;
@@ -318,6 +332,7 @@ label{
   align-items: center;
 }
 
+  
 /* End of add entry */
 
 /* Profile */

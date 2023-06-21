@@ -23,7 +23,7 @@ const handleLogin = () => {
          <Dropdown.Item href="/register">Create Profile</Dropdown.Item>
 
        </Dropdown.Menu>
-     </Dropdown>
+       </Dropdown>
        <a href= "/" className="home-button">
        <h2 className="home-button-text">BVT Alumni Tracker</h2>
        </a>

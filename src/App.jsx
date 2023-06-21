@@ -7,11 +7,11 @@ import { Footer } from './Components/Footer'
 import { ForgotPassword } from './Components/ForgotPassword'
 import { Home } from './Components/Home'
 import { Register } from './Components/Register'
-import ReactSwitch from 'react-switch'
-import { createContext, useState } from "react";
+// <<<<<<< Updated upstream
 import { Profile } from './Components/Profile'
+import { createContext, useState } from "react"; 
+import ReactSwitch from 'react-switch'
 import { EditProfile } from './Components/EditProfile'
-
 
 export const ThemeContext = createContext(null);
 function App() {
@@ -22,7 +22,7 @@ function App() {
   };
   return (
     <>
-    <ThemeContext.Provider value={{theme, toggleTheme}}>
+    <ThemeContext.Provider value={{theme, toggleTheme}}> {/* Toggle Theme  */}
     <div className='site--container' id = {theme}>
       <Navbar />
       <div className='switch'>
@@ -31,6 +31,7 @@ function App() {
       </div>
       <Routes>
         <Route path='/' element ={ <Home />} />
+{/* <<<<<<< Updated upstream */}
         <Route path='/login' element={ <Login/> } />
         <Route path='/addEntryPage' element ={ <AddEntryPage />} />
         <Route path='/searchPage' element= { <SearchPage /> } />
