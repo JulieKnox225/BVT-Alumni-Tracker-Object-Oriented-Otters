@@ -1,31 +1,31 @@
 const mysql = require('mysql2/promise');
 require('dotenv').config();
 
-//ENV NEEDED HERE then update server.js where the comments are :)
-const pool = mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
+const connection = mysql.createConnection({
+  host: "127.0.0.1",
+  port: 3306,
+  user: "root",
+  password: "bvtpassword",
+  database: "alumniDatabase",
 });
 
 async function connectDataBase(req, _, next) {
-    try {
-      req.db = await pool.getConnection();
-      req.db.connection.config.namedPlaceholders = true;
-  
-      await req.db.query(`SET SESSION sql_mode = "TRADITIONAL"`);
-      await req.db.query(`SET time_zone = '-8:00'`);
-  
-      await next();
-  
-      req.db.release();
-    } catch (err) {
-      console.log(err);
-  
-      if (req.db) req.db.release();
-      throw err;
-    }
+  try {
+    req.db = await connection.getConnection();
+    req.db.connection.config.namedPlaceholders = true;
+
+    await req.db.query(`SET SESSION sql_mode = "TRADITIONAL"`);
+    await req.db.query(`SET time_zone = '-8:00'`);
+
+    await next();
+
+    req.db.release();
+  } catch (err) {
+    console.log(`Error in connectDatabase`, err);
+
+    if (req.db) req.db.release();
+    throw err;
+  }
 }
 
 module.exports = connectDataBase;
