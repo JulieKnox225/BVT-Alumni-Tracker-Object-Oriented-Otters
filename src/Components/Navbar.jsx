@@ -1,17 +1,6 @@
-import { useState, useEffect } from 'react'
+import {useState} from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 export const Navbar = () => {
-  const [theme, setTheme] = useState('light')
- const toggleTheme = () => {
-   if (theme === 'light') {
-     setTheme ('dark');
-   } else{
-     setTheme('light');
-   }
- }
- useEffect(()=> {
-   document.body.className = theme;
- }, [theme]);
 
 const [login, setLogin] = useState(false)
 
@@ -35,9 +24,6 @@ const handleLogin = () => {
 
        </Dropdown.Menu>
      </Dropdown>
-       <a className={`App ${theme}`}>
-       <button className="light-dark-btn"onClick={toggleTheme}></button>
-       </a>
        <a href= "/" className="home-button">
        <h2 className="home-button-text">BVT Alumni Tracker</h2>
        </a>

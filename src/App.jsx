@@ -7,15 +7,28 @@ import { Footer } from './Components/Footer'
 import { ForgotPassword } from './Components/ForgotPassword'
 import { Home } from './Components/Home'
 import { Register } from './Components/Register'
+import ReactSwitch from 'react-switch'
+import { createContext, useState } from "react";
 import { Profile } from './Components/Profile'
 import { EditProfile } from './Components/EditProfile'
 
+
+export const ThemeContext = createContext(null);
 function App() {
-  
+  const [theme, setTheme] = useState("dark")
+
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  };
   return (
     <>
-    <div className='site--container'>
+    <ThemeContext.Provider value={{theme, toggleTheme}}>
+    <div className='site--container' id = {theme}>
       <Navbar />
+      <div className='switch'>
+        <label> {theme === 'light' ? "Light Mode" : "Dark Mode" }</label>
+      <ReactSwitch  onChange={toggleTheme} checked ={theme === "dark"}/>
+      </div>
       <Routes>
         <Route path='/' element ={ <Home />} />
         <Route path='/login' element={ <Login/> } />
@@ -24,10 +37,11 @@ function App() {
         <Route path ='/forgotPassword' element = {<ForgotPassword/>}/>
         <Route path='/register' element= {< Register/> } />
         <Route path='/profile' element= {< Profile/> } />
-        <Route path='/editProfile' element= {<EditProfile />} />
+        <Route path='/editProfile' element={<EditProfile />} />
       </Routes>
     </div>
     <Footer />
+    </ThemeContext.Provider>
     </>
   )
 }

@@ -1,7 +1,7 @@
 #root {
   text-align: center;
-  background-color: #1a1a1a;
-  color:white;
+  /* background-color: #1a1a1a; */
+  /* color:white; */
 }
 
 
@@ -12,7 +12,13 @@
   min-height: calc(100vh - 76px);
   
 }
-
+.switch{
+  display: flex;
+  margin-left: 10px;
+}
+label{
+  margin-right: 20px;
+}
 /* End of App.jsx */
 
 /* Login Page*/
@@ -59,12 +65,15 @@
   
 /* End of Login*/
 
-/* Start of Nav Bar */
+/* Start of Navbar */
 
-.drop {
-  background-color: #2a2e30;
+#light .drop {
+  background-color: white;
 }
 
+#dark .drop {
+  background-color: #2a2e30;
+}
 
 .home-button {
   display: flex;
@@ -126,31 +135,57 @@
   max-height: 86px;
 }
 
- .light-dark-btn{
-    font-size: 15px;
-    font-weight: 500;
-    font-family: serif;
-    text-shadow: black -4px  3px;
-    margin-left: 5px;
-    margin-right: 0px;
-    border-radius: 5px;
-    padding: 8px;
-    color: #B3A125;
-    background-color: #2a2e30;
+#light .light-dark-btn{
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 1000px;
+  padding: 8px;
+
+  background-color: white;
+}
+
+#dark .light-dark-btn{
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 1000px;
+  padding: 8px;
+  color: #B3A125;
+  background-color: #2a2e30;
+}
+
+
+/* End of Navbar */
+
+/* Toggle Theme Nav */
+
+#light .nav-home{
+  background-color: #778da9;
+  color: #1a1a1a;
+}
+
+#dark .nav-home{
+  background-color: #0d1b2a;
+  color: #f9f9f9;
+}
+
+#dark{
+  background-color: #1b263b;
+  color: #FBFBFB;
   }
-  .light-dark-btn:hover{
-    color:#CC0000;
-    text-shadow: black 4px 3px 3px;
+#light{
+    background-color: #e0e1dd;
+    color: #332D2D;
   }
-/* End of Nav Bar */
+
+/* End of Toggle */
 
 /* Footer */
+
 
 .footer {
   padding: 25px;
   color: white;
   background-color: #2a2b2c;
-  
 }
 
 /* Footer end */
@@ -166,31 +201,58 @@
   justify-content: space-around;
   align-content: flex-start;
   flex-wrap: wrap;
+  background-color: #084c61;
  
 }
 
+#light.outer-id-card {
+  background-color: black;
+  font-size: larger;
+  margin: 10px; 
+}
 
-.outer-id-card {
+#dark .outer-id-card {
   background-color: #242424;
   font-size: larger;
   margin: 10px; 
 }
 
+#light .inner-id-card {
+  margin: 15px;
+  padding: 10px;
+  min-width: 250px;
+}
 .inner-id-card {
   margin: 15px;
   padding: 10px;
   min-width: 250px;
 }
 
-
-.surrounding-box {
-  background-color:#2a2e30;
+#light .surrounding-box {
+  background-color:white;
   margin: 25px 55px 0 55px;
-  box-shadow: #1a1a1a -7px 7px 15px;
+  box-shadow: black -7px 7px 15px;
   border-radius: 10px;
 }
 
-.container-search {
+#dark .surrounding-box {
+  background-color:#2a2e30;
+  margin: 25px 55px 0 55px;
+  box-shadow: black -7px 7px 15px;
+  border-radius: 10px;
+}
+
+#light .container-search {
+  height: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  margin-top: 25px;
+  border-radius: 10px
+}
+
+#dark .container-search {
   height: 75px;
   display: flex;
   flex-direction: column;
@@ -206,12 +268,25 @@
   width: fit-content;
 }
 
-.SP-searchBar {
+#light .SP-searchBar {
+  width: 300px;
+}
+
+#dark .SP-searchBar {
   border: none;
   width: 300px;
 }
 
-.BVT-results {
+#light .BVT-results {
+  background-color: white;
+  margin: 25px 55px 25px 55px;
+  min-height: calc(100vh - 450px);
+  box-shadow: black -7px 7px 15px;
+  max-height: max-content;
+  border-radius: 10px;
+}
+
+#dark .BVT-results {
   background-color:#2a2e30;
   margin: 25px 55px 25px 55px;
   min-height: calc(100vh - 450px);
@@ -220,10 +295,18 @@
   border-radius: 10px;
 }
 
+#light .sp-results-header {
+  color: black;
+  margin: 25px;
+}
 
-.sp-results-header {
+#dark .sp-results-header {
   color: white;
   margin: 25px;
+}
+
+.card--stats {
+  background-color: #1a1a1a;
 }
 
 /* End Search Page */
@@ -314,14 +397,8 @@
 
 /* Profile edit */
 
-
-
 .profile-page-edit-container {
   margin-top: 25px;
-  
-
-
-
 
 }
 

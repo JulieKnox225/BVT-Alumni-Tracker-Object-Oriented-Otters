@@ -1,8 +1,4 @@
-import { Col, Row, Container, Modal } from "react-bootstrap"
-import { MDBIcon } from 'mdb-react-ui-kit'
-
-
-
+import { Col, Row, Container } from "react-bootstrap"
 
 export const EditProfile = () => {
   return (
@@ -12,8 +8,6 @@ export const EditProfile = () => {
     <Col>
         <div className="profile-pic-edit">
     
-
-          
             <img style={{marginTop: '25px'}} className="default-profile-pic" src="images/pic.png" alt="Default profile picture" />
             <p>Click to change image</p>
           
@@ -24,25 +18,22 @@ export const EditProfile = () => {
         </div>
     </Col>
     <Col>
-        <div className="about-me-header"> 
-            About me 
-        </div>
-        <div className="about-me-text">
-            I like food
-        </div>
-        <div className="projects-header"> 
-            Projects 
-        </div>
-        <div className="projects-text">
-            A lot
-        </div>
-        <div className="achievements-header"> 
-            Bay Valley Tech
-        </div>
-        <div className="achievements-text">
-            Achievements here
-        </div>
-        
+      <div>
+        Name
+      </div>
+      <input />
+      <div>
+        Username
+      </div>
+      <input />
+      <div>
+        Email
+      </div>
+      <input/>
+      <div>
+        Password
+      </div>
+      <input />
     </Col>
     <Col>
       <div>
@@ -59,6 +50,10 @@ export const EditProfile = () => {
       <textarea />
     </Col>
     </Row>
+    <div>
+      <button>Cancel</button>
+      <button>Save</button>
+    </div>
     </Container>
     </>
   )
