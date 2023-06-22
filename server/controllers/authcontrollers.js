@@ -67,7 +67,30 @@ const login = async (req, res) => {
     }
 };
 
+const refresh = (req, res) => {
+    try {
+        const refreshToken = req.cookies['refreshToken'];
+
+        if(!refreshToken){
+            return res.status(401).send({success: false, message: `No token.`, data: null});
+        }
+
+        jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err,  user) => {
+            if(err || !user.name) {
+                return res.status(403).send({success: false, message: err || 'JWT error!', data: null});
+            }
+            
+            const accessToken = jwt.sign({name: user.name}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '10m'});
+            res.status(200).send({success: false, message: 'Refreshed', data: accessToken});
+        });
+
+    } catch (error) {
+        res.status(400).send({success: false, message: error, data: null});
+    }
+}
+
 module.exports = {
     createUser,
     login,
+    refresh
 }

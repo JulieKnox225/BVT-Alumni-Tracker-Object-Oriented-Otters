@@ -26,7 +26,7 @@ export const Login = () => {
         Login
       </Button>
      <Link to = "/ForgotPassword">
-      <Button className = "btn-el"variant="danger" type="submit">
+      <Button className = "btn-el" variant="danger" type="submit">
         Forgot Password
       </Button>
      </Link>

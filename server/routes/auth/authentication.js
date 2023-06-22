@@ -7,6 +7,4 @@ router
     .post('/login', login)
     .post('/refresh', refresh);
 
-
-
 module.exports = router;
