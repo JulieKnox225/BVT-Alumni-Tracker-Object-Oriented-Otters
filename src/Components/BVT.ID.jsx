@@ -29,7 +29,7 @@ export const IDCards = (props) => {
         <div className='card--stats'>
             <p className='id--fullName'>{firstName} {lastName}</p>
             <p>{email}</p>
-            <Button style={{color: 'white', backgroundColor: 'grey'}}
+            <Button style={{color: 'white', backgroundColor: '#E21304'}}
               variant='link' 
               onClick={() => setSmShow(true)}
               className='me-2'>
@@ -50,7 +50,7 @@ export const IDCards = (props) => {
                 {firstName} {lastName}
               </Modal.Title>
             </Modal.Header>
-            <ModalBody style={{color: 'white', backgroundColor: '#2a2e30'}}>
+            <ModalBody style={{color: 'white', backgroundColor: '#E21304'}}>
               <p>
                 <strong>Highest Degree: </strong>
                 <br/>

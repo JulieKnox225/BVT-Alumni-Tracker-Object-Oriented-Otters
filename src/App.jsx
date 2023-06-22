@@ -7,7 +7,6 @@ import { Footer } from './Components/Footer'
 import { ForgotPassword } from './Components/ForgotPassword'
 import { Home } from './Components/Home'
 import { Register } from './Components/Register'
-// <<<<<<< Updated upstream
 import { Profile } from './Components/Profile'
 import { createContext, useState } from "react"; 
 import ReactSwitch from 'react-switch'

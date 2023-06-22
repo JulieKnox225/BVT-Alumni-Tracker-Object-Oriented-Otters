@@ -21,6 +21,7 @@
   display: flex;
   margin-left: 10px;
 }
+
 label{
   margin-right: 20px;
 }
@@ -91,13 +92,8 @@ label{
 
 .home-button {
   display: flex;
-  justify-content: center;
-  justify-items: center;
-  text-decoration: none;
   margin-right:auto;
   margin-left: auto;
-  color: #B3A125;
-  font-size: small;
   text-shadow: black -4px  3px;
 }
 .login-button {
@@ -113,12 +109,21 @@ label{
   box-shadow: black 0px 3px 15px;
 }
 
-.home-button-text {
+#dark .home-button-text {
   font-family: serif;
-  font-size: 35px;
-  color: #B3A125;
+  font-size: 55px;
+  color: #EEF4ED;
   text-shadow: black -4px  3px 3px;
 }
+
+#light .home-button-text {
+  font-family: serif;
+  font-size: 55px;
+  color: #EEF4ED;
+  text-shadow: black 4px  3px 3px;
+}
+
+
 
 .home-button-text:hover {
   color:#CC0000;
@@ -145,7 +150,6 @@ label{
 .nav-home{
   padding: 20px;
   display: flex;
-  background-color: #084c61;
   max-height: 86px;
 }
 
@@ -173,17 +177,17 @@ label{
 /* Toggle Theme Nav */
 
 #light .nav-home{
-  background-color: #778da9;
+  background-color: #FF3B1F;
   color: #1a1a1a;
 }
 
 #dark .nav-home{
-  background-color: #0d1b2a;
+  background-color: #FF3B1F;
   color: #f9f9f9;
 }
 
 #dark{
-  background-color: #1b263b;
+  background-color: #1a1a1a;
   color: #FBFBFB;
   }
 #light{
@@ -208,6 +212,7 @@ label{
 
 .avatar-for-search {
   height: 7em;
+  border-radius: 100px;
 }
 
 .search-results {
@@ -215,20 +220,24 @@ label{
   justify-content: space-around;
   align-content: flex-start;
   flex-wrap: wrap;
-  background-color: #084c61;
- 
+
 }
 
-#light.outer-id-card {
-  background-color: black;
+#light .outer-id-card {
+  background-color: #FF7A45;
   font-size: larger;
   margin: 10px; 
+  max-width: 285px;
+  border-radius: 25px;
+
 }
 
 #dark .outer-id-card {
   background-color: #242424;
   font-size: larger;
   margin: 10px; 
+  max-width: 285px;
+  border-radius: 25px;
 }
 
 #light .inner-id-card {
@@ -236,7 +245,7 @@ label{
   padding: 10px;
   min-width: 250px;
 }
-.inner-id-card {
+#dark .inner-id-card {
   margin: 15px;
   padding: 10px;
   min-width: 250px;
@@ -319,9 +328,7 @@ label{
   margin: 25px;
 }
 
-.card--stats {
-  background-color: #1a1a1a;
-}
+
 
 /* End Search Page */
 
