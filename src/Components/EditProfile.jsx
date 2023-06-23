@@ -3,51 +3,79 @@ import { Col, Row, Container } from "react-bootstrap"
 export const EditProfile = () => {
   return (
     <>
-    <Container fluid='xxl' className="profile-page-edit-container">
+    <Container fluid='md' className="profile-page-edit-container">
     <Row >
     <Col>
         <div className="profile-pic-edit">
-    
             <img style={{marginTop: '25px'}} className="default-profile-pic" src="images/pic.png" alt="Default profile picture" />
-            <p>Click to change image</p>
-          
+            <a>
+            <p className="edit-image-link">Click to change image</p>
+            </a>
         </div>
-            <h4 className="profile-email">Current Profile Picture</h4>
-        <div className="social-links-edit">
+            <h4 className="e-p-pic-text">Current Profile Picture</h4>
+        <div className="e-p-social-links">
            Edit social Links
         </div>
     </Col>
     <Col>
-      <div>
-        Name
+      <div className="form-edit-prof">
+        <div className="e-p-form-text">
+        Name:
+        </div>
+        <input 
+        className="e-p-input"
+        />
       </div>
-      <input />
-      <div>
-        Username
+      <div className="form-edit-prof">
+        <div className="e-p-form-text">
+        Username:
+        </div>
+        <input
+        className="e-p-input"
+        />
       </div>
-      <input />
-      <div>
-        Email
+      <div className="form-edit-prof">
+        <div className="e-p-form-text">
+        Email:
+        </div>
+        <input
+        className="e-p-input"
+        />
       </div>
-      <input/>
-      <div>
-        Password
+      <div className="form-edit-prof">
+        <div className="e-p-form-text">
+        Password:
+        </div>
+        <input 
+        className="e-p-input"
+        />
       </div>
-      <input />
     </Col>
     <Col>
-      <div>
-        About me
+      <div className="form-edit-prof">
+        <div className="e-p-form-text">
+        About me:
+        </div>
+        <textarea 
+        className="e-p-textarea"
+        />
       </div>
-      <textarea />
-      <div>
-        Projects
+      <div className="form-edit-prof">
+        <div className="e-p-form-text">
+        Projects:
       </div>
-      <textarea />
-      <div>
-        Bay Valley Tech
+      <textarea 
+      className="e-p-textarea"
+      />
       </div>
-      <textarea />
+      <div className="form-edit-prof">
+        <div className="e-p-form-text">
+        Bay Valley Tech:
+      </div>
+      <textarea 
+      className="e-p-textarea"
+      />
+      </div>
     </Col>
     </Row>
     <div>

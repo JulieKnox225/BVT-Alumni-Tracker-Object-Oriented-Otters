@@ -428,8 +428,57 @@ label{
 
 .profile-page-edit-container {
   margin-top: 25px;
-
 }
+
+.edit-image-link {
+  margin-top: -55px;
+}
+
+.e-p-pic-text{
+  margin-top: 45px;
+  color: #177E89;
+}
+
+.e-p-social-links {
+  margin-top: 25px;
+}
+
+
+
+.form-edit-prof {
+  margin: 15px 0px 15px 0px;
+}
+
+#light .e-p-form-text {
+    font-size: 25px;
+    color: #084C61;
+    font-weight:bold;
+}
+
+#dark .e-p-form-text {
+  font-size: 25px;
+  color: #FFC857;
+  font-weight:bold;
+}
+
+.e-p-input {
+  margin-top: 5px;
+  width: 40vh;
+  height: 35px;
+  border-radius: 7px;
+  text-align: center;
+}
+
+.e-p-textarea {
+
+  width: 40vh;
+  min-height: 75px;
+  max-height: 150px;
+  border-radius: 7px;
+  text-align:justify;
+}
+
+
 
 /* end of Profile edit */
 
