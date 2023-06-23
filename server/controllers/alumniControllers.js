@@ -78,14 +78,21 @@ const createAlumni = async (req, res) => {
     }
 };
 
+/**
+ * Assumes req.body contains properties and values that need to be updated but does not assume the amount.
+ * Creates an array of any possible properties and values that will then be iterated over to make a request 
+ * to the database to update the specified entry. This method allows the user to chose the amount of updates
+ * to send to the server.
+ */
 const updateAlumni = async (req, res) => {
     try {
         const { id } = req.params;
         const bodyValuesArray = Object.entries(req.body);
 
+        //I am worried that :property will not work 
         for(let i = 0; i < bodyValuesArray.length; i++) {
             await req.db.query(
-                `UPDATE almuni SET property = :value
+                `UPDATE almuni SET :property = :value
                     WHERE id = :id`,
                 {
                     property: bodyValuesArray[i][0],
