@@ -43,9 +43,6 @@ export const Login = () => {
           <h2 aria-live="assertive">{error.response.data.message}</h2> 
       }
       <div>
-      <div className='logo'>
-        <a href='/'><img className='bvt--logo' src='images/bvt.png' alt="Logo saying Bay Valley Tech with a lightbulb" /></a>
-      </div>
       <Form.Group  className="form-basic-email" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email" ref={userRef} value={input.user} onChange={e => setInput(prev => ({...prev, email: e.target.value}))}/>
