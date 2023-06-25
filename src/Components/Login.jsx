@@ -5,7 +5,7 @@ import {  Link, Navigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import axios from '../api/axios';
-
+import { MDBSpinner } from 'mdb-react-ui-kit';
 export const Login = () => {
   const userRef = useRef();
 
@@ -38,9 +38,11 @@ export const Login = () => {
   return (
     <Form className='login--container' style={{marginTop: '45px'}} onSubmit={() => setEnabled(true)}>
       {/*Can you please style this! :)*/}
-      { isLoading && <h2>Loading...</h2> }
+      { isLoading && <MDBSpinner role = "status">
+        <span className='visually-hidden'>Loading...</span> </MDBSpinner> }
+        
       { isError && 
-          <h2 aria-live="assertive">{error.response.data.message}</h2> 
+          <p className = "error">{error.response.data.message}</p> 
       }
       <div>
       <Form.Group  className="form-basic-email" controlId="formBasicEmail">

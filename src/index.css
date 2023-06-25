@@ -85,7 +85,9 @@ label{
 .login-buttons {
   margin-bottom: 10px;
 }
-  
+.error{
+  color: red;
+}
 /* End of Login*/
 
 /* Start of Nav Bar */
