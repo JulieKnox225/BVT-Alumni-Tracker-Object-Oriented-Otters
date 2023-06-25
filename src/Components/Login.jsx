@@ -1,32 +1,54 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-import {  Link } from 'react-router-dom';
-import { useState } from 'react';
+import {  Link, Navigate } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import axios from '../api/axios';
 
 export const Login = () => {
-  const [input, setInput] = useState({
-    email: '',
-    password: ''
-  });
+  const userRef = useRef();
+
+  //Controls when to send request
+  const [enabled, setEnabled] = useState(false);
+
+  //Due to the users database table consisting of (id, user, password), the email field is being submitted as 'user'
+  const [input, setInput] = useState(
+    {
+      user: '',
+      password: ''
+    }
+  );
+  
+  useEffect(() => {
+    userRef.current.focus();
+  }, []);
 
   const fetchLoginEndpoint = () => {
-    return axios.post('/login', input)
+    setEnabled(false);
+    return axios.post('/login', input, { withCredentials: true })
   }
 
-  const { isError, error } = useQuery('login', fetchLoginEndpoint);
+  const { data, isError, error, isLoading } = useQuery('login', fetchLoginEndpoint, { enabled });
+
+  if(data) {
+    return <Navigate to={'/'} />;
+  }
 
   return (
-    <Form className='login--container' style={{marginTop: '45px'}}>
+    <Form className='login--container' style={{marginTop: '45px'}} onSubmit={() => setEnabled(true)}>
+      {/*Can you please style this! :)*/}
+      { isLoading && <h2>Loading...</h2> }
+      { isError && 
+          <h2 aria-live="assertive">{error.response.data.message}</h2> 
+      }
       <div>
       <div className='logo'>
         <a href='/'><img className='bvt--logo' src='images/bvt.png' alt="Logo saying Bay Valley Tech with a lightbulb" /></a>
       </div>
       <Form.Group  className="form-basic-email" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" value={input.email} onChange={e => setInput(prev => ({...prev, email: e.target.value}))}/>
+        <Form.Control type="email" placeholder="Enter email" ref={userRef} value={input.user} onChange={e => setInput(prev => ({...prev, email: e.target.value}))}/>
         <Form.Text className="login-text">
           We&apos;ll never share your email with anyone else.
         </Form.Text>
