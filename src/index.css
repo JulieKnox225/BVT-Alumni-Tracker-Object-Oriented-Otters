@@ -29,6 +29,11 @@ label{
 /* Login Page*/
   
 .bvt--logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 50px;
     border-radius: 5px;
     background-color: #FBFBFB;
     box-shadow: 10px 10px 10px #6d6d6d;
@@ -351,10 +356,16 @@ label{
   color: white;
   margin: 50px;
 }
+
+#light .h1-fpp{
+  color: black;
+  margin: 50px;
+}
 .p-fpp{
   font-size: medium;
   margin-bottom: 50px;
 }
+
 .fp-email{
   margin-bottom: 20px;
   width: 100%;
@@ -365,9 +376,11 @@ label{
 .p-text{
   color: white;
 }
-
+#light .p-text{
+  color: rgb(0, 0, 0);
+}
 .forgot-pw-submit {
-  background-color: #1a1a1a;
+  background-color: #4c00fd;
   margin-bottom: 50px;
 
 }

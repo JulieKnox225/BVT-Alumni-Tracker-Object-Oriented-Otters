@@ -15,7 +15,7 @@ export function ForgotPassword(){
     <Form onSubmit={(e) => {e.preventDefault()
       console.log('sent email')}}>
     <Form.Group  className="fp-email" controlId="formBasicEmail">
-        <Form.Label style={{color: 'white'}}>Email address</Form.Label>
+        <Form.Label className = "form-label">Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email" />
         <Form.Text className='p-text'>
           Well never share your email with anyone else.
