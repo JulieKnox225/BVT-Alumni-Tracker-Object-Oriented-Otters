@@ -21,9 +21,6 @@ export const Login = () => {
   return (
     <Form className='login--container' style={{marginTop: '45px'}}>
       <div>
-      <div className='logo'>
-        <a href='/'><img className='bvt--logo' src='images/bvt.png' alt="Logo saying Bay Valley Tech with a lightbulb" /></a>
-      </div>
       <Form.Group  className="form-basic-email" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email" value={input.email} onChange={e => setInput(prev => ({...prev, email: e.target.value}))}/>
