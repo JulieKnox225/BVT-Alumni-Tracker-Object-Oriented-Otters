@@ -6,8 +6,6 @@ import {
    MDBCarouselItem,
 } from 'mdb-react-ui-kit';
 
-
-
 export const Home = () => {
 
   const [search, setSearch] = useState('')

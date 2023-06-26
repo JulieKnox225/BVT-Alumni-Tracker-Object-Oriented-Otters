@@ -1,21 +1,32 @@
 import { Col, Container } from "react-bootstrap"
 import Row from 'react-bootstrap/Row'
+import { MDBIcon } from "mdb-react-ui-kit"
 
 export const EditProfile = () => {
   return (
     <>
-    <Container fluid className="profile-page-edit-container">
+    <Container fluid='true' className="profile-page-edit-container">
     <Row>
     <Col>
         <div className="profile-pic-edit">
             <img style={{marginTop: '25px'}} className="default-profile-pic" src="images/pic.png" alt="Default profile picture" />
-            <a>
+            {/* Not a real link, needs to be updated to some sort of modal/popup to change image */}
+            <a href="/editImage">
             <p className="edit-image-link">Click to change image</p>
             </a>
         </div>
-            <h4 className="e-p-pic-text">Current Profile Picture</h4>
+            <h4 className="e-p-pic-text">@JohnTheDoughKing</h4>
+        
         <div className="e-p-social-links">
+          {/* Not a real link either, same as previous link (modal/popup) */}
+          <a href='/addmodal?'>
            Edit social Links
+           </a>
+           <div className="social-links-icon">
+          <MDBIcon far icon="envelope" />
+          <MDBIcon fas icon="phone" />
+          <MDBIcon fab icon="linkedin" />
+          </div>
         </div>
     </Col>
     <Col>

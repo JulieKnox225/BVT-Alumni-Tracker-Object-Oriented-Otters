@@ -17,7 +17,7 @@ export const SearchPage = () => {
   useEffect(() => {
       setBvtData(FakeData)
   }, []) 
-  console.log(BvtData)
+  // console.log(BvtData)
 
   const handleSubmit = (e) => {
     e.preventDefault();

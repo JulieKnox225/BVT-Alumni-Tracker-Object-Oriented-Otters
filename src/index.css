@@ -9,7 +9,6 @@
   /* color:white; */
 }
 
-
 /* App.jsx */
 .site--container {
   display: flex;
@@ -26,19 +25,33 @@
 label{
   margin-right: 20px;
 }
+
 /* End of App.jsx */
 
 /* Login Page*/
   
-.bvt--logo{
+#light .bvt--logo{
     margin-left: 50px;
     border-radius: 5px;
-    background-color: #FBFBFB;
+    background-color: white;
     box-shadow: 10px 10px 10px #6d6d6d;
+    padding: 15px;
     width: 250px;
     margin: 15px;
     filter:brightness(100%)
 }
+
+#dark .bvt--logo{
+  margin-left: 50px;
+  border-radius: 5px;
+  background-color: #2a2e30;
+  box-shadow: 10px 10px 10px #6d6d6d;
+  padding: 15px;
+  width: 250px;
+  margin: 15px;
+  filter:brightness(100%)
+}
+
 .bvt--logo:hover{
   color:#CC0000;
   text-shadow: black 4px 3px 3px;
@@ -129,7 +142,7 @@ label{
 
 #light .home-button-text {
   font-family: serif;
-  font-size: 55px;
+  font-size: 35px;
   color: #EEF4ED;
   text-shadow: black 4px  3px 3px;
 }
@@ -339,8 +352,6 @@ label{
   margin: 25px;
 }
 
-
-
 /* End Search Page */
 
 /* Add entry Page */
@@ -350,16 +361,21 @@ label{
   align-items: center;
 }
 
-  
 /* End of add entry */
 
 /* Profile */
 
 .profile-page-container {
-  margin: 25px;
+  margin: 25px 25px 55px 0px;
 }
 
-.default-profile-pic {
+#dark .default-profile-pic {
+  width: 200px;
+  border-radius: 125px;
+  box-shadow: black -3px 3px 16px;
+}
+
+#light .default-profile-pic {
   width: 200px;
   border-radius: 125px;
   box-shadow: black -3px 3px 16px;
@@ -371,19 +387,37 @@ label{
   margin: 25px 0px 5px 0px;
 }
 
-
-.about-me-header,
-.projects-header,
-.achievements-header,
-.contact-header {
-  background-color: #2a2b2c;
-  width: 350px;
+#light .about-me-header,
+#light .projects-header,
+#light .achievements-header,
+#light .contact-header {
+  background-color: rgb(255, 255, 255);
+  width: 450px;
   height: 50px;
   border-radius: 5px;
   margin-top: 25px;
   margin-left: auto;
   margin-right: auto;
-  font-size: larger;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #B3A125;
+  box-shadow: black 3px 3px 10px;
+}
+
+#dark .about-me-header,
+#dark .projects-header,
+#dark .achievements-header,
+#dark .contact-header {
+  background-color: #2a2b2c;
+  width: 450px;
+  height: 50px;
+  border-radius: 5px;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -391,8 +425,24 @@ label{
   box-shadow: black -3px 3px 10px;
 }
 
+#light .contact-container {
+  color: #2a2b2c;
+  background-color: rgb(255, 255, 255);
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 35px;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 450px;
+  height: 150px;
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  box-shadow: black 3px 3px 10px;
+}
 
-.contact-container {
+
+#dark .contact-container {
   color:rgb(255, 255, 255);
   background-color: #2a2b2c;
   margin-left: auto;
@@ -400,7 +450,7 @@ label{
   font-size: 35px;
   border-radius: 5px;
   margin-top: 10px;
-  width: 350px;
+  width: 450px;
   height: 150px;
   display: flex;
   gap: 15px;
@@ -408,9 +458,27 @@ label{
   box-shadow: black -3px 3px 10px;
 }
 
-.projects-text,
-.about-me-text,
-.achievements-text {
+#light .projects-text,
+#light .about-me-text,
+#light .achievements-text {
+  color: #2a2b2c;
+  background-color: rgb(255, 255, 255);
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 450px;
+  height: 150px;
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  box-shadow: black 3px 3px 10px;
+}
+
+#dark .projects-text,
+#dark .about-me-text,
+#dark .achievements-text {
   color:rgb(255, 255, 255);
   background-color: #2a2b2c;
   margin-left: auto;
@@ -418,7 +486,7 @@ label{
   font-size: 20px;
   border-radius: 5px;
   margin-top: 10px;
-  width: 350px;
+  width: 450px;
   height: 150px;
   display: flex;
   gap: 15px;
@@ -431,20 +499,52 @@ label{
 /* Profile edit */
 
 .profile-page-edit-container {
-  margin-top: 25px;
+  margin: 25px;
+  width: auto;
+
 }
 
 .edit-image-link {
-  margin-top: -55px;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  bottom: 65px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: inset 0 0 0 0 black;
+  padding: 0 .25rem;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
 
-.e-p-pic-text{
-  margin-top: 45px;
+.edit-image-link:hover {
+  box-shadow: inset 177px 0 0 0 black;
+  color: white;
+}
+
+#light .e-p-pic-text{
+  margin-top: 55px;
   color: #177E89;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#dark .e-p-pic-text {
+  margin-top: 55px;
+  color: #FFC857;
+  font-size: 30px;
 }
 
 .e-p-social-links {
-  margin-top: 25px;
+  margin-top: 55px;
+}
+
+.social-links-icon {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 25px;
 }
 
 .form-edit-prof {
@@ -472,26 +572,28 @@ label{
 }
 
 .e-p-textarea {
-
   width: 40vh;
   min-height: 75px;
-  max-height: 150px;
+  max-height: 250px;
   border-radius: 7px;
   text-align:justify;
 }
 
 .e-p-cancel {
   background-color: #084C61;
-  width: 105px;
+  width: 110px;
+  height: 45px;
   border-radius: 10px;
   border: none;
+  font-weight: bold;
 }
 
 .e-p-save {
   background-color: #FF7A45;
-  width: 105px;
+  width: 110px;
   border-radius: 10px;
   border: none;
+  font-weight: bold;
 }
 
 .e-p-buttons {

@@ -5,7 +5,7 @@ import { MDBIcon } from 'mdb-react-ui-kit'
 export const Profile = () => {
   return (
     <>
-    <Container fluid='md' className="profile-page-container">
+    <Container fluid className="profile-page-container">
     <Row >
     <Col>
         <div className="profile-pic">
