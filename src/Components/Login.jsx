@@ -1,90 +1,78 @@
-import { useEffect, useState } from 'react';
-import FakeData from './TempData/FakeData'
-import { IDCards } from './BVT.ID';
-import {
-  MDBCarousel,
-   MDBCarouselItem,
-} from 'mdb-react-ui-kit';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import {  Link, Navigate } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+import { useQuery } from 'react-query';
+import axios from '../api/axios';
+import { MDBSpinner } from 'mdb-react-ui-kit';
+export const Login = () => {
+  const userRef = useRef();
 
+  //Controls when to send request
+  const [enabled, setEnabled] = useState(false);
 
-
-export const Home = () => {
-
-  const [search, setSearch] = useState('')
-
-  const [searchResults, setSearchResults] = useState({
-    data: [],
-    currentPage: 1,
-    resultsPerPage: 5
-  })
-  const [BvtData, setBvtData] = useState([])
-
+  //Due to the users database table consisting of (id, user, password), the email field is being submitted as 'user'
+  const [input, setInput] = useState(
+    {
+      user: '',
+      password: ''
+    }
+  );
+  
   useEffect(() => {
-    setBvtData(FakeData)
-  }, []) 
-  console.log(BvtData)
+    userRef.current.focus();
+  }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    //Prevents empty search, ex: "    " or ""
-    if (search.trim() === '') {
-      return;
-    }   
-    const filteredResults = FakeData.filter((info) => {
-      const searchValue = search.toLowerCase();
-      const fullName = `${info.firstName} ${info.lastName}`.toLowerCase()
-      return (
-        fullName.includes(searchValue) ||
-        info.email.toLowerCase().includes(searchValue) ||
-        info.degree.toLowerCase().includes(searchValue)
-        );
-      });
+  const fetchLoginEndpoint = () => {
+    setEnabled(false);
+    return axios.post('/login', input, { withCredentials: true })
+  }
 
-      setSearchResults(filteredResults);  
-};
+  const { data, isError, error, isLoading } = useQuery('login', fetchLoginEndpoint, { enabled });
 
-return (
-  <>
-    <div className='surrounding-box'>
-      <div className='container-search'>
-      <form onSubmit={handleSubmit}>
-          <div className='sp-search-bar-n-btn'>
-          <input
-            type="text"
-            placeholder="Who's that Alumnus?"
-            onChange={(e) => setSearch(e.target.value)}
-            value={search}
-            className='SP-searchBar'
-            />
-          <button className='SP-button' type="submit">
-            Search
-          </button>
-          </div>
-      </form>
+  if(data) {
+    return <Navigate to={'/'} />;
+  }
+
+  return (
+    <Form className='login--container' style={{marginTop: '45px'}} onSubmit={() => setEnabled(true)}>
+      {/*Can you please style this! :)*/}
+      { isLoading && <MDBSpinner role = "status">
+        <span className='visually-hidden'>Loading...</span> </MDBSpinner> }
+        
+      { isError && 
+          <p className = "error">{error.response.data.message}</p> 
+      }
+      <div>
+      <Form.Group  className="form-basic-email" controlId="formBasicEmail">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" placeholder="Enter email" ref={userRef} value={input.user} onChange={e => setInput(prev => ({...prev, email: e.target.value}))}/>
+        <Form.Text className="login-text">
+          We&apos;ll never share your email with anyone else.
+        </Form.Text>
+      </Form.Group>
+
+      <Form.Group className="form-basic-password" controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" placeholder="Password" value={input.password} onChange={e => setInput(prev => ({...prev, password: e.target.value}))}/>
+        </Form.Group>
+      
+      <Button className = "btn-el"variant="primary" type="submit">
+        Login
+      </Button>
+     <Link to = "/ForgotPassword">
+      <Button className = "btn-el" variant="danger" type="submit">
+        Forgot Password
+      </Button>
+     </Link>
+      <Link to = "/Register">
+      <Button className = "btn-el"variant="secondary" type="submit">
+       New User
+      </Button>
+      </Link>
       </div>
-    </div>
-    <MDBCarousel showControls>
-    <div className='BVT-results'>
-      {/* <FakeData /> */}
-      <h2 className="sp-results-header">Profile Gallery</h2>
-      {/* As long as there is an input when search is submitted results will display */}
-      {searchResults.length > 4 && (
-        <div style={{ marginTop: '20px' }}>
-          <p>These are the results for {search}:</p>
-          <MDBCarouselItem />
-          <div className='search-results'>
-          {searchResults.map((info) => (
-            <IDCards
-            key={info.id}
-            {...info}
-            />
-            ))}
-          </div> 
-        </div>
-      )}
-
-    </div>
-      </MDBCarousel>
-    </>
-  )
+    </Form>
+  
+  );
 }
