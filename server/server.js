@@ -1,5 +1,6 @@
 require('dotenv').config();
-const db = require('./config/alumniConfig');
+const db = require('./config/fakeAlumniConfig');
+// const db = require('./config/alumniConfig');
 const cookieParser = require('cookie-parser')
 const cors = require('cors');
 const express = require('express');
@@ -22,6 +23,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(db);
+app.use('/', require('./routes/auth/authentication'));
 app.use('/', require('./routes/api/alumni'));
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

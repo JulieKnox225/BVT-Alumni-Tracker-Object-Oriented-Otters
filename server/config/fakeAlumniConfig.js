@@ -1,16 +1,17 @@
 const mysql = require('mysql2/promise');
 require('dotenv').config();
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: "remote",
-  password: "pass",
-  database: "alumniDatabase",
+const pool = mysql.createPool({
+  host: "127.0.0.1",
+  user: "root",
+  port: 3306,
+  password: "password",
+  database: "fakeAlumniDB",
 });
 
 async function connectDataBase(req, _, next) {
   try {
-    req.db = await connection.getConnection();
+    req.db = await pool.getConnection();
     req.db.connection.config.namedPlaceholders = true;
 
     await req.db.query(`SET SESSION sql_mode = "TRADITIONAL"`);

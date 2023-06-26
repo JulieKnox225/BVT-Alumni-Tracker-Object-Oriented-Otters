@@ -20,13 +20,14 @@ async function authenticateToken(req, res, next) {
         }
 
         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err,  user) => {
-            if(err || !user.name) {
+            if(err || !user.user) {
                 return res.status(403).send({success: false, message: err, data: null});
             }
 
             req.user = user;
             next();
         });
+        
     } catch (error) {
         return res.status(403).send({success: false, message: 'auth middle', data: null});
     }

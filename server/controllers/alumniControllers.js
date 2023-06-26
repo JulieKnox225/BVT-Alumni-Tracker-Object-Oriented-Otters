@@ -1,3 +1,36 @@
+
+/* 
+  This should be able to replace all other getAlumniBy____ :
+  
+const getPlants = async (req, res) => {
+    try {
+        const { search, type } = req.query;
+        const wordsToSearchWithLike = ['name', 'nickname', 'months_to_plant', 'sow_temp_range', 'description', 'planting_zone'];
+        let result = [];
+        if(search) {
+            if(wordsToSearchWithLike.includes(type)) {
+                result = await req.db.query(`SELECT * FROM plants WHERE ${type} LIKE '%${search}%'`);
+            } else {
+                result = await req.db.query(`SELECT * FROM plants WHERE ${type} = :search`, { search });
+            }
+        }
+        else {
+            result = await req.db.query(`SELECT * FROM plants`);
+        }
+
+        if(result[0].length === 0) {
+            result[0].push({ name: 'Sorry none found!' });
+        }
+
+        res.status(200).json(result[0]);
+    } catch (err) {
+        res.status(400).send({success: false, message: err, data: null});
+    }
+};
+
+*/
+
+
 const getAllAlumni = async (req, res) => {
     try {
         const result = await req.db.query(
@@ -31,10 +64,7 @@ const getAlumniByName = async (req, res) => {
         const { name } = req.params;
         const result = await req.db.query(
             `SELECT * FROM alumni
-                WHERE name = :name`,
-            {
-                name
-            }
+                WHERE fullName = ${name}`
         );
 
         res.status(200).json({success: true, message: `Data retrieved`, data: result[0]});
@@ -65,7 +95,7 @@ const createAlumni = async (req, res) => {
         const { fullName, contactInfo, degree, achievements, projects, skills, recommendations } = req.body;
         
         await req.db.query(
-            `INSERT INTO pokedex (fullName, contactInfo, degree, achievements, projects, skills, recommendations)
+            `INSERT INTO alumni (fullName, contactInfo, degree, achievements, projects, skills, recommendations)
                 VALUES (:fullName, :contactInfo, :degree, :achievements, :projects, :skills, :recommendations)`,
             {
                 fullName, contactInfo, degree, achievements, projects, skills, recommendations
@@ -89,13 +119,11 @@ const updateAlumni = async (req, res) => {
         const { id } = req.params;
         const bodyValuesArray = Object.entries(req.body);
 
-        //I am worried that :property will not work 
         for(let i = 0; i < bodyValuesArray.length; i++) {
             await req.db.query(
-                `UPDATE almuni SET :property = :value
+                `UPDATE fakealumnidb.alumni SET ${bodyValuesArray[i][0]} = :value
                     WHERE id = :id`,
                 {
-                    property: bodyValuesArray[i][0],
                     value: bodyValuesArray[i][1],
                     id
                 }

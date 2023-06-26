@@ -6,6 +6,8 @@ import { useState, useRef, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import axios from '../api/axios';
 import { MDBSpinner } from 'mdb-react-ui-kit';
+
+
 export const Login = () => {
   const userRef = useRef();
 
@@ -35,8 +37,13 @@ export const Login = () => {
     return <Navigate to={'/'} />;
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setEnabled(true);
+  }
+
   return (
-    <Form className='login--container' style={{marginTop: '45px'}} onSubmit={() => setEnabled(true)}>
+    <Form className='login--container' style={{marginTop: '45px'}} onSubmit={e => handleSubmit(e)}>
       {/*Can you please style this! :)*/}
       { isLoading && <MDBSpinner role = "status">
         <span className='visually-hidden'>Loading...</span> </MDBSpinner> }
@@ -47,7 +54,8 @@ export const Login = () => {
       <div>
       <Form.Group  className="form-basic-email" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" ref={userRef} value={input.user} onChange={e => setInput(prev => ({...prev, email: e.target.value}))}/>
+        {/* type was email but changed to text for debug */}
+        <Form.Control type="text" placeholder="Enter email" ref={userRef} value={input.user} onChange={e => setInput(prev => ({...prev, user: e.target.value}))}/>
         <Form.Text className="login-text">
           We&apos;ll never share your email with anyone else.
         </Form.Text>

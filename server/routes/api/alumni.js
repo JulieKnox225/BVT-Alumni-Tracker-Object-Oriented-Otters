@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const { getAllAlumni, getAlumniByName, getAlumniById, getAlumniByYear, createAlumni, updateAlumni } = require('../../controllers/alumniControllers');
+const { getAllAlumni, createAlumni, updateAlumni, getAlumniByName, getAlumniById, getAlumniByYear } = require('../../controllers/alumniControllers');
 const authenticateToken = require('../../middleware/authenticateMiddle');
 
 router
     .get('/', authenticateToken, getAllAlumni)
-    .get('/:id', authenticateToken, getAlumniById)
-    .get('/:name', authenticateToken, getAlumniByName)
-    .get('/:year', authenticateToken, getAlumniByYear)
     .post('/', authenticateToken, createAlumni)
     .put('/:id', authenticateToken, updateAlumni)
+    //these need to be replaced by one search function. My version is at top of alumniControllers.js :)
+    // .get('/:id', authenticateToken, getAlumniById)
+    // .get('/:name', authenticateToken, getAlumniByName)
+    // .get('/:year', authenticateToken, getAlumniByYear)
 ;
 
 module.exports = router;
