@@ -4,19 +4,19 @@ const jwt = require('jsonwebtoken');
 
 const createUser = async (req, res) => {
     try {
-        const { name, password } = req.body;
+        const { user, password } = req.body;
 
-        if(!name || !password) {
+        if(!user || !password) {
             return res.status(400).send({success: false, message: 'Username and Password required.', data: null});
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
         await req.db.query(
-            `INSERT INTO users (name, password)
-                VALUES (:name, :password)`,
+            `INSERT INTO users (user, password)
+                VALUES (:user, :hashedPassword)`,
             {
-                name, hashedPassword
+                user, hashedPassword
             }
         );
 
@@ -28,13 +28,13 @@ const createUser = async (req, res) => {
 
 const login = async (req, res) => {
     try {
-        const { name, sentPassword } = req.body;
+        const { user, password: sentPassword } = req.body;
 
-        const result = req.db.query(
+        const result = await req.db.query(
             `SELECT password FROM users
-                WHERE name = :name`,
+                WHERE user = :user`,
             {
-                name
+                user
             }
         );
 
@@ -42,12 +42,12 @@ const login = async (req, res) => {
             return res.status(401).json({success: false, message: `User not found.`, data: null});
         }
 
-        const { hashedPassword } = result[0][0];
+        const { password: hashedPassword } = result[0][0];
 
         if(await bcrypt.compare(sentPassword, hashedPassword)) {
-            const accessToken = jwt.sign({name}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '30s'});
-            const refreshToken = jwt.sign({name}, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '1w'});
-
+            const accessToken = jwt.sign({user}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '30s'});
+            const refreshToken = jwt.sign({user}, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '1w'});
+      
             res.cookie('accessToken', accessToken, {
                 httpOnly: true,
                 maxAge: 24 * 60 * 60 * 1000 
@@ -76,11 +76,11 @@ const refresh = (req, res) => {
         }
 
         jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err,  user) => {
-            if(err || !user.name) {
+            if(err || !user.user) {
                 return res.status(403).send({success: false, message: err || 'JWT error!', data: null});
             }
             
-            const accessToken = jwt.sign({name: user.name}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '10m'});
+            const accessToken = jwt.sign({user: user.user}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '10m'});
             res.status(200).send({success: false, message: 'Refreshed', data: accessToken});
         });
 

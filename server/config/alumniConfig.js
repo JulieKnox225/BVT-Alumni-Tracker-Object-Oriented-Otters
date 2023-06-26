@@ -9,10 +9,9 @@ require('dotenv').config();
 
 // Database connection setup
 const connection = mysql.createConnection({
-  host: "127.0.0.1",
-  port: 3306,
-  user: "root",
-  password: "bvtpassword",
+  host: process.env.DB_HOST,
+  user: "remote",
+  password: "pass",
   database: "alumniDatabase",
 });
 
