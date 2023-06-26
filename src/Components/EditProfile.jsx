@@ -1,10 +1,11 @@
-import { Col, Row, Container } from "react-bootstrap"
+import { Col, Container } from "react-bootstrap"
+import Row from 'react-bootstrap/Row'
 
 export const EditProfile = () => {
   return (
     <>
-    <Container fluid='md' className="profile-page-edit-container">
-    <Row >
+    <Container fluid className="profile-page-edit-container">
+    <Row>
     <Col>
         <div className="profile-pic-edit">
             <img style={{marginTop: '25px'}} className="default-profile-pic" src="images/pic.png" alt="Default profile picture" />
@@ -51,7 +52,7 @@ export const EditProfile = () => {
         />
       </div>
     </Col>
-    <Col>
+    <Col >
       <div className="form-edit-prof">
         <div className="e-p-form-text">
         About me:
@@ -78,11 +79,14 @@ export const EditProfile = () => {
       </div>
     </Col>
     </Row>
-    <div>
-      <button>Cancel</button>
-      <button>Save</button>
+    <Row>
+    <div className="e-p-buttons">
+      <button className="e-p-cancel">Cancel</button>
+      <button className="e-p-save">Save</button>
     </div>
+    </Row>
     </Container>
     </>
+    
   )
 }

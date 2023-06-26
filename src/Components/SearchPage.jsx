@@ -3,6 +3,7 @@ import FakeData from './TempData/FakeData'
 import { IDCards } from './BVT.ID';
 
 
+
 export const SearchPage = () => {
   
   const [search, setSearch] = useState('')

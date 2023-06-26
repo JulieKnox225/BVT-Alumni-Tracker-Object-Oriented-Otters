@@ -118,7 +118,7 @@ label{
 
 #dark .home-button-text {
   font-family: serif;
-  font-size: 55px;
+  font-size: 35px;
   color: #EEF4ED;
   text-shadow: black -4px  3px 3px;
 }
@@ -443,8 +443,6 @@ label{
   margin-top: 25px;
 }
 
-
-
 .form-edit-prof {
   margin: 15px 0px 15px 0px;
 }
@@ -478,6 +476,26 @@ label{
   text-align:justify;
 }
 
+.e-p-cancel {
+  background-color: #084C61;
+  width: 105px;
+  border-radius: 10px;
+  border: none;
+}
+
+.e-p-save {
+  background-color: #FF7A45;
+  width: 105px;
+  border-radius: 10px;
+  border: none;
+}
+
+.e-p-buttons {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  margin: 50px 0px 50px 0px;
+}
 
 
 /* end of Profile edit */
