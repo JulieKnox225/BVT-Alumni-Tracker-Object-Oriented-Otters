@@ -39,7 +39,7 @@ export const Home = () => {
         info.degree.toLowerCase().includes(searchValue)
         );
       });
-      
+
       setSearchResults(filteredResults);  
 };
 

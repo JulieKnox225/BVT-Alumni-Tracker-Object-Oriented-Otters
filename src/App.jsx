@@ -41,6 +41,7 @@ function App() {
             <Route path ='/forgotPassword' element = {<ForgotPassword/>}/>
             <Route path='/register' element= {< Register/> } />
             <Route path='/profile' element= {< Profile/> } />
+            <Route path='/editProfile' element= {< EditProfile />} />
           </Routes>
         </div>
         <Footer />
