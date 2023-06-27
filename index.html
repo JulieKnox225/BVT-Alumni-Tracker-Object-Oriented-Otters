@@ -14,39 +14,7 @@
     />
   </head>
   <body>
-    <div id="root">
-      <form id="searchForm">
-        <input type="text" id="searchInput" placeholder="Enter your search query" />
-        <button type="submit">Search</button>
-      </form>
-      <div id="searchResults"></div>
-    </div>
-
-    <script>
-      // Front-end code (JavaScript)
-
-      const searchForm = document.getElementById('searchForm');
-      const searchInput = document.getElementById('searchInput');
-      const searchResults = document.getElementById('searchResults');
-
-      searchForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const query = searchInput.value;
-
-        // Send a GET request to the search endpoint
-        const response = await fetch(`/api/search?query=${encodeURIComponent(query)}`);
-        const data = await response.json();
-
-        // Display the search results
-        if (response.ok) {
-          // Assuming the data is an array of search results
-          const resultsHtml = data.map((result) => `<p>${result}</p>`).join('');
-          searchResults.innerHTML = resultsHtml;
-        } else {
-          searchResults.innerHTML = 'An error occurred while performing the search.';
-        }
-      });
-    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

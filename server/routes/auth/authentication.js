@@ -5,6 +5,7 @@ const { createUser, login, refresh } = require('../../controllers/authcontroller
 router
     .post('/user', createUser)
     .post('/login', login)
-    .post('/refresh', refresh);
+    .get('/refresh', refresh)
+;
 
 module.exports = router;

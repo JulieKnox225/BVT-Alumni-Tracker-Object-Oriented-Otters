@@ -22,7 +22,7 @@ export const Home = () => {
   useEffect(() => {
     setBvtData(FakeData)
   }, []) 
-  console.log(BvtData)
+  // console.log(BvtData) commented out for addEntryPage debugging
 
   const handleSubmit = (e) => {
     e.preventDefault();

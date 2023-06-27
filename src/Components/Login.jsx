@@ -6,10 +6,13 @@ import { useState, useRef, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import axios from '../api/axios';
 import { MDBSpinner } from 'mdb-react-ui-kit';
+import useAuth from '../hooks/useAuth';
 
 
 export const Login = () => {
   const userRef = useRef();
+  
+  const { setAuth } = useAuth();
 
   //Controls when to send request
   const [enabled, setEnabled] = useState(false);
@@ -26,14 +29,17 @@ export const Login = () => {
     userRef.current.focus();
   }, []);
 
-  const fetchLoginEndpoint = () => {
+  const fetchLogin = () => {
     setEnabled(false);
     return axios.post('/login', input, { withCredentials: true })
   }
 
-  const { data, isError, error, isLoading } = useQuery('login', fetchLoginEndpoint, { enabled });
+  const { data, isError, error, isLoading } = useQuery('login', fetchLogin, { enabled, retry: false });
 
   if(data) {
+    console.log(data.data.data); //checking if it does contain access token
+    //data.data.data contains access token but it is not being saved here
+    setAuth(prev => ({ ...prev, accessToken: data.data.data}))
     return <Navigate to={'/'} />;
   }
 
