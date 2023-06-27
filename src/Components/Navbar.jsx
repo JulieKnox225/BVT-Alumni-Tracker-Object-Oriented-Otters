@@ -1,6 +1,12 @@
-
+import {useState} from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 export const Navbar = () => {
+
+const [login, setLogin] = useState(false)
+
+const handleLogin = () => {
+  setLogin(!login)
+}
 
  return (
    <div>
@@ -21,9 +27,18 @@ export const Navbar = () => {
        <a href= "/" className="home-button">
        <h2 className="home-button-text">BVT Alumni Tracker</h2>
        </a>
-       <a href='/login' className='login-button'>
-       <p className="login--text">Login</p>
+
+      {/* Temp button to show how the login would change icons */}
+       <a>
+       <button className="light-dark-btn" onClick={handleLogin}></button>
        </a>
+       {login ? 
+        <a href= "/editProfile">
+          <img className="nav-login-image" src="images/pic.png" alt="Default profile picture edit image" />
+        </a> : <a href='/login' className='login-button'>
+       <p className="login--text">Login</p>
+       </a>}
+
        </nav>
    </div>
  )

@@ -3,6 +3,7 @@ import FakeData from './TempData/FakeData'
 import { IDCards } from './BVT.ID';
 
 
+
 export const SearchPage = () => {
   
   const [search, setSearch] = useState('')
@@ -16,7 +17,7 @@ export const SearchPage = () => {
   useEffect(() => {
       setBvtData(FakeData)
   }, []) 
-  console.log(BvtData)
+  // console.log(BvtData)
 
   const handleSubmit = (e) => {
     e.preventDefault();
