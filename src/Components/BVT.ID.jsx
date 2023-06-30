@@ -10,7 +10,8 @@ export const IDCards = (props) => {
   const {
     firstName, 
     lastName, 
-    email, degree, 
+    email, 
+    degree, 
     additionalInfo, 
     experience, 
     achievements, 
@@ -94,12 +95,12 @@ export const IDCards = (props) => {
 }
 
 IDCards.propTypes = {
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  degree: PropTypes.string.isRequired,
-  additionalInfo: PropTypes.string.isRequired,
-  experience: PropTypes.string.isRequired,
-  achievements: PropTypes.string.isRequired,
-  skills: PropTypes.string.isRequired,
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  email: PropTypes.string,
+  degree: PropTypes.string,
+  additionalInfo: PropTypes.string,
+  experience: PropTypes.string,
+  achievements: PropTypes.string,
+  skills: PropTypes.string,
 };
