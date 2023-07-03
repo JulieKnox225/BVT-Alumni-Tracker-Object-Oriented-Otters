@@ -1,32 +1,93 @@
+import { useEffect, useRef, useState } from 'react';
+import axios from '../api/axios';
+
+const USER_REGEX = /^[a-zA-Z][a-zA-z0-9-_]{3,23}/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+
 export const Register = () => {
+  const userRef = useRef();
+  const errorRef = useRef();
+  
+  const [formData, setFormData] = useState({
+    user: '',
+    password: ''
+  });
+
+  const [matchPassword, setMatchPassword] = useState('');
+
+  const [validName, setValidName] = useState(false);
+  const [validPassword, setValidPassword] = useState(false);
+  const [validMatch, setValidMatch] = useState(false);
+
+  const [userFocus, setUserFocus] = useState(false);
+  const [passwordFocus, setPasswordFocus] = useState(false);
+  const [matchFocus, setMatchFocus] = useState(false);
+
+  const [errorMessage, setErrorMessage] = useState('');
+  const [setsuccess, setSetsuccess] = useState(false);
+
+  useEffect(() => {
+    userRef.current.focus();
+  }, []);
+
+  useEffect(() => {
+    setValidName(USER_REGEX.test(formData.user));
+  }, [formData.user]);
+
+  useEffect(() => {
+    setValidPassword(PWD_REGEX.test(formData.password));
+    setValidMatch(formData.password === matchPassword);
+  }, [formData.password, matchPassword]);
+
+  useEffect(() => {
+    setErrorMessage('');
+  }, [formData.user, formData.password, matchFocus]);
+  
+  const [enabled, setEnabled] = useState(false);
+
+  const fetchRegister = () => {
+    setEnabled(false);
+    return axios.post('/user', formData);
+  }
+
   return (
     
     <div className="register-body">
+      <p ref={errorRef} className={errorMessage ? "register-errmsg" : "register-offscreen"} aria-live='assertive'>{errorMessage}</p>
       <form className="register-form">
         <h4 className="sign-up">Sign Up</h4>
         <div className="form-body">
           <div className="username">
-            <label className="form__label" htmlFor="firstName">
-              First Name{" "}
+            <label className="form__label" htmlFor="userName">
+              UserName{" "}
+              <span className={validName ? "register-valid" : "register-hide"}>
+                <i className="fa-solid fa-check"></i>
+              </span>
+              <span className={validName || !formData.user ? "register-hide" : "register-invalid"}>
+                <i className="fa-solid fa-x"></i>
+              </span>
             </label>
             <input
               className="form__input"
               type="text"
-              id="firstName"
-              placeholder="First Name"
+              id="userName"
+              placeholder="Username"
+              ref={userRef}
+              autoComplete='off'
+              onChange={e => setFormData(prev => ({...prev, user: e.target.value}))}
+              required
+              aria-invalid={validName ? "false" : "true"}
+              aria-describedby='uidnote'
+              onFocus={() => setUserFocus(true)}
+              onBlur={() => setUserFocus(false)}
+              value={formData.user}
             />
-          </div>
-          <div className="lastname">
-            <label className="form__label" htmlFor="lastName">
-              Last Name{" "}
-            </label>
-            <input
-              className="form__input"
-              type="text"
-              name=""
-              id="lastName"
-              placeholder="Last Name"
-            />
+            <p id='uidnote' className={userFocus && formData.user && !validName ? "register-instructions" : "register-offscreen"}>
+              <i className="fa-solid fa-circle-info"></i> <br />
+              4 to 24 characters.<br />
+              Must begin with a letter.<br />
+              Letters, numbers, underscores, and hyphens allowed.
+            </p>
           </div>
 
           
@@ -47,24 +108,64 @@ export const Register = () => {
           <div className="password">
             <label className="form__label" htmlFor="password">
               Password{" "}
+              <span className={validPassword ? "register-valid" : "register-hide"}>
+                <i className="fa-solid fa-check"></i>
+              </span>
+              <span className={validPassword || !formData.password ? "register-hide" : "register-invalid"}>
+                <i className="fa-solid fa-x"></i>
+              </span>
             </label>
             <input
               className="form__input"
               type="password"
               id="password"
               placeholder="Password"
+              onChange={e => setFormData(prev => ({...prev, password: e.target.value}))}
+              value={formData.password}
+              required
+              aria-invalid={validPassword ? "false" : "true"}
+              aria-describedby='pwdnote'
+              onFocus={() => setPasswordFocus(true)}
+              onBlur={() => setPasswordFocus(false)}
             />
+            <p id='pwdnote' className={passwordFocus && !validPassword ? 'register-instructions' : 'register-offscreen'}>
+              <i className="fa-solid fa-circle-info"></i> <br />
+              8 to 24 characters.<br />
+              Must include uppercase and lowercase letters, a number, and a special character.<br />
+              Allowed special characters:
+              <span aria-label="exclamation mark">!</span>
+              <span aria-label="at symbol">@</span>
+              <span aria-label="hashtag">#</span>
+              <span aria-label="dollar sign">$</span>
+              <span aria-label="percent">%</span>
+            </p>
           </div>
           <div className="confirm-password">
             <label className="form__label" htmlFor="confirmPassword">
               Confirm Password{" "}
+              <span className={validPassword && matchPassword ? "register-valid" : "register-hide"}>
+                <i className="fa-solid fa-check"></i>
+              </span>
+              <span className={validPassword || !matchPassword ? "register-hide" : "register-invalid"}>
+                <i className="fa-solid fa-x"></i>
+              </span>
             </label>
             <input
               className="form__input"
               type="password"
               id="confirmPassword"
               placeholder="Confirm Password"
+              onChange={e => setMatchPassword(e.target.value)}
+              required
+              aria-invalid={validMatch ? "false" : "true"}
+              aria-describedby="confirmnote"
+              onFocus={() => setMatchFocus(true)}
+              onBlur={() => setMatchFocus(false)}
             />
+            <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
+              <i className="fa-solid fa-circle-info"></i> <br />
+                Must match the first password input field.
+            </p>
             <p className="last-sentence">
               Password must be at least 12 characters long. Weak password will
               be marked as invalid. Password must not be greater than 128
