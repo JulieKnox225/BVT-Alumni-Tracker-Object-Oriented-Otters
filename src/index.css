@@ -45,14 +45,25 @@ label{
   max-height: auto;
   margin: 50px auto 50px;
 }
+
+.title-login{
+  font-weight: bold;
+  margin-bottom: 40px;
+  margin-top:2px;
+}
 /* bg-dark text-white my-5 mx-auto */ *
  #light .login-card{
-  background: -moz-linear-gradient(90deg, hsla(22, 100%, 54%, 1) 0%, hsla(14, 63%, 36%, 1) 100%);
+  background: linear-gradient(180deg, hsla(0, 0%, 100%, 1) 0%, hsla(9, 100%, 60%, 1) 100%);
+  color: #FF5133;
 }
 
 #dark .login-card{
-  background: linear-gradient(360deg, hsla(22, 100%, 54%, 1) 50%, rgb(255, 255, 255) 100%);
+  background: linear-gradient(180deg, hsla(16, 100%, 54%, 1) 0%, rgb(49, 47, 47) 100%);
   color: rgb(255, 255, 255);
+}
+
+#light .login-text{
+  color: black;
 }
 
 #light .bvt--logo{
