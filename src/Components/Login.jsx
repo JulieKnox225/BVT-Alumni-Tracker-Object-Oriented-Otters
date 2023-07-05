@@ -75,11 +75,11 @@ export const Login = () => {
         <h2 className="title-login">Login</h2>
         {/* <p className=" mb-5">Please enter your login and password!</p> */}
         {/* type was email but changed to text for debug */}
-        <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Email address' id='formControlLg' type='email' size="lg" ref={userRef} value={input.user} 
+        <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Email address' id='formControlLg' type='text' size="lg" ref={userRef} value={input.user} 
         onChange={e => setInput(prev => ({...prev, user: e.target.value}))}/>
         <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Password' id='formControlLg' type='password' size="lg" value={input.password} onChange={e => setInput(prev => ({...prev, password: e.target.value}))}/>
 
-        <p className="login-text"><a className="" href="./Components/ForgotPassword">Forgot password?</a></p>
+        <p className="login-text"><a className="" href="./forgotPassword">Forgot password?</a></p>
               <MDBBtn outline className='mx-2 px-5' color='white' size='lg'>
                 Login
               </MDBBtn>
@@ -99,7 +99,7 @@ export const Login = () => {
               </div>
 
               <div>
-                <p className="login-text">Don&apos;t have an account? <a href="./Components/Register" className="">Sign Up</a></p>
+                <p className="login-text">Don&apos;t have an account? <a href="./addEntryPage" className="">Sign Up</a></p>
               </div>
               
             </MDBCardBody>
