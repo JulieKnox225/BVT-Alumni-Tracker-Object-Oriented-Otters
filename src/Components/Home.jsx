@@ -1,23 +1,36 @@
 import { useEffect, useState } from 'react';
 import FakeData from './TempData/FakeData'
 import { ProfileBubble } from './ProfileBubble';
+import { Row } from 'react-bootstrap';
+import { MDBIcon } from 'mdb-react-ui-kit';
 
 
 
 export const Home = () => {
 
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
+  const [BvtData, setBvtData] = useState([]);
+  const [startIndex, setStartIndex] = useState(0);
+  const endIndex = startIndex + 6;
+  const visibleData = BvtData.slice(startIndex, endIndex);
 
-  const [BvtData, setBvtData] = useState([])
+  const handleNextClick = () => {
+    setStartIndex(startIndex + 6);
+  }
+  const handleBackClick = () => {
+    setStartIndex(startIndex - 6);
+  }
 
   useEffect(() => {
     setBvtData(FakeData)
-  }, []) 
-  console.log(BvtData)
+  }, []);
+  console.log(BvtData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    window.location.href = `/searchPage`
+    // I want the bottom line to redirect the user to searchPage 
+    // And then search the users request.
+    window.location.href = `/searchPage`;
 };
 
 return (
@@ -39,17 +52,27 @@ return (
           </div>
       </form>
 
-        <div className='container'> 
+      <div className='carousel-controls'>
+        <button className='carousel-btn' onClick={handleBackClick} disabled={startIndex === 0}>
+          <MDBIcon fas icon="arrow-left"   />
+        </button>
+      <button className='carousel-btn' disabled={startIndex === BvtData.length - 1} onClick={handleNextClick} >
+        <MDBIcon fas icon="arrow-right"   />
+      </button>
+      </div>
       
-
-        {BvtData.map((info) => (
-        <div key={info.id} className='profile-highlight'>
-          <div className='rows'>
-            <ProfileBubble {...info} />
-          </div>
-        </div>
-        ))}
-   
+      <div className='carousel-container'>
+        <div className='carousel-row'>
+        
+          {visibleData.map((info) => (
+          <div key={info.id} className='profile-highlight'>
+            <div className='rows'>
+              <ProfileBubble {...info} />
+            </div>
+            </div>
+          ))}
+      
+          </div> 
         </div>
 
       </div>

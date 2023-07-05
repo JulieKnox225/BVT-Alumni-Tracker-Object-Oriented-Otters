@@ -36,14 +36,44 @@ label{
 
 }
 
-.carousel .control-arrow {
-  color: orangered;
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+
+  height: 350px;
 }
 
-.rows {
-  padding: 15px;
-  height: fit-content;
+.carousel-row {
+  display: grid;
+  grid-template: auto auto / repeat(3, 1fr);
+  gap: 20px;
+  justify-content: center;
+  margin-top: -45px;
 }
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: 175px;
+  margin-right: 55px;
+  margin-left: 55px;
+  
+}
+
+.carousel-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  color:#084C61;
+  font-size: 55px;
+ 
+}
+
 
 
 /* End of Home Page */
