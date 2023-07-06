@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import axios from '../api/axios';
+import { useQuery } from 'react-query';
+import { MDBSpinner } from 'mdb-react-ui-kit';
+import { Navigate } from 'react-router-dom';
 
 const USER_REGEX = /^[a-zA-Z][a-zA-z0-9-_]{3,23}/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -50,13 +53,38 @@ export const Register = () => {
     return axios.post('/user', formData);
   }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    //Check if still valid
+    if(!USER_REGEX.test(formData.user) || !PWD_REGEX.test(formData.password)) {
+      setErrorMessage("Invalid Entry.");
+        return;
+    }
+
+    setEnabled(true);
+  }
+
+  const { data, isLoading, isError, error } = useQuery('createAccount', fetchRegister, { enabled });
+
+  if(data) {
+    <Navigate to={'/login'} />
+  }
+
   return (
-    
     <div className="register-body">
       <p ref={errorRef} className={errorMessage ? "register-errmsg" : "register-offscreen"} aria-live='assertive'>{errorMessage}</p>
-      <form className="register-form">
+      <form className="register-form" onSubmit={e => handleSubmit(e)}>
         <h4 className="sign-up">Sign Up</h4>
         <div className="form-body">
+          { isLoading && 
+            <MDBSpinner role = "status">
+              <span className='visually-hidden'>Loading...</span> 
+            </MDBSpinner> 
+          }
+          { isError && 
+            <p className = "error">{error.response.data.message}</p> 
+          }
           <div className="username">
             <label className="form__label" htmlFor="userName">
               UserName{" "}
@@ -105,6 +133,7 @@ export const Register = () => {
               
             />
           </div>
+
           <div className="password">
             <label className="form__label" htmlFor="password">
               Password{" "}
@@ -140,13 +169,14 @@ export const Register = () => {
               <span aria-label="percent">%</span>
             </p>
           </div>
+
           <div className="confirm-password">
             <label className="form__label" htmlFor="confirmPassword">
               Confirm Password{" "}
               <span className={validPassword && matchPassword ? "register-valid" : "register-hide"}>
                 <i className="fa-solid fa-check"></i>
               </span>
-              <span className={validPassword || !matchPassword ? "register-hide" : "register-invalid"}>
+              <span className={!validPassword || matchPassword ? "register-hide" : "register-invalid"}>
                 <i className="fa-solid fa-x"></i>
               </span>
             </label>
@@ -174,7 +204,9 @@ export const Register = () => {
           </div>
         </div>
         <div className="submit-register">
-          <button type="submit" className="create-acc-btn">
+          <button type="submit" className="create-acc-btn" 
+            disabled={!validName || !validPassword || !validMatch ? true : false}
+          >
             Create New Account
           </button>
         </div>
