@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 import axios from '../api/axios';
 import { MDBSpinner } from 'mdb-react-ui-kit';
 import useAuth from '../hooks/useAuth';
+import { Link } from 'react-router-dom';
 import {
   MDBBtn,
   MDBContainer,
@@ -79,7 +80,7 @@ export const Login = () => {
         onChange={e => setInput(prev => ({...prev, user: e.target.value}))}/>
         <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Password' id='formControlLg' type='password' size="lg" value={input.password} onChange={e => setInput(prev => ({...prev, password: e.target.value}))}/>
 
-        <p className="small mb-3 pb-lg-2"><a className="text-white-50" href="#!">Forgot password?</a></p>
+        <p className="small mb-3 pb-lg-2"><Link to={'/recoverPassword'} className="text-white-50" >Forgot password?</Link></p>
               <MDBBtn outline className='mx-2 px-5' color='white' size='lg'>
                 Login
               </MDBBtn>
