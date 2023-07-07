@@ -1,15 +1,26 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-import {  Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import axios from '../api/axios';
 import { MDBSpinner } from 'mdb-react-ui-kit';
-
+import useAuth from '../hooks/useAuth';
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+  MDBInput,
+  MDBIcon
+}
+from 'mdb-react-ui-kit';
 
 export const Login = () => {
   const userRef = useRef();
+  
+  const { setAuth } = useAuth();
 
   //Controls when to send request
   const [enabled, setEnabled] = useState(false);
@@ -26,14 +37,15 @@ export const Login = () => {
     userRef.current.focus();
   }, []);
 
-  const fetchLoginEndpoint = () => {
+  const fetchLogin = () => {
     setEnabled(false);
     return axios.post('/login', input, { withCredentials: true })
   }
 
-  const { data, isError, error, isLoading } = useQuery('login', fetchLoginEndpoint, { enabled });
+  const { data, isError, error, isLoading } = useQuery('login', fetchLogin, { enabled, retry: false });
 
   if(data) {
+    setAuth(prev => ({ ...prev, accessToken: data.data.data}))
     return <Navigate to={'/'} />;
   }
 
@@ -43,44 +55,56 @@ export const Login = () => {
   }
 
   return (
-    <Form className='login--container' style={{marginTop: '45px'}} onSubmit={e => handleSubmit(e)}>
-      {/*Can you please style this! :)*/}
-      { isLoading && <MDBSpinner role = "status">
-        <span className='visually-hidden'>Loading...</span> </MDBSpinner> }
-        
-      { isError && 
-          <p className = "error">{error.response.data.message}</p> 
-      }
-      <div>
-      <Form.Group  className="form-basic-email" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        {/* type was email but changed to text for debug */}
-        <Form.Control type="text" placeholder="Enter email" ref={userRef} value={input.user} onChange={e => setInput(prev => ({...prev, user: e.target.value}))}/>
-        <Form.Text className="login-text">
-          We&apos;ll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
+    <MDBContainer fluid className='login-container'>
+      <form onSubmit={e => handleSubmit(e)}>
+        <MDBRow className='d-flex justify-content-center align-items-center h-100' style={{borderRadius: '1rem', maxWidth: '400px'}}>
+        { isLoading && <MDBSpinner role = "status">
+          <span className='visually-hidden'>Loading...</span> </MDBSpinner> }
+    
+        { isError && 
+            <p className = "error">{error.response.data.message}</p> 
+          }
 
-      <Form.Group className="form-basic-password" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" value={input.password} onChange={e => setInput(prev => ({...prev, password: e.target.value}))}/>
-        </Form.Group>
-      
-      <Button className = "btn-el"variant="primary" type="submit">
-        Login
-      </Button>
-     <Link to = "/ForgotPassword">
-      <Button className = "btn-el" variant="danger" type="submit">
-        Forgot Password
-      </Button>
-     </Link>
-      <Link to = "/Register">
-      <Button className = "btn-el"variant="secondary" type="submit">
-       New User
-      </Button>
-      </Link>
-      </div>
-    </Form>
-  
+          <MDBCol col='12'>
+          <MDBCard className='bg-dark text-white my-5 mx-auto' style={{borderRadius: '1rem', maxWidth: '400px'}}>
+          <MDBCardBody className='p-5 d-flex flex-column align-items-center mx-auto w-100'>
+          
+          <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
+          <p className="text-white-50 mb-5">Please enter your login and password!</p>
+          {/* type was email but changed to text for debug */}
+          <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Email address' id='formControlLg' type='text' size="lg" ref={userRef} value={input.user} 
+          onChange={e => setInput(prev => ({...prev, user: e.target.value}))}/>
+          <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Password' id='formControlLg' type='password' size="lg" value={input.password} onChange={e => setInput(prev => ({...prev, password: e.target.value}))}/>
+
+          <p className="small mb-3 pb-lg-2"><a className="text-white-50" href="#!">Forgot password?</a></p>
+                <MDBBtn outline className='mx-2 px-5' color='white' size='lg'>
+                  Login
+                </MDBBtn>
+
+                <div className='d-flex flex-row mt-3 mb-5'>
+                  <MDBBtn tag='a' color='none' className='m-3' style={{ color: 'white' }}>
+                    <MDBIcon fab icon='facebook-f' size="lg"/>
+                  </MDBBtn>
+
+                  <MDBBtn tag='a' color='none' className='m-3' style={{ color: 'white' }}>
+                    <MDBIcon fab icon='twitter' size="lg"/>
+                  </MDBBtn>
+
+                  <MDBBtn tag='a' color='none' className='m-3' style={{ color: 'white' }}>
+                    <MDBIcon fab icon='google' size="lg"/>
+                  </MDBBtn>
+                </div>
+
+                <div>
+                  <p className="mb-0">Don&apos;t have an account? <a href="#!" className="text-white-50 fw-bold">Sign Up</a></p>
+                </div>
+                
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+        </MDBRow>
+      </form>
+    </MDBContainer>
   );
 }
+

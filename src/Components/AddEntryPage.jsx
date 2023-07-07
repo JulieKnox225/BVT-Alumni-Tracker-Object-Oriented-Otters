@@ -1,53 +1,75 @@
-import React from "react"
+import useAxiosPrivate from '../hooks/useAxiosPrivate';
+import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 
-export const AddEntryPage = () => {
-    
-    const [formData, setFormData] = React.useState(
-        {
-            firstName: '',
-            lastName: '',
-            email: '',
-            phoneNumber: '',
-            degree: '',
-            additionalInfo: '',
-            experience: '',
-            achievements: '',
-            skills: ''
+export const AddEntryPage = () => {  
+  //Replacing: additionalInfo -> projects
+  const [formData, setFormData] = useState(
+    {
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      email: '',
+      degree: '',
+      projects: '',
+      experience: '',
+      achievements: '',
+      skills: ''
+    }
+  );
+
+  //Controls when to send request
+  const [enabled, setEnabled] = useState(false);
+
+  function handleChange(e){
+      e.preventDefault();
+      const {name, value} = e.target
+      setFormData(prevFormData => {
+        return {
+          ...prevFormData, 
+          [name]: value
         }
-    )
+      }) 
+  }
 
-    function handleChange(e){
-        e.preventDefault
-        const {name, value} = e.target
-        setFormData(prevFormData => {
-          return {
-            ...prevFormData, 
-            [name]: value
-          }
-        }) 
-      }
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        // submit to Database instead of Console log eventually
-        console.log('Form Data:', formData);
-        // resets data field
-        setFormData({
-          firstName: '',
-          lastName: '',
-          phoneNumber: '',
-          email: '',
-          degree: '',
-          additionalInfo: '',
-          experience: '',
-          achievements: '',
-          skills: ''
-        });
-      };
-  
-    return (
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setEnabled(true);
+  };
 
-      <div className="add-entry-form">
+  //allows for axios interceptors which in turn allows refresh tokens for access
+  const axiosPrivate = useAxiosPrivate();
+
+  const fetchAddEntry = () => {
+    setEnabled(false);
+    return axiosPrivate.post('/', formData);
+  }
+
+  const { data, isError, error, isLoading } = useQuery('addEntry', fetchAddEntry, { enabled });
+
+  useEffect(() => {
+    // resets data field
+    setFormData({
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      email: '',
+      degree: '',
+      projects: '',
+      experience: '',
+      achievements: '',
+      skills: ''
+    });
+  }, [data, error]);
+
+  return (
+
+    <div className="add-entry-form">
+      {/* Can you please style this! :) */}
+      {isLoading && <h2>Loading...</h2>}
+      {isError && <h2>{error.response.data.message.name || error.response.data.message}</h2>}
+      {data && <h2>{data.message}</h2>}
+
       <h4 style={{ textAlign: 'center', color: "white", marginTop: '75px' }}>Add Entry Page</h4>
       <div style={{ display: 'flex', justifyContent: 'center', color: 'white', marginBottom: '55px'}}>
         <form onSubmit={handleSubmit}>
@@ -113,11 +135,11 @@ export const AddEntryPage = () => {
           </div>
           <div style={{ display: 'flex', marginBottom: '10px' }}>
             <div style={{ marginRight: '10px' }}>
-              <label htmlFor="additionalInfo">Additional Info:</label>
+              <label htmlFor="projects">Projects:</label>
               <textarea
                 className="add-entry"
-                name="additionalInfo"
-                value={formData.additionalInfo}
+                name="projects"
+                value={formData.projects}
                 onChange={handleChange}
               />
             </div>
@@ -156,7 +178,7 @@ export const AddEntryPage = () => {
           </div>
         </form>
       </div>
-      </div>
+    </div>
 
   )
 }

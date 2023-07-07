@@ -30,7 +30,6 @@ const getPlants = async (req, res) => {
 
 */
 
-
 const getAllAlumni = async (req, res) => {
     try {
         const result = await req.db.query(
@@ -42,6 +41,53 @@ const getAllAlumni = async (req, res) => {
     }
 };
 
+const createAlumni = async (req, res) => {
+    try {
+        const { firstName, lastName, email, phoneNumber, degree, achievements, projects, skills, recommendations } = req.body;
+        
+        await req.db.query(
+            `INSERT INTO alumni (firstName, lastName, email, phoneNumber, degree, achievements, projects, skills, recommendations)
+                VALUES (:firstName, :lastName, :email, :phoneNumber, :degree, :achievements, :projects, :skills, :recommendations)`,
+            {
+                firstName, lastName, email, phoneNumber, degree, achievements, projects, skills, recommendations
+            }
+        );
+
+        res.status(200).json({success: true, message: `Successfully added data`, data: null});
+    } catch (error) {
+        res.status(400).json({success: false, message: error, data: null});
+    }
+};
+
+/**
+ * Assumes req.body contains properties and values that need to be updated but does not assume the amount.
+ * Creates an array of any possible properties and values that will then be iterated over to make a request 
+ * to the database to update the specified entry. 
+ * This method allows the user to chose the amount of updates to send to the server.
+ */
+const updateAlumni = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const bodyValuesArray = Object.entries(req.body);
+
+        for(let i = 0; i < bodyValuesArray.length; i++) {
+            await req.db.query(
+                `UPDATE alumni SET ${bodyValuesArray[i][0]} = :value
+                    WHERE id = :id`,
+                {
+                    value: bodyValuesArray[i][1],
+                    id
+                }
+            )
+        }
+
+        res.status(200).json({success: true, message: `Successfully updated data`, data: null});
+    } catch (error) {
+        res.status(400).json({success: false, message: error, data: null});
+    }
+};
+
+//these **need** to be replaced by one search function because they do not work separately. 
 const getAlumniById = async (req, res) => {
     try {
         const { id } = req.params;
@@ -89,52 +135,7 @@ const getAlumniByYear = async (req, res) => {
         res.status(400).json({success: false, message: error, data: null});
     }
 };
-
-const createAlumni = async (req, res) => {
-    try {
-        const { fullName, contactInfo, degree, achievements, projects, skills, recommendations } = req.body;
-        
-        await req.db.query(
-            `INSERT INTO alumni (fullName, contactInfo, degree, achievements, projects, skills, recommendations)
-                VALUES (:fullName, :contactInfo, :degree, :achievements, :projects, :skills, :recommendations)`,
-            {
-                fullName, contactInfo, degree, achievements, projects, skills, recommendations
-            }
-        );
-
-        res.status(200).json({success: true, message: `Successfully added data`, data: null});
-    } catch (error) {
-        res.status(400).json({success: false, message: error, data: null});
-    }
-};
-
-/**
- * Assumes req.body contains properties and values that need to be updated but does not assume the amount.
- * Creates an array of any possible properties and values that will then be iterated over to make a request 
- * to the database to update the specified entry. This method allows the user to chose the amount of updates
- * to send to the server.
- */
-const updateAlumni = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const bodyValuesArray = Object.entries(req.body);
-
-        for(let i = 0; i < bodyValuesArray.length; i++) {
-            await req.db.query(
-                `UPDATE fakealumnidb.alumni SET ${bodyValuesArray[i][0]} = :value
-                    WHERE id = :id`,
-                {
-                    value: bodyValuesArray[i][1],
-                    id
-                }
-            )
-        }
-
-        res.status(200).json({success: true, message: `Successfully updated data`, data: null});
-    } catch (error) {
-        res.status(400).json({success: false, message: error, data: null});
-    }
-};
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ See line 90 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 module.exports = {
     getAllAlumni,

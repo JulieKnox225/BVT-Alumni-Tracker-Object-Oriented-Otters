@@ -39,23 +39,20 @@ const login = async (req, res) => {
         );
 
         if(result[0].length === 0) {
-            return res.status(401).json({success: false, message: `User not found.`, data: null});
+            return res.status(404).json({success: false, message: `User not found.`, data: null});
         }
 
         const { password: hashedPassword } = result[0][0];
 
         if(await bcrypt.compare(sentPassword, hashedPassword)) {
-            const accessToken = jwt.sign({user}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '30s'});
+            const accessToken = jwt.sign({user}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '10m'});
             const refreshToken = jwt.sign({user}, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '1w'});
       
-            res.cookie('accessToken', accessToken, {
-                httpOnly: true,
-                maxAge: 24 * 60 * 60 * 1000 
-            });
-            
             res.cookie('refreshToken', refreshToken, {
                 httpOnly: true,
-                maxAge: 7 * 24 * 60 * 60 * 1000 
+                sameSite: 'none',
+                secure: true,
+                maxAge: 7 * 24 * 60 * 60 * 1000 //7 days 
             });
 
             res.status(200).json({success: true, message: `Logged in!`, data: accessToken});
@@ -76,16 +73,17 @@ const refresh = (req, res) => {
         }
 
         jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err,  user) => {
-            if(err || !user.user) {
+            if(err) {
                 return res.status(403).send({success: false, message: err || 'JWT error!', data: null});
             }
             
             const accessToken = jwt.sign({user: user.user}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '10m'});
-            res.status(200).send({success: false, message: 'Refreshed', data: accessToken});
+            
+            res.status(200).json({success: true, message: 'Refreshed', data: accessToken});
         });
 
     } catch (error) {
-        res.status(400).send({success: false, message: error, data: null});
+        res.status(400).send({success: false, message: error?.message, data: null});
     }
 }
 
