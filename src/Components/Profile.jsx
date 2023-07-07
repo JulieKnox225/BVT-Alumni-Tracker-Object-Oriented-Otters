@@ -1,18 +1,27 @@
 import { Col, Row, Container } from "react-bootstrap"
 import { MDBIcon } from 'mdb-react-ui-kit'
-
+import FakeData from './TempData/FakeData'
+import { useParams } from "react-router-dom"
 
 export const Profile = () => {
+
+    const { username } = useParams();
+
+    const profile = FakeData.find((name) => name.firstName === username);
+    
+    if(!profile) {
+        return <div>User not found</div>
+    }
   return (
     <>
     <Container fluid className="profile-page-container">
     <Row >
     <Col>
         <div className="profile-pic">
-            <h4 className="profile-name">Jane Smith</h4>
-            <img className="default-profile-edit-pic" src="images/pic.png" alt="Default profile picture" />
+            <h4 className="profile-name">{profile.firstName} {profile.lastName}</h4>
+            <img className="default-profile-edit-pic" src="/images/pic.png" alt="Default profile picture" />
         </div>
-            <h4 className="profile-email">User Name</h4>
+            <h4 className="profile-email">@{profile.username}</h4>
         <div className="contact-header">
             Contact Info
         </div>
@@ -39,7 +48,9 @@ export const Profile = () => {
             Bay Valley Tech
         </div>
         <div className="achievements-text">
-            Achievements here
+        {profile.achievements.map((achievement, index) => (
+                    <div className="profile-achievements" key={index}>{achievement}</div>
+                  ))}
         </div>
         
     </Col>

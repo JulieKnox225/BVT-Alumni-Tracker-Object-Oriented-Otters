@@ -33,18 +33,18 @@ function App() {
             <ReactSwitch  onChange={toggleTheme} checked ={theme === "dark"}/>
           </div>
           <div className='logo'>
-          <a href='/'><img className='bvt--logo' src='images/bvt.png' alt="Logo saying Bay Valley Tech with a lightbulb" /></a>
+          <a href='/'><img className='bvt--logo' src='/images/bvt.png' alt="Logo saying Bay Valley Tech with a lightbulb" /></a>
           </div>
           <Routes>
             <Route element={<Outlet context={{auth, setAuth}}/>}>
               <Route path='/' element ={ <Home />} />
-              {/* <<<<<<< Updated upstream */}
               <Route path='/login' element={ <Login/> } />
               <Route path='/addEntryPage' element ={ <AddEntryPage />} />
               <Route path='/searchPage' element= { <SearchPage /> } />
               <Route path ='/forgotPassword' element = {<ForgotPassword/>}/>
               <Route path='/register' element= {< Register/> } />
               <Route path='/profile' element= {< Profile/> } />
+              <Route path='/profile/:username' element={< Profile/>}/>
               <Route path='/editProfile' element= {< EditProfile />} />
             </Route>
           </Routes>

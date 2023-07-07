@@ -1,6 +1,8 @@
 export default [
     {
         id: 1,
+        username: "John",
+        profileUrl: "profile/john",
         firstName: "John",
         lastName: "Doe",
         email: "johndoe@example.com",
