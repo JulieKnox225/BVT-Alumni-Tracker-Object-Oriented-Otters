@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import FakeData from './TempData/FakeData'
 import { ProfileBubble } from './ProfileBubble';
-import { Row } from 'react-bootstrap';
 import { MDBIcon } from 'mdb-react-ui-kit';
 
 
