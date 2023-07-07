@@ -46,8 +46,6 @@ export const Login = () => {
   const { data, isError, error, isLoading } = useQuery('login', fetchLogin, { enabled, retry: false });
 
   if(data) {
-    console.log(data.data.data); //checking if it does contain access token
-    //data.data.data contains access token but it is not being saved here
     setAuth(prev => ({ ...prev, accessToken: data.data.data}))
     return <Navigate to={'/'} />;
   }
