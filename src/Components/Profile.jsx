@@ -2,6 +2,7 @@ import { Col, Row, Container } from "react-bootstrap";
 import { MDBIcon } from 'mdb-react-ui-kit';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import { MDBSpinner } from 'mdb-react-ui-kit';
+import { MDBContainer, MDBRow } from 'mdb-react-ui-kit';
 import { useQuery } from "react-query";
 
 
@@ -16,15 +17,21 @@ export const Profile = () => {
 
   return (
     <>
-        { isLoading && <MDBSpinner role = "status">
-            <span className='visually-hidden'>Loading...</span> </MDBSpinner> 
+        { isLoading && 
+            <MDBContainer fluid >
+                <MDBRow className='login-d-flex justify-content-center align-items-center h-100'>
+                    <MDBSpinner role = "status">
+                        <span className='visually-hidden'>Loading...</span> 
+                    </MDBSpinner> 
+                </MDBRow>
+            </MDBContainer>
         }
 
         { isError && 
-            <p className = "error">{error.response.data.message}</p> 
+            <p className = "error">{error.message || error.response.data.message || 'Unknown Error'}</p> 
         }
 
-        {data && 
+        {data &&
             <Container fluid className="profile-page-container">
                 <Row >
                     <Col>
@@ -47,19 +54,34 @@ export const Profile = () => {
                             About me 
                         </div>
                         <div className="about-me-text">
-                            {data.data.data.skills}
+                            {typeof data.data.data.skills == 'object' ?
+                                data.data.data.skills.map((skill, index) => (
+                                    <div className="profile-achievements" key={index}>{skill}</div>
+                                )) :
+                                data.data.data.skills
+                            }
                         </div>
                         <div className="projects-header"> 
                             Projects 
                         </div>
                         <div className="projects-text">
-                            {data.data.data.projects}
+                            {typeof data.data.data.projects == 'object' ?
+                                data.data.data.projects.map((project, index) => (
+                                    <div className="profile-achievements" key={index}>{project}</div>
+                                )) : 
+                                data.data.data.projects
+                            }
                         </div>
                         <div className="achievements-header"> 
                             Bay Valley Tech
                         </div>
                         <div className="achievements-text">
-                            {data.data.data.achievements}
+                            {typeof data.data.data.achievements == 'object' ? 
+                                data.data.data.achievements.map((achievement, index) => (
+                                    <div className="profile-achievements" key={index}>{achievement}</div>
+                                )) :
+                                data.data.data.achievements
+                            }
                         </div>
                         
                     </Col>
@@ -67,7 +89,7 @@ export const Profile = () => {
             </Container>
         }
 
-        {!data && 
+        {!data && !isError &&
             <Container fluid className="profile-page-container">
                 <Row >
                     <Col>
