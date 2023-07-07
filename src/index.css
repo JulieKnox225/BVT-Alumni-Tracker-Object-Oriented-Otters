@@ -745,4 +745,41 @@ label{
   
 }
 
+.register-offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.register-errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.register-instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+
+.register-hide {
+  display: none;
+}
+
+.register-valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.register-invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
 /* End of Register Page */
