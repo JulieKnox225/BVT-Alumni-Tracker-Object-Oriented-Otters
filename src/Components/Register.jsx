@@ -27,7 +27,6 @@ export const Register = () => {
   const [matchFocus, setMatchFocus] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState('');
-  const [setsuccess, setSetsuccess] = useState(false);
 
   useEffect(() => {
     userRef.current.focus();

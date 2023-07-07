@@ -5,7 +5,6 @@ import { useQuery } from 'react-query';
 import axios from '../api/axios';
 import { MDBSpinner } from 'mdb-react-ui-kit';
 import useAuth from '../hooks/useAuth';
-import { Link } from 'react-router-dom';
 import {
   MDBBtn,
   MDBContainer,
@@ -47,7 +46,7 @@ export const Login = () => {
 
   if(data) {
     setAuth(prev => ({ ...prev, accessToken: data.data.data}))
-    return <Navigate to={'/'} />;
+    return <Navigate to={'/profile'} />;
   }
 
   const handleSubmit = (e) => {
