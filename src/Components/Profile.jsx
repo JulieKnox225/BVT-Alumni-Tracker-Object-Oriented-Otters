@@ -7,13 +7,14 @@ import { useQuery } from "react-query";
 
 
 export const Profile = () => {
+    //allows for axios interceptors which in turn allows refresh tokens for access
     const axiosPrivate = useAxiosPrivate();
 
-    const fetchProfile = () => {
+    const { data, isLoading, isError, error } = useQuery('fetchProfile', fetchProfile);
+
+    function fetchProfile() {
         return axiosPrivate.get('/');
     }
-
-    const { data, isLoading, isError, error } = useQuery('fetchProfile', fetchProfile);
 
   return (
     <>
