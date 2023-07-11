@@ -4,7 +4,6 @@ import { ProfileBubble } from './ProfileBubble';
 import { MDBIcon } from 'mdb-react-ui-kit';
 
 
-
 export const Home = () => {
 
   const [search, setSearch] = useState('');
@@ -38,16 +37,16 @@ return (
 
       <form onSubmit={handleSubmit}>
           <div className='home-search-n-btn'>
-          <input
-            type="text"
-            placeholder="Search..."
-            onChange={(e) => setSearch(e.target.value)}
-            value={search}
-            className='SP-searchBar'
+            <input
+              type="text"
+              placeholder="Search..."
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
+              className='home-search-bar'
             />
-          <button className='home-search-button' type="submit">
-            Search
-          </button>
+            <button className='home-search-button' type="submit">
+              Search
+            </button>
           </div>
       </form>
 

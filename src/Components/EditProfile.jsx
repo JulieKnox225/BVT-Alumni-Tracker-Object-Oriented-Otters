@@ -1,8 +1,18 @@
 import { Col, Container } from "react-bootstrap"
 import Row from 'react-bootstrap/Row'
 import { MDBIcon } from "mdb-react-ui-kit"
+import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
+import React from "react";
+import Button from 'react-bootstrap/Button';
 
 export const EditProfile = () => {
+
+  const [show, setShow] = React.useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
     <Container fluid='true' className="profile-page-edit-container">
@@ -56,11 +66,65 @@ export const EditProfile = () => {
       </div>
       <div className="form-edit-prof">
         <div className="e-p-form-text">
-        Password:
+        Update Password:
         </div>
-        <input 
-        className="e-p-input"
-        />
+        <button 
+        className="e-p-update"
+        onClick={handleShow}
+        >
+        Update Password
+        </button>
+      {/* Modal Test */}
+      <Modal 
+        show={show} 
+        onHide={handleClose}
+        backdrop="static"
+      >
+        <Modal.Header closeButton className="modal-background">
+          <Modal.Title>Reset Password</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="modal-background">
+          <Form>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Old password</Form.Label>
+              <Form.Control
+                type="password"
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Create new password</Form.Label>
+              <Form.Control
+                type="password"
+              />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Confirm new Password</Form.Label>
+              <Form.Control
+                type="password"     
+              />
+              </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer className="modal-background">
+          <Button style={{backgroundColor:'#084C61'}} onClick={handleClose}>
+            Close
+          </Button>
+          <Button style={{backgroundColor:'#FF7A45'}} onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+
+
+
+
+      {/* End Modal Test */}
+
+
+
+
       </div>
     </Col>
     <Col >

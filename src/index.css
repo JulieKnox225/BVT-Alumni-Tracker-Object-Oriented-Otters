@@ -9,6 +9,12 @@
   /* color:white; */
 }
 
+/* universal modal */
+.modal-background {
+  background-color: #e0e1dd;
+}
+/* End modal */
+
 /* App.jsx */
 .site--container {
   display: flex;
@@ -33,7 +39,19 @@ label{
 
 .home-search-n-btn {
   margin: 25px;
+}
 
+.home-search-bar {
+  width: 500px;
+  border: none;
+  height: 35px;
+}
+.home-search-button {
+  background-color: #ccc;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  margin-left: 8px;
 }
 
 .carousel-container {
@@ -293,7 +311,7 @@ label{
 }
 
 #light .outer-id-card {
-  background-color: #FF7A45;
+  background-color: #e0e1dd;
   font-size: larger;
   margin: 10px; 
   max-width: 285px;
@@ -545,7 +563,6 @@ label{
 
 }
 
-
 /* End of Profile */
 
 /* Profile edit */
@@ -614,6 +631,13 @@ label{
   font-size: 25px;
   color: #FFC857;
   font-weight:bold;
+}
+
+.e-p-update {
+  margin-top: 5px;
+  width: 30vh;
+  border-radius: 7px;
+  background-color: orange;
 }
 
 .e-p-input {
@@ -779,3 +803,4 @@ label{
 }
 
 /* End of Register Page */
+
