@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import PropTypes from "prop-types";
 
-
 export const IDCards = (props) => {
   const {
     firstName, 
@@ -22,6 +21,7 @@ export const IDCards = (props) => {
   const [smShow, setSmShow] = useState(false);
 
   return (
+    
     <div className="outer-id-card">
       <div className='inner-id-card'>
         <a href='/profile'>
@@ -45,13 +45,13 @@ export const IDCards = (props) => {
             
             centered>
               
-            <Modal.Header closeButton style={{color: 'white', backgroundColor: '#2a2e30'}}>
+            <Modal.Header closeButton className="modal-background">
               
               <Modal.Title>
                 {firstName} {lastName}
               </Modal.Title>
             </Modal.Header>
-            <ModalBody style={{color: 'white', backgroundColor: '#E21304'}}>
+            <ModalBody className="modal-background">
               <p>
                 <strong>Highest Degree: </strong>
                 <br/>

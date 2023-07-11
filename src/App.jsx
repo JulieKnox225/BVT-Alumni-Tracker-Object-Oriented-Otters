@@ -30,7 +30,7 @@ function App() {
           <Navbar />
           <div className='switch'>
             <label> {theme === 'light' ? "Light Mode" : "Dark Mode" }</label>
-            <ReactSwitch onChange={toggleTheme} checked ={theme === "dark"}/>
+            <ReactSwitch  onChange={toggleTheme} checked ={theme === "dark"}/>
           </div>
           <div className='logo'>
           <a href='/'><img className='bvt--logo' src='images/bvt.png' alt="Logo saying Bay Valley Tech with a lightbulb" /></a>
@@ -38,6 +38,7 @@ function App() {
           <Routes>
             <Route element={<Outlet context={{auth, setAuth}}/>}>
               <Route path='/' element ={ <Home />} />
+              {/* <<<<<<< Updated upstream */}
               <Route path='/login' element={ <Login/> } />
               <Route path='/addEntryPage' element ={ <AddEntryPage />} />
               <Route path='/searchPage' element= { <SearchPage /> } />

@@ -13,6 +13,7 @@
 .modal-background {
   background-color: #e0e1dd;
 }
+
 /* End modal */
 
 /* App.jsx */
@@ -25,7 +26,7 @@
 .switch{
   display: flex;
   flex-direction: row;
-  margin-left: 10px;
+  margin: 10px;
 }
 
 label{
@@ -42,9 +43,10 @@ label{
 }
 
 .home-search-bar {
-  width: 500px;
+  width: 950px;
   border: none;
   height: 35px;
+  border-radius: 5px;
 }
 .home-search-button {
   background-color: #ccc;
@@ -57,18 +59,18 @@ label{
 .carousel-container {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 10px;
-
-  height: 350px;
+  align-items: center;
+  margin-top: -200px;
+  height: 750px;
+  
 }
 
 .carousel-row {
   display: grid;
-  grid-template: auto auto / repeat(3, 1fr);
-  gap: 20px;
+  grid-template: auto auto/ repeat(3, 2fr);
+  gap: 150px;
   justify-content: center;
-  margin-top: -45px;
+  
 }
 
 .carousel-controls {
@@ -93,8 +95,6 @@ label{
 
 }
 
-
-
 /* End of Home Page */
 
 /* Avatar Bubbles */
@@ -105,6 +105,16 @@ label{
   margin-top: 15px;
 }
 
+.avatar-for-home {
+  width: 11rem;
+  border-radius: 100px;
+}
+
+.avatar-text {
+  text-align: center;
+  margin: 15px;
+  margin-left: 35px;
+}
 
 /* End of Bubbles */
 
@@ -158,9 +168,6 @@ label{
   color:rgb(2, 2, 2);
   font-size: medium;
 }
-  
-  
-
 
 .error{
   color: red;
