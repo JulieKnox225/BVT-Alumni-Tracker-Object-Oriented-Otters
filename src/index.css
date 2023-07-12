@@ -29,11 +29,11 @@ label{
 /* End of App.jsx */
 
 /* Login Page*/
+
 .login-container{
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
 
 .login-card{
@@ -50,6 +50,14 @@ label{
   font-weight: bold;
   margin-bottom: 40px;
   margin-top:2px;
+}
+
+.login-button{
+margin-top: 15px;
+margin-bottom: 0px;
+padding-right: 60px;
+padding-left: 60px;
+  /* mx-2 px-5 */
 }
 
  #light .login-card{
@@ -84,7 +92,9 @@ label{
   color: white;
 }
 
-
+.login-text{
+  margin-top: 10px;
+}
 
 #light .bvt--logo{
     margin-left: 50px;
@@ -120,9 +130,17 @@ label{
 #light .sign-up-login{
   color: rgb(255, 255, 255);
 }
+.fp-login{
+  margin-top: 10px;
+}
 
 .error{
   color: red;
+}
+
+
+.login-icons{
+  margin-top: 10px;
 }
 /* End of Login*/
 
@@ -180,6 +198,7 @@ label{
   color: #B3A125;
   font-size: 25px;
   text-shadow: black -4px  3px 2px;
+  margin-top: 0px;
 }
 
 .login--text:hover {

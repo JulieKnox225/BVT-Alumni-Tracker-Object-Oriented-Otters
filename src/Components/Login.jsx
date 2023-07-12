@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 import axios from '../api/axios';
 import { MDBSpinner } from 'mdb-react-ui-kit';
 import useAuth from '../hooks/useAuth';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import {
   MDBBtn,
   MDBContainer,
@@ -72,7 +72,6 @@ export const Login = () => {
               <MDBCardBody className='p-5 d-flex flex-column align-items-center mx-auto w-100'>
           
                 <h2 className="title-login">Login</h2>
-                {/* <p className=" mb-5">Please enter your login and password!</p> */}
                 {/* type was email but changed to text for debug */}
                 <MDBInput 
                   wrapperClass='mb-4 mx-5 w-100' 
@@ -96,12 +95,11 @@ export const Login = () => {
                   onChange={e => setInput(prev => ({...prev, password: e.target.value}))}
                 />
 
-                <p><a className="fp-login" href="./forgotPassword">Forgot password?</a></p>
-                <MDBBtn outline className='mx-2 px-5' color='white' size='lg'>
+                <MDBBtn outline className='login-button' color='white' size='lg'>
                   Login
                 </MDBBtn>
 
-                <div className='d-flex flex-row mt-3 mb-5 '>
+                <div className='login-icons'>
                   <a href = "https://www.google.com/"><MDBBtn tag='a' color='none' className='m-3' style={{ color: 'green' }}>
                       <MDBIcon fab icon='google' size="lg"/>
                     </MDBBtn></a>
@@ -117,8 +115,8 @@ export const Login = () => {
 
                 <div>
                   <p className="login-text">Don&apos;t have an account? <a href="./addEntryPage" className="sign-up-login">Sign Up</a></p>
+                <p><a className="fp-login" href="./forgotPassword">Forgot password?</a></p>
                 </div>
-                
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

@@ -16,7 +16,7 @@ import useAuth from './hooks/useAuth'
 export const ThemeContext = createContext(null);
 
 function App() {
-  const [theme, setTheme] = useState("dark")
+  const [theme, setTheme] = useState("light")
   const { auth, setAuth } = useAuth();
 
   const toggleTheme = () => {
@@ -25,13 +25,13 @@ function App() {
   return (
     <Router>
 
-      <ThemeContext.Provider value={{theme, toggleTheme}}> {/* Toggle Theme  */}
-        <div className='site--container' id = {theme}>
-          <Navbar />
+      <ThemeContext.Provider value={{theme, toggleTheme}}> 
+        <div className='' id = {theme}>
+        <Navbar  />
           <div className='switch'>
-            <label> {theme === 'light' ? "Light Mode" : "Dark Mode" }</label>
-            <ReactSwitch  onChange={toggleTheme} checked ={theme === "dark"}/>
-          </div>
+          <label> {theme === 'light' ? "Light Mode" : "Dark Mode" }</label>
+          <ReactSwitch  onChange={toggleTheme} checked ={theme === "dark"}/>
+        </div>
           <div className='logo'>
           <a href='/'><img className='bvt--logo' src='images/bvt.png' alt="Logo saying Bay Valley Tech with a lightbulb" /></a>
           </div>
@@ -49,8 +49,8 @@ function App() {
               <Route path='/recoverPassword' element= {<ForgotPassword />} />
             </Route>
           </Routes>
-        </div>
         <Footer />
+        </div>
       </ThemeContext.Provider>
     </Router>
   )
