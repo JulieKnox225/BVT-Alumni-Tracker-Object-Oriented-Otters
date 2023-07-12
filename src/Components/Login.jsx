@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 import axios from '../api/axios';
 import { MDBSpinner } from 'mdb-react-ui-kit';
 import useAuth from '../hooks/useAuth';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   MDBBtn,
   MDBContainer,
@@ -56,6 +56,8 @@ export const Login = () => {
   }
 
   return (
+    
+
     <MDBContainer fluid className='login-container'>
       <form onSubmit={e => handleSubmit(e)}>
         <MDBRow className='login-d-flex justify-content-center align-items-center h-100' style={{borderRadius: '1rem', maxWidth: '400px'}} onSubmit={e => handleSubmit(e)}>
@@ -83,7 +85,7 @@ export const Login = () => {
                   ref={userRef} 
                   value={input.user} 
                   onChange={e => setInput(prev => ({...prev, user: e.target.value}))}
-                />
+                  />
                 <MDBInput 
                   wrapperClass='mb-4 mx-5 w-100' 
                   labelClass='input-text' 
@@ -93,7 +95,7 @@ export const Login = () => {
                   size="lg" 
                   value={input.password} 
                   onChange={e => setInput(prev => ({...prev, password: e.target.value}))}
-                />
+                  />
 
                 <MDBBtn outline className='login-button' color='white' size='lg'>
                   Login
@@ -114,8 +116,8 @@ export const Login = () => {
                 </div>
 
                 <div>
-                  <p className="login-text">Don&apos;t have an account? <a href="./addEntryPage" className="sign-up-login">Sign Up</a></p>
-                <p><a className="fp-login" href="./forgotPassword">Forgot password?</a></p>
+                  <p className="login-text">Don&apos;t have an account? <Link to = '/addEntryPage' className="sign-up-login">Sign Up</Link></p>
+                <p><Link  to = '/forgotPassword' className="fp-login">Forgot password?</Link></p>
                 </div>
               </MDBCardBody>
             </MDBCard>

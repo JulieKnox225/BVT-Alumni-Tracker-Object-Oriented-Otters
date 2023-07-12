@@ -1,17 +1,10 @@
-import {createContext, useState} from 'react'
+import {useState} from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import "/src/index.css"
-import ReactSwitch from 'react-switch'
 import "/src/App.jsx"
-export const ThemeContext = createContext(null);
 
 export const Navbar = () => {
 
-const [theme, setTheme ] = useState("light")
-
-const toggleTheme = () => {
-  setTheme((curr) => (curr === "light" ? "dark" : "light"))
-}
 const [login, setLogin] = useState(false)
 
 const handleLogin = () => {
@@ -20,9 +13,6 @@ const handleLogin = () => {
 
  return (
    <div>
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-    <div className='' id = {theme}>
-
      <nav className='nav-home'>
      <Dropdown>
        <Dropdown.Toggle className='drop' variant='secondary' id="dropdown-button-dark-example1">
@@ -34,17 +24,11 @@ const handleLogin = () => {
          <Dropdown.Item href="/profile">Profile</Dropdown.Item>
          <Dropdown.Item href="/editProfile">Edit Profile</Dropdown.Item>
          <Dropdown.Item href="/register">Create Profile</Dropdown.Item>
-
        </Dropdown.Menu>
        </Dropdown>
-       
-       <a className='switch'>
-        <label> {theme === 'light' ? "Light Mode" : "Dark Mode" }</label>
-        <ReactSwitch  onChange={toggleTheme} checked = {theme === "dark"} /></a>
        <a href= "/" className="home-button">
        <h2 className="home-button-text">BVT Alumni Tracker</h2>
        </a>
-
       {/* Temp button to show how the login would change icons */}
        <a>
        <button className="light-dark-btn" onClick={handleLogin}></button>
@@ -55,10 +39,7 @@ const handleLogin = () => {
         </a> : <a href='/login' className='login-button'>
        <p className="login--text">Login</p>
        </a>}
-
        </nav>
           </div>
-          </ThemeContext.Provider>
-   </div>
  )
 }
