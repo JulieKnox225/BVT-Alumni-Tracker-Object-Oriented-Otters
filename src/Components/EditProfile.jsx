@@ -108,7 +108,7 @@ export const EditProfile = () => {
         </Modal.Body>
         <Modal.Footer className="modal-background">
           <Button style={{backgroundColor:'#084C61'}} onClick={handleClose}>
-            Close
+            Cancel
           </Button>
           <Button style={{backgroundColor:'#FF7A45'}} onClick={handleClose}>
             Save
@@ -156,7 +156,7 @@ export const EditProfile = () => {
     </Row>
     <Row>
     <div className="e-p-buttons">
-      <button className="e-p-cancel">Cancel</button>
+      <a href="/profile"><button className="e-p-cancel">Cancel</button></a>
       <button className="e-p-save">Save</button>
     </div>
     </Row>
