@@ -40,7 +40,7 @@ export const ForgotPassword = () => {
                 </MDBBtn>
               </div>
               <div>
-                <p className="mb-0">Don&apos;t have an account? <Link to = "/addEntryPage" className="text-white-50 fw-bold">Sign Up</Link></p>
+                <p className="mb-0">Don&apos;t have an account? <Link to = "/register" className="text-white-50 fw-bold">Sign Up</Link></p>
               </div>
             </MDBCardBody>
           </MDBCard>
