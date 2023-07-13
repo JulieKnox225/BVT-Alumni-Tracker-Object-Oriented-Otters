@@ -74,7 +74,8 @@ export const EditProfile = () => {
         >
         Update Password
         </button>
-      {/* Modal Test */}
+
+      {/* Modal For password updating*/}
       <Modal 
         show={show} 
         onHide={handleClose}
@@ -116,14 +117,7 @@ export const EditProfile = () => {
         </Modal.Footer>
       </Modal>
 
-
-
-
-
-      {/* End Modal Test */}
-
-
-
+      {/* End of password update modal */}
 
       </div>
     </Col>

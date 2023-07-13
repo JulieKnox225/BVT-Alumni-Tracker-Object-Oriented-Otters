@@ -2,9 +2,6 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import  { useContext } from 'react';
 import { ThemeContext } from '../App';
 
-
-
-
 export const Navbar = () => {
   const {theme, toggleTheme} = useContext(ThemeContext)
   

@@ -30,6 +30,114 @@ label{
 
 /* End of App.jsx */
 
+/* Login Page*/
+
+.login-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  max-width: auto;
+  max-height: auto;
+  margin: 50px auto 50px;
+}
+
+.title-login{
+  font-weight: bold;
+  margin-bottom: 40px;
+  margin-top:2px;
+}
+
+ #light .login-card{
+  background: linear-gradient(180deg, hsla(0, 0%, 100%, 1) 0%, hsla(9, 100%, 60%, 1) 100%);
+  color: #FF5133;
+}
+
+#dark .login-card{
+  background: linear-gradient(180deg, hsla(16, 100%, 54%, 1) 0%, rgb(49, 47, 47) 100%);
+  color: rgb(255, 255, 255);
+}
+#light .input-text{
+  color: black;
+}
+#dark .input-text{
+  color: white;
+}
+
+#dark .fp-login{
+  color: #ffffff;
+}
+
+#light .fp-login{
+  color: black;
+}
+
+.login-text{
+  margin-top: 10px;
+}
+
+#light .login-text{
+  color: black;
+}
+#dark .login-text{
+  color: white;
+}
+
+
+#light .bvt--logo{
+    margin-left: 50px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 10px 10px 10px #6d6d6d;
+    padding: 15px;
+    width: 250px;
+    margin: 15px;
+    filter:brightness(100%)
+}
+
+#dark .bvt--logo{
+  margin-left: 50px;
+  border-radius: 5px;
+  background-color: #2a2e30;
+  box-shadow: 10px 10px 10px #6d6d6d;
+  padding: 15px;
+  width: 250px;
+  margin: 15px;
+  filter:brightness(100%)
+}
+
+.bvt--logo:hover{
+  color:#CC0000;
+  text-shadow: black 4px 3px 3px;
+}
+
+.sign-up-login{
+  color: rgb(255, 98, 0);
+}
+
+#light .sign-up-login{
+  color: rgb(255, 255, 255);
+}
+.fp-login{
+  margin-top: 10px;
+}
+
+.error{
+  color: red;
+}
+
+
+.login-icons{
+  margin-top: 10px;
+}
+/* End of Login*/
+
 /* Home Page */
 
 .home-page-background {
