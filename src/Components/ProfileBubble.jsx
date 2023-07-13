@@ -11,7 +11,7 @@ export const ProfileBubble = (props) => {
     <>
     
     <div className='avatar-bubble'>
-      <img className="avatar-for-search" src={avatar}  />
+      <img className="avatar-for-home" src={avatar}  />
       <p> {firstName} {lastName}</p>
     </div>
      

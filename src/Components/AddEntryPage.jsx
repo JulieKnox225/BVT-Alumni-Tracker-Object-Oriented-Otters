@@ -1,5 +1,6 @@
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import { useEffect, useState } from 'react';
+import { MDBSpinner } from 'mdb-react-ui-kit';
 import { useQuery } from 'react-query';
 
 export const AddEntryPage = () => {  
@@ -21,6 +22,11 @@ export const AddEntryPage = () => {
   //Controls when to send request
   const [enabled, setEnabled] = useState(false);
 
+  //allows for axios interceptors which in turn allows refresh tokens for access
+  const axiosPrivate = useAxiosPrivate();
+
+  const { data, isError, error, isLoading } = useQuery('addEntry', fetchAddEntry, { enabled });
+
   function handleChange(e){
       e.preventDefault();
       const {name, value} = e.target
@@ -37,15 +43,11 @@ export const AddEntryPage = () => {
     setEnabled(true);
   };
 
-  //allows for axios interceptors which in turn allows refresh tokens for access
-  const axiosPrivate = useAxiosPrivate();
-
   const fetchAddEntry = () => {
     setEnabled(false);
     return axiosPrivate.post('/', formData);
   }
 
-  const { data, isError, error, isLoading } = useQuery('addEntry', fetchAddEntry, { enabled });
 
   useEffect(() => {
     // resets data field
@@ -65,10 +67,17 @@ export const AddEntryPage = () => {
   return (
 
     <div className="add-entry-form">
-      {/* Can you please style this! :) */}
-      {isLoading && <h2>Loading...</h2>}
-      {isError && <h2>{error.response.data.message.name || error.response.data.message}</h2>}
-      {data && <h2>{data.message}</h2>}
+      { isLoading && 
+        <MDBSpinner role = "status">
+          <span className='visually-hidden'>Loading...</span> 
+        </MDBSpinner> 
+      }
+      { isError && 
+        <p className = "error">{error.message || error.response.data.message.name || error.response.data.message}</p> 
+      }
+      { data && 
+        <h2>{data.message}</h2>
+      }
 
       <h4 style={{ textAlign: 'center', color: "white", marginTop: '75px' }}>Add Entry Page</h4>
       <div style={{ display: 'flex', justifyContent: 'center', color: 'white', marginBottom: '55px'}}>
@@ -179,6 +188,5 @@ export const AddEntryPage = () => {
         </form>
       </div>
     </div>
-
   )
 }

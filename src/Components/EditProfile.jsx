@@ -111,7 +111,7 @@ export const EditProfile = () => {
             Close
           </Button>
           <Button style={{backgroundColor:'#FF7A45'}} onClick={handleClose}>
-            Save Changes
+            Save
           </Button>
         </Modal.Footer>
       </Modal>

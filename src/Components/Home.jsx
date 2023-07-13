@@ -34,7 +34,9 @@ export const Home = () => {
 return (
   <>
       <div className='home-page-background'>
-
+      <div className='logo'>
+          <a href='/'><img className='bvt--logo' src='images/bvt.png' alt="Logo saying Bay Valley Tech with a lightbulb" /></a>
+          </div>
       <form onSubmit={handleSubmit}>
           <div className='home-search-n-btn'>
             <input

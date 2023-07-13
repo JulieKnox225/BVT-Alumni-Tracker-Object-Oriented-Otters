@@ -23,11 +23,6 @@
   min-height: calc(100vh - 76px);
   
 }
-.switch{
-  display: flex;
-  flex-direction: row;
-  margin: 10px;
-}
 
 label{
   margin-right: 20px;
@@ -37,9 +32,36 @@ label{
 
 /* Home Page */
 
+.home-page-background {
+  position: relative;
+  width: 100%;
+  height: calc(50vh - 100px);
+  background-image: url('images/Temp.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.home-page-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(50vh - 100px);
+  background-color: rgba(255, 255, 255, 0.4);
+  z-index: -1;
+}
+
+#dark .home-page-background::before {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 
 .home-search-n-btn {
   margin: 25px;
+
 }
 
 .home-search-bar {
@@ -62,7 +84,6 @@ label{
   align-items: center;
   margin-top: -200px;
   height: 750px;
-  
 }
 
 .carousel-row {
@@ -70,7 +91,6 @@ label{
   grid-template: auto auto/ repeat(3, 2fr);
   gap: 150px;
   justify-content: center;
-  
 }
 
 .carousel-controls {
@@ -80,7 +100,6 @@ label{
   top: 175px;
   margin-right: 55px;
   margin-left: 55px;
-  
 }
 
 .carousel-btn {
@@ -92,7 +111,6 @@ label{
   color:white;
   font-size: 55px;
   background-color: rgba(0, 0, 0, 0.096);
-
 }
 
 /* End of Home Page */
@@ -112,8 +130,8 @@ label{
 
 .avatar-text {
   text-align: center;
-  margin: 15px;
-  margin-left: 35px;
+  margin: 55px;
+ 
 }
 
 /* End of Bubbles */
@@ -184,24 +202,23 @@ label{
   background-color: #2a2e30;
 }
 
+.nav-home{
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  max-height: 86px;
+}
+
 .home-button {
   display: flex;
-  margin-right:auto;
-  margin-left: auto;
   text-shadow: black -4px  3px;
-}
-.login-button {
-  text-decoration: none;
+  margin-left: 90px;
 }
 
-.nav-login-image {
-  width: 59px;
-  border-radius: 150px;
+.nav-right {
+  display: flex;
 }
 
-.nav-login-image:hover {
-  box-shadow: black 0px 3px 15px;
-}
 
 #dark .home-button-text {
   font-family: serif;
@@ -217,12 +234,6 @@ label{
   text-shadow: black 4px  3px 3px;
 }
 
-
-
-.home-button-text:hover {
-  color:#CC0000;
-  text-shadow: black 4px 3px 3px;
-}
 
 .login--text {
   font-weight: 500;
@@ -241,11 +252,6 @@ label{
   color:#f9f9f9
 }
 
-.nav-home{
-  padding: 20px;
-  display: flex;
-  max-height: 86px;
-}
 
 #light .light-dark-btn{
   margin-left: 5px;
@@ -265,6 +271,39 @@ label{
   background-color: #2a2e30;
 }
 
+.toggler {
+  margin-top: 8px;
+}
+
+.toggler--slider {
+  width: 50px;
+  height: 25px;
+  background-color: #e0e1dd;
+  border-radius: 2rem;
+  margin-inline: 7px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 2px;
+  align-items: center;
+  box-sizing: content-box;
+
+}
+
+#dark .toggler--slider {
+  border-color: white;
+  background-color: #1a1a1a;
+  justify-content: flex-end;
+  padding-right: 2px;
+}
+
+.toggler--slider--circle {
+  height: 23px;
+  width: 23px;
+  background-color: #FF3B1F;
+  border-radius: 50%;
+
+}
 
 /* End of Navbar */
 
@@ -610,6 +649,7 @@ label{
   margin-top: 55px;
   color: #FFC857;
   font-size: 30px;
+  font-weight: bold;
 }
 
 .e-p-social-links {
