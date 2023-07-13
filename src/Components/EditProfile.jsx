@@ -50,11 +50,6 @@ export const EditProfile = () => {
       }
     });
   }
-
-  function handleCancel(e) {
-    e.preventDefault();
-    return <Navigate to={'/profile'} />;
-  }
   
   //Checks if username is valid based on regex upon input change
   useEffect(() => {
@@ -229,7 +224,7 @@ export const EditProfile = () => {
         <Row>
         <div className="e-p-buttons">
           {/* Can you please style this :)) */}
-          <Link to={'/profile'} className="e-p-cancel">Cancel</Link>
+          <a href="/profile"><button className="e-p-cancel">Cancel</button></a>
           <button className="e-p-save" disabled={!validName} onClick={() => setEnabled(true)}>Save</button>
         </div>
         </Row>
