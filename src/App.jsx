@@ -13,7 +13,7 @@ import ReactSwitch from 'react-switch'
 import { EditProfile } from './Components/EditProfile'
 import useAuth from './hooks/useAuth'
 
-export const ThemeContext = createContext(null);
+export const ThemeContext = createContext();
 
 function App() {
   const [theme, setTheme] = useState("light")
@@ -23,10 +23,9 @@ function App() {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
   };
   return (
-    <Router>
-
       <ThemeContext.Provider value={{theme, toggleTheme}}> 
-        <div className='' id = {theme}>
+    <Router>
+        <div className='App' id = {theme}>
         <Navbar  />
           <div className='switch'>
           <label> {theme === 'light' ? "Light Mode" : "Dark Mode" }</label>
@@ -51,8 +50,8 @@ function App() {
           </Routes>
         <Footer />
         </div>
-      </ThemeContext.Provider>
     </Router>
+      </ThemeContext.Provider>
   )
 }
 
