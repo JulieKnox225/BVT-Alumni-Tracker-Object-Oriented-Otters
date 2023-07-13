@@ -223,7 +223,6 @@ export const EditProfile = () => {
         </Row>
         <Row>
         <div className="e-p-buttons">
-          {/* Can you please style this :)) */}
           <a href="/profile"><button className="e-p-cancel">Cancel</button></a>
           <button className="e-p-save" disabled={!validName} onClick={() => setEnabled(true)}>Save</button>
         </div>
