@@ -18,13 +18,6 @@ import {
 from 'mdb-react-ui-kit';
 
 export const Login = () => {
-  const userRef = useRef();
-  
-  const { setAuth } = useAuth();
-
-  //Controls when to send request
-  const [enabled, setEnabled] = useState(false);
-
   //Due to the users database table consisting of (id, user, password), the email field is being submitted as 'user'
   const [input, setInput] = useState(
     {
@@ -32,38 +25,49 @@ export const Login = () => {
       password: ''
     }
   );
+
+  //Sets input field focus
+  const userRef = useRef();
+  
+  //Sets access token in storage
+  const { setAuth } = useAuth();
+
+  //Controls when to send request
+  const [enabled, setEnabled] = useState(false);
+
+  const { data, isError, error, isLoading } = useQuery('login', fetchLogin, { enabled, retry: false });
   
   useEffect(() => {
     userRef.current.focus();
   }, []);
 
-  const fetchLogin = () => {
+  function fetchLogin() {
     setEnabled(false);
     return axios.post('/login', input, { withCredentials: true })
   }
 
-  const { data, isError, error, isLoading } = useQuery('login', fetchLogin, { enabled, retry: false });
+  function handleSubmit(e) {
+    e.preventDefault();
+    setEnabled(true);
+  }
 
   if(data) {
     setAuth(prev => ({ ...prev, accessToken: data.data.data}))
     return <Navigate to={'/profile'} />;
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setEnabled(true);
-  }
-
   return (
     <MDBContainer fluid className='login-container'>
       <form onSubmit={e => handleSubmit(e)}>
         <MDBRow className='login-d-flex justify-content-center align-items-center h-100' style={{borderRadius: '1rem', maxWidth: '400px'}} onSubmit={e => handleSubmit(e)}>
-          { isLoading && <MDBSpinner role = "status">
-            <span className='visually-hidden'>Loading...</span> </MDBSpinner> 
+          { isLoading && 
+            <MDBSpinner role = "status">
+              <span className='visually-hidden'>Loading...</span>
+            </MDBSpinner> 
           }
     
           { isError && 
-            <p className = "error">{error.response.data.message}</p> 
+            <p className = "error">{error.message || error.response.data.message}</p> 
           }
 
           <MDBCol col='12'>
@@ -115,7 +119,7 @@ export const Login = () => {
                 </div>
 
                 <div>
-                  <p className="login-text">Don&apos;t have an account? <a href="./addEntryPage" className="sign-up-login">Sign Up</a></p>
+                  <p className="login-text">Don&apos;t have an account? <a href="./register" className="sign-up-login">Sign Up</a></p>
                 </div>
                 
               </MDBCardBody>

@@ -12,7 +12,6 @@ const useAxiosPrivate = () => {
         const requestIntercept = axiosPrivate.interceptors.request.use(
             config => {
                 if (!config.headers['Authorization']) {
-                    console.log(auth) // to ensure auth is being set
                     config.headers['Authorization'] = `Bearer ${auth?.accessToken}`;
                 }
                 return config;

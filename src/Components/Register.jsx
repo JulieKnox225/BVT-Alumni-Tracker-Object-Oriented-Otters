@@ -4,67 +4,83 @@ import { useQuery } from 'react-query';
 import { MDBSpinner } from 'mdb-react-ui-kit';
 import { Navigate } from 'react-router-dom';
 
+//4 to 24 characters, must begin with a letter, letters, numbers, underscores, and hyphens allowed.
 const USER_REGEX = /^[a-zA-Z][a-zA-z0-9-_]{3,23}/;
+
+//8 to 24 characters, must include uppercase and lowercase letters, a number, and a special characters: !, @, #, $, and %
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 export const Register = () => {
+  //Sets input field focus
   const userRef = useRef();
+
+  //Sets error message focus
   const errorRef = useRef();
   
-  const [formData, setFormData] = useState({
-    user: '',
-    password: ''
-  });
+  const [formData, setFormData] = useState(
+    {
+      user: '',
+      password: ''
+    }
+  );
+
+  const [enabled, setEnabled] = useState(false);
 
   const [matchPassword, setMatchPassword] = useState('');
 
+  //Boolean that shows if the username and password pass the regex and if the password confirmation matches
   const [validName, setValidName] = useState(false);
   const [validPassword, setValidPassword] = useState(false);
   const [validMatch, setValidMatch] = useState(false);
 
+  //Sets the focus to control if error message needs to disappear
   const [userFocus, setUserFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
   const [matchFocus, setMatchFocus] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState('');
 
+  const { data, isLoading, isError, error } = useQuery('createAccount', fetchRegister, { enabled });
+
+  //Sets the focus to username input upon mounting
   useEffect(() => {
     userRef.current.focus();
   }, []);
 
+  //Checks if username is valid based on regex upon input change
   useEffect(() => {
     setValidName(USER_REGEX.test(formData.user));
   }, [formData.user]);
 
+  //Checks is password and password confirmation matches and pass regex upon input change
   useEffect(() => {
     setValidPassword(PWD_REGEX.test(formData.password));
     setValidMatch(formData.password === matchPassword);
   }, [formData.password, matchPassword]);
 
+  //Removes error message if focus changes
   useEffect(() => {
     setErrorMessage('');
   }, [formData.user, formData.password, matchFocus]);
   
-  const [enabled, setEnabled] = useState(false);
 
-  const fetchRegister = () => {
+  function fetchRegister() {
     setEnabled(false);
+
     return axios.post('/user', formData);
   }
 
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    //Check if still valid
+    //Checks if still valid due to button disabling being hackable
     if(!USER_REGEX.test(formData.user) || !PWD_REGEX.test(formData.password)) {
       setErrorMessage("Invalid Entry.");
-        return;
+      return;
     }
 
     setEnabled(true);
   }
-
-  const { data, isLoading, isError, error } = useQuery('createAccount', fetchRegister, { enabled });
 
   if(data) {
     <Navigate to={'/login'} />

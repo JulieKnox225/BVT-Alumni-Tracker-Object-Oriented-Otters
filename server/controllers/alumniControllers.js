@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 
 /* 
   This should be able to replace all other getAlumniBy____ :
@@ -33,7 +34,10 @@ const getPlants = async (req, res) => {
 const getAllAlumni = async (req, res) => {
     try {
         const result = await req.db.query(
-            `SELECT * FROM alumni`
+            `SELECT a.*, u.user 
+            FROM alumni a
+            JOIN users u
+            ON a.user_id = u.id;`
         );
         //CHANGED result[0] TO result[0][0] FOR DEBUGGING PROFILE
         res.status(200).json({success: true, message: `Data retrieved`, data: result[0][0]});
@@ -68,16 +72,15 @@ const createAlumni = async (req, res) => {
  */
 const updateAlumni = async (req, res) => {
     try {
-        const { id } = req.params;
         const bodyValuesArray = Object.entries(req.body);
 
-        for(let i = 0; i < bodyValuesArray.length; i++) {
+        for(let i = 0, j = bodyValuesArray.length; i < j; i++) {
             await req.db.query(
                 `UPDATE alumni SET ${bodyValuesArray[i][0]} = :value
-                    WHERE id = :id`,
+                    WHERE user_id = :id`,
                 {
                     value: bodyValuesArray[i][1],
-                    id
+                    id: req.user.user
                 }
             )
         }
@@ -85,6 +88,45 @@ const updateAlumni = async (req, res) => {
         res.status(200).json({success: true, message: `Successfully updated data`, data: null});
     } catch (error) {
         res.status(400).json({success: false, message: error, data: null});
+    }
+};
+
+const editProfile = async (req, res) => {
+    try {
+        const { firstName, lastName, email, projects, skills, achievements, id } = req.body;
+        
+        const updatingValues = [['firstName', firstName], ['lastName', lastName], ['email', email], ['projects',projects], ['skills', skills], ['achievements', achievements]];
+
+        for(let i = 0, j = updatingValues.length; i < j; i++) {
+            await req.db.query(
+                `UPDATE alumni SET ${updatingValues[i][0]} = :value
+                    WHERE id = :id`,
+                {
+                    value: updatingValues[i][1],
+                    id
+                }
+            );
+        }
+
+        const { user } = req.body;
+
+        await req.db.query(
+            `UPDATE users
+                SET user = :user
+                WHERE id = :id`,
+            {
+                user,
+                id: req.user.user
+            }
+        );
+
+        res.status(200).json({success: true, message: `Successfully updated data`, data: null});
+    } catch (error) {
+        if(error?.data?.message?.code == '1062') {
+            res.status(400).json({success: false, message: 'Username taken. Please Try again', data: null});
+        } else {
+            res.status(400).json({success: false, message: error, data: null});
+        }
     }
 };
 
@@ -144,5 +186,6 @@ module.exports = {
     getAlumniByName,
     getAlumniByYear,
     createAlumni,
-    updateAlumni
+    updateAlumni,
+    editProfile
 }
