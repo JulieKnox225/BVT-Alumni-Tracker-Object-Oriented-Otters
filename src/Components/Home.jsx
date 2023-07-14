@@ -1,88 +1,81 @@
 import { useEffect, useState } from 'react';
 import FakeData from './TempData/FakeData'
-import { IDCards } from './BVT.ID';
-import {
-  MDBCarousel,
-   MDBCarouselItem,
-} from 'mdb-react-ui-kit';
+import { ProfileBubble } from './ProfileBubble';
+import { MDBIcon } from 'mdb-react-ui-kit';
+
 
 export const Home = () => {
 
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
+  const [BvtData, setBvtData] = useState([]);
+  const [startIndex, setStartIndex] = useState(0);
+  const endIndex = startIndex + 6;
+  const visibleData = BvtData.slice(startIndex, endIndex);
 
-  const [searchResults, setSearchResults] = useState({
-    data: [],
-    currentPage: 1,
-    resultsPerPage: 5
-  })
-  const [BvtData, setBvtData] = useState([])
+  const handleNextClick = () => {
+    setStartIndex(startIndex + 6);
+  }
+  const handleBackClick = () => {
+    setStartIndex(startIndex - 6);
+  }
 
   useEffect(() => {
     setBvtData(FakeData)
-  }, []) 
-  // console.log(BvtData) commented out for addEntryPage debugging
+  }, []);
+  console.log(BvtData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //Prevents empty search, ex: "    " or ""
-    if (search.trim() === '') {
-      return;
-    }   
-    const filteredResults = FakeData.filter((info) => {
-      const searchValue = search.toLowerCase();
-      const fullName = `${info.firstName} ${info.lastName}`.toLowerCase()
-      return (
-        fullName.includes(searchValue) ||
-        info.email.toLowerCase().includes(searchValue) ||
-        info.degree.toLowerCase().includes(searchValue)
-        );
-      });
-      
-      setSearchResults(filteredResults);  
+    // I want the bottom line to redirect the user to searchPage 
+    // And then search the users request.
+    window.location.href = `/searchPage`;
 };
 
 return (
   <>
-    <div className='surrounding-box'>
-      <div className='container-search'>
+      <div className='home-page-background'>
+      <div className='logo'>
+          <a href='/'><img className='bvt--logo' src='images/bvt.png' alt="Logo saying Bay Valley Tech with a lightbulb" /></a>
+          </div>
       <form onSubmit={handleSubmit}>
-          <div className='sp-search-bar-n-btn'>
-          <input
-            type="text"
-            placeholder="Who's that Alumnus?"
-            onChange={(e) => setSearch(e.target.value)}
-            value={search}
-            className='SP-searchBar'
+          <div className='home-search-n-btn'>
+            <input
+              type="text"
+              placeholder="Search..."
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
+              className='home-search-bar'
             />
-          <button className='SP-button' type="submit">
-            Search
-          </button>
+            <button className='home-search-button' type="submit">
+              Search
+            </button>
           </div>
       </form>
+
+      <div className='carousel-controls'>
+        <button className='carousel-btn' onClick={handleBackClick} disabled={startIndex === 0}>
+          <MDBIcon fas icon="arrow-left"   />
+        </button>
+      <button className='carousel-btn' disabled={startIndex === BvtData.length - 1} onClick={handleNextClick} >
+        <MDBIcon fas icon="arrow-right"   />
+      </button>
       </div>
-    </div>
-    <MDBCarousel showControls>
-    <div className='BVT-results'>
-      {/* <FakeData /> */}
-      <h2 className="sp-results-header">Profile Gallery</h2>
-      {/* As long as there is an input when search is submitted results will display */}
-      {searchResults.length > 4 && (
-        <div style={{ marginTop: '20px' }}>
-          <p>These are the results for {search}:</p>
-          <MDBCarouselItem />
-          <div className='search-results'>
-          {searchResults.map((info) => (
-            <IDCards
-            key={info.id}
-            {...info}
-            />
-            ))}
+      
+      <div className='carousel-container'>
+        <div className='carousel-row'>
+        
+          {visibleData.map((info) => (
+          <div key={info.id} className='profile-highlight'>
+            <div className='rows'>
+              <ProfileBubble {...info} />
+            </div>
+            </div>
+          ))}
+      
           </div> 
         </div>
-      )}
 
-    </div>
-      </MDBCarousel>
+      </div>
     </>
   )
 }
