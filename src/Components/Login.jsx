@@ -119,7 +119,7 @@ export const Login = () => {
                 </div>
 
                 <div>
-                  <p className="login-text">Don&apos;t have an account? <a href="./addEntryPage" className="sign-up-login">Sign Up</a></p>
+                  <p className="login-text">Don&apos;t have an account? <a href="./register" className="sign-up-login">Sign Up</a></p>
                 </div>
                 
               </MDBCardBody>

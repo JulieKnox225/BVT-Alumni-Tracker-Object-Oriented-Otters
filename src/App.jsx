@@ -28,13 +28,7 @@ function App() {
       <ThemeContext.Provider value={{theme, toggleTheme}}> {/* Toggle Theme  */}
         <div className='site--container' id = {theme}>
           <Navbar />
-          <div className='switch'>
-            <label> {theme === 'light' ? "Light Mode" : "Dark Mode" }</label>
-            <ReactSwitch  onChange={toggleTheme} checked ={theme === "dark"}/>
-          </div>
-          <div className='logo'>
-          <a href='/'><img className='bvt--logo' src='images/bvt.png' alt="Logo saying Bay Valley Tech with a lightbulb" /></a>
-          </div>
+
           <Routes>
               <Route path='/' element ={ <Home />} />
               {/* <<<<<<< Updated upstream */}

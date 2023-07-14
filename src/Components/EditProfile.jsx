@@ -1,12 +1,13 @@
 import { Col, Container } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
 import { MDBIcon } from "mdb-react-ui-kit";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { MDBSpinner } from 'mdb-react-ui-kit';
 import { MDBContainer, MDBRow } from 'mdb-react-ui-kit';
+import { Modal, Form, Button } from "react-bootstrap";
 
 //4 to 24 characters, must begin with a letter, letters, numbers, underscores, and hyphens allowed.
 const USER_REGEX = /^[a-zA-Z][a-zA-z0-9-_]{3,23}/;
@@ -28,6 +29,11 @@ export const EditProfile = () => {
   const { data: profileData, isLoading: profileIsLoading, isError: profileIsError, error: profileError } = useQuery('fetchProfileInfo', fetchProfileInfo);
 
   const { data: updatedData, isLoading: updatedIsLoading, isError: updatedIsError, error: updatedError } = useQuery('fetchEditProfile', fetchEditProfile , { enabled });
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   function fetchProfileInfo() {
     return axiosPrivate.get('/');
@@ -186,6 +192,62 @@ export const EditProfile = () => {
               onChange={e => handleChange(e)}
             />
           </div>
+          <div className="form-edit-prof">
+        <div className="e-p-form-text">
+        Update Password:
+        </div>
+        <button 
+        className="e-p-update"
+        onClick={handleShow}
+        >
+        Update Password
+        </button>
+
+          {/* Modal For password updating*/}
+      <Modal 
+        show={show} 
+        onHide={handleClose}
+        backdrop="static"
+      >
+        <Modal.Header closeButton className="modal-background">
+          <Modal.Title>Reset Password</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="modal-background">
+          <Form>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Old password</Form.Label>
+              <Form.Control
+                type="password"
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Create new password</Form.Label>
+              <Form.Control
+                type="password"
+              />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Confirm new Password</Form.Label>
+              <Form.Control
+                type="password"     
+              />
+              </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer className="modal-background">
+          <Button style={{backgroundColor:'#084C61'}} onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button style={{backgroundColor:'#FF7A45'}} onClick={handleClose}>
+            Save
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* End of password update modal */}
+      </div>
+      
         </Col>
         <Col >
           <div className="form-edit-prof">
@@ -228,8 +290,7 @@ export const EditProfile = () => {
         </Row>
         <Row>
         <div className="e-p-buttons">
-          {/* Can you please style this :)) */}
-          <Link to={'/profile'} className="e-p-cancel">Cancel</Link>
+          <a href="/profile"><button className="e-p-cancel">Cancel</button></a>
           <button className="e-p-save" disabled={!validName} onClick={() => setEnabled(true)}>Save</button>
         </div>
         </Row>
