@@ -151,7 +151,6 @@ label{
   background-size: cover;
   background-position: center;
   z-index: 0;
-
 }
 
 .home-page-background::before {
@@ -377,21 +376,25 @@ label{
   display: flex;
 }
 
-
-#dark .home-button-text {
-  font-family: serif;
-  font-size: 35px;
-  color: #EEF4ED;
-  text-shadow: black -4px  3px 3px;
-}
-
-#light .home-button-text {
+.home-button-text {
   font-family: serif;
   font-size: 35px;
   color: #EEF4ED;
   text-shadow: black 4px  3px 3px;
+  padding-bottom: 15px;
 }
 
+
+#dark .home-button-text {
+  text-shadow: black -4px  3px 3px;
+}
+
+@media (max-width: 650px) {
+  .home-button-text {
+    font-size: 30px;
+   
+  }
+}
 
 .login--text {
   font-weight: 500;
@@ -408,25 +411,6 @@ label{
 
 .sideMenu:hover {
   color:#f9f9f9
-}
-
-
-#light .light-dark-btn{
-  margin-left: 5px;
-  margin-right: 5px;
-  border-radius: 1000px;
-  padding: 8px;
-
-  background-color: white;
-}
-
-#dark .light-dark-btn{
-  margin-left: 5px;
-  margin-right: 5px;
-  border-radius: 1000px;
-  padding: 8px;
-  color: #B3A125;
-  background-color: #2a2e30;
 }
 
 .toggler {
@@ -494,7 +478,7 @@ label{
 .footer {
   padding: 25px;
   color: white;
-  background-color: #2a2b2c;
+  background-color: #FF3B1F;
 }
 
 /* Footer end */
