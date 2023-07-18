@@ -48,7 +48,7 @@ return (
               className='home-search-bar'
             />
             <button className='home-search-button' type="submit">
-              Search
+              <MDBIcon fas icon="search" />
             </button>
           </div>
       </form>
