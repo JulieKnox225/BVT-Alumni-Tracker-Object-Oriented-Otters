@@ -173,8 +173,9 @@ label{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
+
 
 .home-search-bar {
   width: 950px;
@@ -191,7 +192,7 @@ label{
 
 @media (max-width: 625px) {
   .home-search-bar {
-    width: 300px
+    width: 400px
   }
 }
 
