@@ -12,33 +12,44 @@ import { createContext, useState } from "react";
 import ReactSwitch from 'react-switch'
 import { EditProfile } from './Components/EditProfile'
 import useAuth from './hooks/useAuth'
+// import ThemeContextProvider from './context/ThemeContext'
+// import ThemeContextProvider from './context/ThemeContext'
 
 export const ThemeContext = createContext();
 
 function App() {
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState('light')
   const { auth, setAuth } = useAuth();
-
+ 
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
   };
   return (
-      <ThemeContext.Provider value={{theme, toggleTheme}}> 
     <Router>
+      <ThemeContext.Provider value={{theme, toggleTheme}}> 
         <div className='App' id = {theme}>
-        <Navbar  />
-          <div className='switch'>
-          <label> {theme === 'light' ? "Light Mode" : "Dark Mode" }</label>
+        <Navbar/>
+      <div className='switch'>
           <ReactSwitch  onChange={toggleTheme} checked ={theme === "dark"}/>
-        </div>
+          <label> {theme === 'light' ? "Light Mode" : "Dark Mode" }</label>
+      </div>
           <div className='logo'>
           <a href='/'><img className='bvt--logo' src='images/bvt.png' alt="Logo saying Bay Valley Tech with a lightbulb" /></a>
           </div>
           <Routes>
+      {/* <ThemeContextProvider> */}
             <Route element={<Outlet context={{auth, setAuth}}/>}>
-              <Route path='/' element ={ <Home />} />
+              <Route path='/' element ={<ThemeContext.Provider value = {{theme, toggleTheme}}>
+                 <Home />
+              </ThemeContext.Provider>
+                 }
+                 />
               {/* <<<<<<< Updated upstream */}
-              <Route path='/login' element={ <Login/> } />
+              <Route path='/login' element={ 
+                <ThemeContext.Provider value={{theme, toggleTheme}}>
+                   <Login/>
+                </ThemeContext.Provider>
+               } />
               <Route path='/addEntryPage' element ={ <AddEntryPage />} />
               <Route path='/searchPage' element= { <SearchPage /> } />
               <Route path ='/forgotPassword' element = {<ForgotPassword/>}/>
@@ -50,8 +61,10 @@ function App() {
           </Routes>
         <Footer />
         </div>
-    </Router>
       </ThemeContext.Provider>
+    </Router>
+
+      // </ThemeContext.Provider>
   )
 }
 
