@@ -9,6 +9,7 @@ import { Home } from './Components/Home';
 import { Register } from './Components/Register';
 import { Profile } from './Components/Profile';
 import { createContext, useState } from "react"; 
+import PageNotFound from './Components/PageNotFound';
 import ReactSwitch from 'react-switch';
 import { EditProfile } from './Components/EditProfile';
 import useAuth from './hooks/useAuth';
@@ -39,6 +40,7 @@ function App() {
               <Route path='/register' element= {<Register/> } />
               <Route path='/profile' element= {<Profile/> } />
               <Route path='/editProfile' element= {<EditProfile />} />
+              <Route path='*' element= {<PageNotFound />} />
           </Routes>
         </div>
         <Footer />
