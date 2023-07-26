@@ -2,7 +2,7 @@ import {useState} from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import "/src/index.css"
 import "/src/App.jsx"
-import { ThemeContext } from '../App'
+// import { ThemeContext } from '../App'
 // import ReactSwitch from 'react-switch'
 
 
@@ -10,19 +10,19 @@ export const Navbar = () => {
 
 const [login, setLogin] = useState(false)
 
-const [theme, setTheme] = useState(false)
+// const [theme, setTheme] = useState(false)
 
 const handleLogin = () => {
   setLogin(!login)
 }
-  const toggleTheme = () => {
-    setTheme((curr) => (curr === "light" ? "dark" : "light"));
-  };
+  // const toggleTheme = () => {
+  //   setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  // };
 
  return (
    <div>
-    <ThemeContext.Provider value={{theme, toggleTheme}}> 
-   <div className='App' id = {theme}>
+    {/* <ThemeContext.Provider value={{theme, toggleTheme}}>  */}
+   <div className='App'>
      <nav className='nav-home'>
      <Dropdown>
        <Dropdown.Toggle className='drop' variant='secondary' id="dropdown-button-dark-example1">
@@ -51,7 +51,7 @@ const handleLogin = () => {
        </a>}
        </nav>
        </div>
-       </ThemeContext.Provider>
+       {/* </ThemeContext.Provider> */}
           </div>
  )
 }
