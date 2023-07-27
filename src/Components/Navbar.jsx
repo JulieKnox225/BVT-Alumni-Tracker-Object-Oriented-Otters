@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
-import "/src/index.css"
-import "/src/App.jsx"
+
+
 // import { ThemeContext } from '../App'
 // import ReactSwitch from 'react-switch'
 

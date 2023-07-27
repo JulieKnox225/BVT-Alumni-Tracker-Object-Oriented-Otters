@@ -1,3 +1,5 @@
+// Dark Theme Logic and CSS Page
+
 import   { createContext, useEffect, useState } from 'react';
 import  PropTypes from 'prop-types';
 
@@ -32,25 +34,10 @@ useEffect(()=>{
         </ThemeContext.Provider>
     )
 }
+// Allows children to be stated 
 ThemeProvider.propTypes ={
     children:PropTypes.node
 
 }
-// class ThemeContextProvider extends Component {
-//     state = { 
-//         isLightTheme: true,
-//         light: { syntax: '#555', ui: '#ddd', bg: '#eee'},
-//         dark: {syntax: '#ddd', ui: '#333', bg: '#555'}
-//      } 
-
-//     render() { 
-//         return (
-//             <ThemeContext.Provider value={{...this.state}}>
-//                 {this.props}
-                
-//             </ThemeContext.Provider>
-//         );
-//     }
-// }
  
 export default ThemeContext;

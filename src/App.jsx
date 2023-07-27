@@ -8,55 +8,34 @@ import { ForgotPassword } from './Components/ForgotPassword'
 import { Home } from './Components/Home'
 import { Register } from './Components/Register'
 import { Profile } from './Components/Profile'
-// import { createContext } from "react"; 
-// import ReactSwitch from 'react-switch'
 import { EditProfile } from './Components/EditProfile'
 import useAuth from './hooks/useAuth'
-import { useContext } from 'react'
-import { ThemeContext } from './context/ThemeContext'
-// import ThemeContextProvider from './context/ThemeContext'
-// import ThemeContextProvider from './context/ThemeContext'
-
-// export const ThemeContext = createContext();
+import { useContext } from 'react'//Dark-Mode
+import { ThemeContext } from './context/ThemeContext'//Dark-Mode Component
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 
 function App() {
-  const [{theme, isDark}, toggleTheme] = useContext(ThemeContext)
-  console.log('theme', theme);
-  // const [theme, setTheme] = useState('light')
+  const [{theme, isDark}, toggleTheme] = useContext(ThemeContext)//Toggle/DarkTheme
+ 
   const { auth, setAuth } = useAuth();
  
-  // const toggleTheme = () => {
-  //   setTheme((curr) => (curr === "light" ? "dark" : "light"));
-  // };
-
   return (
     <Router>
-      {/* <ThemeContext.Provider value={{theme, toggleTheme}}>  */}
+          {/* Changes  background color - CSS Needs to be adjusted in Theme Component*/}
         <div className='App' style={{backgroundColor: theme.backgroundColor, color: theme.color}}>
-        <Navbar/>
-      {/* <div className='switch'>
-          <ReactSwitch  onChange={toggleTheme} checked ={theme === "dark"}/>
-          <label> {theme === 'light' ? "Light Mode" : "Dark Mode" }</label>
-      </div> */}
-      <div className='text'>Its a {isDark ? "Dark" : "Light"} theme</div>
-      <button onClick={toggleTheme}>Toggle Theme</button>
+    <Navbar/>
+                {/*Dark Theme Logic and Theme Button.  */}
+        <div className='text'>Its a {isDark ? "Dark" : "Light"} theme</div>
+        <button onClick={toggleTheme}>Toggle Theme</button>
+                  {/* End of Theme Button Logic */}
           <div className='logo'>
           <a href='/'><img className='bvt--logo' src='images/bvt.png' alt="Logo saying Bay Valley Tech with a lightbulb" /></a>
           </div>
-          <Routes>
-      {/* <ThemeContextProvider> */}
-            <Route element={<Outlet context={{auth, setAuth}}/>}>
-              <Route path='/' element  =  {<Home />} />
-                
-              {/* </ThemeContext.Provider> */}
-                 {/* }
-                 /> */}
-              {/* <<<<<<< Updated upstream */}
-              <Route path='/login' element={ 
-                // <ThemeContext.Provider value={{theme, toggleTheme}}>
-                   <Login/>
-                // </ThemeContext.Provider>
-               } />
+    <Routes>
+      <Route element={<Outlet context={{auth, setAuth}}/>}>
+        <Route path='/' element  =  {<Home />} />
+        {/* <<<<<<< Updated upstream */}
+        <Route path='/login' element={ <Login/> } />
               <Route path='/addEntryPage' element ={ <AddEntryPage />} />
               <Route path='/searchPage' element= { <SearchPage /> } />
               <Route path ='/forgotPassword' element = {<ForgotPassword/>}/>
@@ -68,10 +47,7 @@ function App() {
           </Routes>
         <Footer />
         </div>
-      {/* </ThemeContext.Provider> */}
     </Router>
-
-      // </ThemeContext.Provider>
   )
 }
 
