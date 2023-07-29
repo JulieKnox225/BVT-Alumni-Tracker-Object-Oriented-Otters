@@ -22,13 +22,18 @@ export const Home = () => {
   useEffect(() => {
     setBvtData(FakeData)
   }, []);
-  console.log(BvtData);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // I want the bottom line to redirect the user to searchPage 
-    // And then search the users request.
-    window.location.href = `/searchPage`;
+    fetch('/api/alumni/search?search=$(search)&type=fullName')
+    .then((response) => response.json())
+    .then((data) => {
+      setBvtData(data);
+
+    })
+    .catch((error) => console.error('Error fetching search results:', error));
+
 };
 
 return (
