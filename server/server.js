@@ -1,4 +1,5 @@
 require('dotenv').config();
+// const db = require('./config/planetScaleConfig');
 const db = require('./config/fakeAlumniConfig');
 // const db = require('./config/alumniConfig');
 const cookieParser = require('cookie-parser')
