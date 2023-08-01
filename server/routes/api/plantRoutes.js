@@ -1,14 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const plantController = require('/server/controllers/plantController');
+
+// Import the functions from plantController.js
+const {
+  getAllPlants,
+  getPlantById,
+  createPlant,
+  updatePlant,
+  deletePlant,
+} = require('../../controllers/plantController');
 
 // Plant search endpoint
-router.get('/search', plantController.searchPlants);
+router.get('/search', getAllPlants);
 
 // Other plant-related endpoints
-router.get('/', plantController.getAllPlants);
-router.post('/', plantController.createPlant);
-router.put('/:id', plantController.updatePlant);
-router.delete('/:id', plantController.deletePlant);
+router.get('/', getAllPlants);
+router.post('/', createPlant);
+router.put('/:id', updatePlant);
+router.delete('/:id', deletePlant);
 
 module.exports = router;
