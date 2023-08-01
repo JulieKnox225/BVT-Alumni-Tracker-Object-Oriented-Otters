@@ -3,8 +3,8 @@ const mysql = require('mysql2/promise'); // Import the mysql2 package
 
 const app = express();
 
-const alumniRoutes = require('./routes/alumniRoutes');
-const plantRoutes = require('./routes/planetRoutes');
+const alumniRoutes = require('./alumniRoutes');
+const plantRoutes = require('./plantRoutes');
 
 // Middleware to connect to the database
 const connectToDatabase = async (req, res, next) => {
