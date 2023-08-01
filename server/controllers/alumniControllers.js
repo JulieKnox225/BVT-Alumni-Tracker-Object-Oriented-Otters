@@ -40,7 +40,7 @@ const getAllAlumni = async (req, res) => {
             ON a.user_id = u.id;`
         );
         //CHANGED result[0] TO result[0][0] FOR DEBUGGING PROFILE
-        res.status(200).json({success: true, message: `Data retrieved`, data: result[0][0]});
+        res.status(200).json({success: true, message: `Data retrieved`, data: result[0]});
     } catch (error) {
         res.status(400).json({success: false, message: error, data: null});
     }

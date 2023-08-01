@@ -1,56 +1,84 @@
 import { useEffect, useState } from 'react';
-import FakeData from './TempData/FakeData'
 import { IDCards } from './BVT.ID';
-
+import { useQuery } from 'react-query';
+import { MDBSpinner } from 'mdb-react-ui-kit';
+import { MDBContainer, MDBRow } from 'mdb-react-ui-kit';
+import axios from '../api/axios';
 
 
 export const SearchPage = () => {
   
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
+
+  const [type, setType] = useState('');
+
+  const [enabled, setEnabled] = useState(false);
+
   const [searchResults, setSearchResults] = useState({
     data: [],
     currentPage: 1,
     resultsPerPage: 20
-  })
-  const [BvtData, setBvtData] = useState([])
+  });
 
-  useEffect(() => {
-      setBvtData(FakeData)
-  }, []) 
-  // console.log(BvtData)
+  const { data, isLoading, isError, error, refetch } = useQuery('fetchSearch', fetchSearch, { enabled });
 
-  const handleSubmit = (e) => {
+  function fetchSearch() {
+    setEnabled(false);
+    return axios.get(`/?search=${search}&type=${type}`);
+  };
+
+  function handleSubmit(e) {
     e.preventDefault();
+
+    if(data?.data) {
+      refetch;
+    }
+
     //Prevents empty search, ex: "    " or ""
     if (search.trim() === '') {
       return;
     }   
-  const filteredResults = FakeData.filter((info) => {
-    const searchValue = search.toLowerCase();
-    const fullName = `${info.firstName} ${info.lastName}`.toLowerCase()
-    return (
-      fullName.includes(searchValue) ||
-      info.email.toLowerCase().includes(searchValue) ||
-      info.degree.toLowerCase().includes(searchValue)
-    );
-  });
+    
+    setEnabled(true);
+  };
 
-  setSearchResults(filteredResults);  
-};
+  useEffect(() => {
+    console.log(data);
+    if(data) {
+      setSearchResults(prev => {
+        return {
+          ...prev,
+          data: data?.data?.data
+        }
+      });
+    }
+  }, [data]);
 
   return (
     <>
     <div className='surrounding-box'>
       <div className='container-search'>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e)}>
           <div className='sp-search-bar-n-btn'>
           <input
             type="text"
-            placeholder="Who's that Alumnus?"
+            placeholder="Search"
             onChange={(e) => setSearch(e.target.value)}
             value={search}
             className='SP-searchBar'
           />
+          <select name="type" value={type} onChange={e => setType(e.target.value)}>
+              <option value="">--Please choose an option--</option>
+              <option value="firstName">First Name</option>
+              <option value="lastName">Last Name</option>
+              <option value="email">Email</option>
+              <option value="phoneNumber">Phone Number</option>
+              <option value="degree">Degree</option>
+              <option value="achievements">Achievements</option>
+              <option value="projects">Projects</option>
+              <option value="skills">Skills</option>
+              <option value="recommendations">Recommendations</option>
+          </select>
           <button className='SP-button' type="submit">
             Search
           </button>
@@ -60,15 +88,29 @@ export const SearchPage = () => {
     </div>     
     <div className='BVT-results'>
       <h2 className="sp-results-header">Results</h2>
+       
+      { isLoading && 
+            <MDBContainer fluid >
+                <MDBRow className='login-d-flex justify-content-center align-items-center h-100'>
+                    <MDBSpinner role = "status">
+                        <span className='visually-hidden'>Loading...</span> 
+                    </MDBSpinner> 
+                </MDBRow>
+            </MDBContainer>
+      }
+      
+      { isError && 
+        <p className = "error">{error.message || error.response.data.message.name || error.response.data.message}</p> 
+      }
+
       {/* As long as there is an input when search is submitted results will display */}
-      {searchResults.length > 0 && (
+      {searchResults.data.length > 0 && (
         <div style={{ marginTop: '20px' }}>
-          <p>These are the results for {search}:</p>
           <div className='search-results'>
-          {searchResults.map((info) => (
+          {searchResults.data.map((info) => (
             <IDCards
-            key={info.id}
-                {...info}
+              key={info.id}
+              {...info}
             />
           ))}
           </div>
