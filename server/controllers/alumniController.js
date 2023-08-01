@@ -1,22 +1,22 @@
 const searchAlumni = async (req, res) => {
     try {
         const { search, type } = req.query;
-        const wordsToSearchWithLike = ['fullName', 'year']; // Add other searchable fields here
+        const wordsToSearchWithLike = ['firstName', 'lastName', 'email', 'degree', 'achievements', 'projects', 'skills', 'recommendations']; // Add other searchable fields here
 
         let result = [];
         if (search && wordsToSearchWithLike.includes(type)) {
             result = await req.db.query(`SELECT * FROM alumni WHERE ${type} LIKE '%${search}%'`);
         } else {
-            // Handle invalid or unsupported search type here if needed
+            result = await req.db.query(`SELECT * FROM alumni WHERE ${type} = ${search}`);
         }
 
         if (result[0].length === 0) {
-            result[0].push({ message: 'No records found!' });
+            return res.status(400).send({ success: false, message: 'No records found!', data: null });
         }
 
-        res.status(200).json(result[0]);
-    } catch (err) {
-        res.status(400).send({ success: false, message: err, data: null });
+        res.status(200).json({ success: true, message: `Successfully retrieved data.`, data: result[0] });
+    } catch (error) {
+        res.status(400).send({ success: false, message: error, data: null });
     }
 };
 
@@ -28,7 +28,7 @@ const getAllAlumni = async (req, res) => {
             JOIN users u
             ON a.user_id = u.id;`
         );
-        res.status(200).json({ success: true, message: `Data retrieved`, data: result[0] });
+        res.status(200).json({ success: true, message: `Successfully retrieved data.`, data: result[0] });
     } catch (error) {
         res.status(400).json({ success: false, message: error, data: null });
     }
@@ -112,61 +112,10 @@ const editProfile = async (req, res) => {
     }
 };
 
-const getAlumniById = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const result = await req.db.query(
-            `SELECT * FROM alumni
-                WHERE id = :id`,
-            {
-                id
-            }
-        );
-
-        res.status(200).json({ success: true, message: `Data retrieved`, data: result[0] });
-    } catch (error) {
-        res.status(400).json({ success: false, message: error, data: null });
-    }
-};
-
-const getAlumniByName = async (req, res) => {
-    try {
-        const { name } = req.params;
-        const result = await req.db.query(
-            `SELECT * FROM alumni
-                WHERE fullName = ${name}`
-        );
-
-        res.status(200).json({ success: true, message: `Data retrieved`, data: result[0] });
-    } catch (error) {
-        res.status(400).json({ success: false, message: error, data: null });
-    }
-};
-
-const getAlumniByYear = async (req, res) => {
-    try {
-        const { year } = req.params;
-        const result = await req.db.query(
-            `SELECT * FROM alumni
-                WHERE year = :year`,
-            {
-                year
-            }
-        );
-
-        res.status(200).json({ success: true, message: `Data retrieved`, data: result[0] });
-    } catch (error) {
-        res.status(400).json({ success: false, message: error, data: null });
-    }
-};
-
 module.exports = {
     searchAlumni,
     getAllAlumni,
     createAlumni,
     updateAlumni,
-    editProfile,
-    getAlumniById,
-    getAlumniByName,
-    getAlumniByYear
+    editProfile
 };
