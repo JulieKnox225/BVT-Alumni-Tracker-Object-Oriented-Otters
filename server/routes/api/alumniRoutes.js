@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 const alumniController = require('../controllers/alumniController');
+
 
 // Alumni search endpoint
 router.get('/search', alumniController.searchAlumni);
