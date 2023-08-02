@@ -20,11 +20,11 @@ export const SearchPage = () => {
     resultsPerPage: 20
   });
 
-  const { data, isLoading, isError, error, refetch } = useQuery('fetchSearch', fetchSearch, { enabled });
+  const { data, isLoading, isError, error, refetch } = useQuery('fetchSearch', fetchSearch, { enabled, retry: false });
 
   function fetchSearch() {
     setEnabled(false);
-    return axios.get(`/?search=${search}&type=${type}`);
+    return axios.get(`/search?search=${search}&type=${type}`);
   };
 
   function handleSubmit(e) {
@@ -44,7 +44,13 @@ export const SearchPage = () => {
 
   useEffect(() => {
     console.log(data);
-    if(data) {
+    if(error) {
+      setSearchResults({
+        data: [],
+        currentPage: 1,
+        resultsPerPage: 20
+      })
+    } else if(data){
       setSearchResults(prev => {
         return {
           ...prev,
@@ -52,7 +58,7 @@ export const SearchPage = () => {
         }
       });
     }
-  }, [data]);
+  }, [data, error]);
 
   return (
     <>
@@ -100,7 +106,7 @@ export const SearchPage = () => {
       }
       
       { isError && 
-        <p className = "error">{error.message || error.response.data.message.name || error.response.data.message}</p> 
+        <p className = "error">{error.response.data.message.name || error.response.data.message || error.message }</p> 
       }
 
       {/* As long as there is an input when search is submitted results will display */}
