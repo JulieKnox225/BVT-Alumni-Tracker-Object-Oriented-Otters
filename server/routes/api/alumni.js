@@ -13,5 +13,3 @@ router
     // .get('/:name', authenticateToken, getAlumniByName)
     // .get('/:year', authenticateToken, getAlumniByYear)
 ;
-
-module.exports = router;
