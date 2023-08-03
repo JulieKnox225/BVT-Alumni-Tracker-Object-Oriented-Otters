@@ -119,12 +119,9 @@ export const Login = () => {
                 </div>
 
                 <div>
-<<<<<<< HEAD
                   <p className="login-text">Don&apos;t have an account? <a href="./register" className="sign-up-login">Sign Up</a></p>
-=======
                   <p className="login-text">Don&apos;t have an account? <Link to = '/addEntryPage' className="sign-up-login">Sign Up</Link></p>
                 <p><Link  to = '/forgotPassword' className="fp-login">Forgot password?</Link></p>
->>>>>>> origin/AV-front-end-branch
                 </div>
               </MDBCardBody>
             </MDBCard>
