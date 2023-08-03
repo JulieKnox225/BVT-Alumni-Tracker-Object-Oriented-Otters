@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import Dropdown from 'react-bootstrap/Dropdown';
-import  { useContext } from 'react';
-import { ThemeContext } from '../App';
-
-export const Navbar = () => {
-  const {theme, toggleTheme} = useContext(ThemeContext)
-  
-  return (
-=======
 import {useState} from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import "/src/index.css"
@@ -30,7 +20,6 @@ const handleLogin = () => {
   // };
 
  return (
->>>>>>> origin/AV-front-end-branch
    <div>
     {/* <ThemeContext.Provider value={{theme, toggleTheme}}>  */}
    <div className='App'>
@@ -51,25 +40,6 @@ const handleLogin = () => {
        <a href= "/" className="home-button">
        <h2 className="home-button-text">BVT Alumni Tracker</h2>
        </a>
-<<<<<<< HEAD
-
-      <div className='nav-right'>
-       <div className='toggler'>
-          <div 
-            className="toggler--slider"
-            onClick={toggleTheme}
-          >
-            <div className="toggler--slider--circle">
-            </div>
-          </div>
-        </div>
-      <a href='/login' className='login-button'>
-       <p className="login--text">Login</p>
-      </a>
-      </div>
-    </nav>
-   </div>
-=======
       {/* Temp button to show how the login would change icons */}
        <a>
        <button className="light-dark-btn" onClick={handleLogin}></button>
@@ -84,6 +54,5 @@ const handleLogin = () => {
        </div>
        {/* </ThemeContext.Provider> */}
           </div>
->>>>>>> origin/AV-front-end-branch
  )
 }
