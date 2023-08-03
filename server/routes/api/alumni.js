@@ -4,7 +4,7 @@ const { getAllAlumni, createAlumni, updateAlumni, editProfile, getAlumniByName, 
 const authenticateToken = require('../../middleware/authenticateMiddle');
 
 router
-    .get('/', authenticateToken, getAllAlumni)
+    .get('/', getAllAlumni)
     .post('/', authenticateToken, createAlumni)
     .put('/', authenticateToken, updateAlumni)
     .post('/profile', authenticateToken, editProfile)

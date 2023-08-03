@@ -43,7 +43,7 @@ export const AddEntryPage = () => {
     setEnabled(true);
   };
 
-  const fetchAddEntry = () => {
+  function fetchAddEntry() {
     setEnabled(false);
     return axiosPrivate.post('/', formData);
   }
