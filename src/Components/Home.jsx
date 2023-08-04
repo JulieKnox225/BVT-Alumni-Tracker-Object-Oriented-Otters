@@ -1,16 +1,25 @@
 import { useEffect, useState } from 'react';
-import FakeData from './TempData/FakeData'
 import { ProfileBubble } from './ProfileBubble';
 import { MDBIcon } from 'mdb-react-ui-kit';
+import { Navigate, Outlet, Route } from 'react-router';
+import { SearchPage } from './SearchPage';
+import { useQuery } from 'react-query';
+import axios from '../api/axios';
 
 
 export const Home = () => {
 
   const [search, setSearch] = useState('');
+
   const [BvtData, setBvtData] = useState([]);
+
   const [startIndex, setStartIndex] = useState(0);
+
+  const { data, isLoading, isError, error } = useQuery('fetchAllAlumni', fetchAllAlumni);
+
   const endIndex = startIndex + 6;
-  const visibleData = BvtData.slice(startIndex, endIndex);
+
+  const visibleData = BvtData.slice(startIndex, endIndex > BvtData.length ? undefined : endIndex);
 
   const handleNextClick = () => {
     setStartIndex(startIndex + 6);
@@ -19,35 +28,48 @@ export const Home = () => {
     setStartIndex(startIndex - 6);
   }
 
-  useEffect(() => {
-    setBvtData(FakeData)
-  }, []);
-  console.log(BvtData);
+  function fetchAllAlumni() {
+    return axios.get('/');
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // I want the bottom line to redirect the user to searchPage 
     // And then search the users request.
-    window.location.href = `/searchPage`;
-};
+
+    //Not functioning
+    return (
+      <Route element={<Outlet context={search} />} >
+        <Navigate to={<SearchPage />} />
+      </Route >
+    );
+  };
+
+  useEffect(() => {
+    if(data) {
+      console.log(data)
+      setBvtData(data?.data?.data);
+    }
+  }, [data]);
 
 return (
   <>
+      <div className='home-container'>
       <div className='home-page-background'>
       <div className='logo'>
           <a href='/'><img className='bvt--logo' src='images/bvt.png' alt="Logo saying Bay Valley Tech with a lightbulb" /></a>
           </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={e => handleSubmit(e)}>
           <div className='home-search-n-btn'>
             <input
               type="text"
-              placeholder="Search..."
+              placeholder="This search bar is in development. Please navigate to the Search Page"
               onChange={(e) => setSearch(e.target.value)}
               value={search}
               className='home-search-bar'
             />
             <button className='home-search-button' type="submit">
-              Search
+              <MDBIcon fas icon="search" />
             </button>
           </div>
       </form>
@@ -75,6 +97,7 @@ return (
           </div> 
         </div>
 
+      </div>
       </div>
     </>
   )

@@ -21,23 +21,21 @@ export const AddEntryPage = () => {
 
   //Controls when to send request
   const [enabled, setEnabled] = useState(false);
-
+  
   //allows for axios interceptors which in turn allows refresh tokens for access
   const axiosPrivate = useAxiosPrivate();
 
   const { data, isError, error, isLoading } = useQuery('addEntry', fetchAddEntry, { enabled });
 
-  function handleChange(e) {
-    e.preventDefault();
-
-    const {name, value} = e.target
-    
-    setFormData(prevFormData => {
-      return {
-        ...prevFormData, 
-        [name]: value
-      }
-    });
+  function handleChange(e){
+      e.preventDefault();
+      const {name, value} = e.target
+      setFormData(prevFormData => {
+        return {
+          ...prevFormData, 
+          [name]: value
+        }
+      }) 
   }
 
   function handleSubmit(e) {
@@ -70,14 +68,17 @@ export const AddEntryPage = () => {
   return (
 
     <div className="add-entry-form">
-      { isLoading && 
-        <MDBSpinner role = "status">
-          <span className='visually-hidden'>Loading...</span> 
-        </MDBSpinner> 
-      }
-      { isError && 
-        <p className = "error">{error.message || error.response.data.message.name || error.response.data.message}</p> 
-      }
+    { isLoading && 
+      <MDBSpinner role = "status">
+        <span className='visually-hidden'>Loading...</span> 
+      </MDBSpinner> 
+    }
+    { isError && 
+      <p className = "error">{error.message || error.response.data.message.name || error.response.data.message}</p> 
+    }
+    { data && 
+      <h2>{data.message}</h2>
+    }
 
       <h4 style={{ textAlign: 'center', color: "white", marginTop: '75px' }}>Add Entry Page</h4>
       <div style={{ display: 'flex', justifyContent: 'center', color: 'white', marginBottom: '55px'}}>
@@ -192,6 +193,5 @@ export const AddEntryPage = () => {
         </form>
       </div>
     </div>
-
   )
 }
