@@ -9,6 +9,13 @@
   /* color:white; */
 }
 
+/* universal modal */
+.modal-background {
+  background-color: #e0e1dd;
+}
+
+/* End modal */
+
 /* App.jsx */
 .site--container {
   display: flex;
@@ -48,6 +55,37 @@ label{
   margin-top:2px;
 }
 
+#light .login-card{
+  background: linear-gradient(180deg, hsla(0, 0%, 100%, 1) 0%, hsla(9, 100%, 60%, 1) 100%);
+  color: #FF5133;
+}
+
+#dark .login-card{
+  background: linear-gradient(180deg, hsla(16, 100%, 54%, 1) 0%, rgb(49, 47, 47) 100%);
+  color: rgb(255, 255, 255);
+}
+
+#light .input-text{
+  color: black;
+}
+
+#dark .input-text{
+  color: white;
+}
+
+.fp-login{
+  margin-top: 10px;
+}
+
+#dark .fp-login{
+  color: #ffffff;
+}
+
+#light .fp-login{
+  color: black;
+}
+
+
 #light .bvt--logo{
     margin-left: 50px;
     border-radius: 5px;
@@ -75,6 +113,14 @@ label{
   text-shadow: black 4px 3px 3px;
 }
 
+.sign-up-login{
+  color: rgb(255, 98, 0);
+}
+
+#light .sign-up-login{
+  color: rgb(255, 255, 255);
+}
+
 #light .form-label {
   color: rgb(0, 0, 0);
 }
@@ -82,7 +128,11 @@ label{
 #dark .form-label {
   color: rgb(255, 255, 255);
 }
-  
+
+.login-text{
+  margin-top: 10px;
+}
+
 #dark .login-text {
   color:rgb(255, 255, 255);
   font-size: medium;
@@ -95,7 +145,120 @@ label{
 .error{
   color: red;
 }
+
+.login-icons{
+  margin-top: 10px;
+}
 /* End of Login*/
+
+/* Home Page */
+
+.home-page-background {
+  position: relative;
+  width: 100%;
+  height: calc(50vh - 100px);
+  /* Replace image with the BVT picture from figma */
+  background-image: url('images/Temp.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.home-page-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(50vh - 100px);
+  background-color: rgba(255, 255, 255, 0.4);
+  z-index: -1;
+}
+
+#dark .home-page-background::before {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+.home-search-n-btn {
+  margin: 25px;
+
+}
+
+.home-search-bar {
+  width: 950px;
+  border: none;
+  height: 35px;
+  border-radius: 5px;
+}
+.home-search-button {
+  background-color: #ccc;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -200px;
+  height: 750px;
+}
+
+.carousel-row {
+  display: grid;
+  grid-template: auto auto/ repeat(3, 2fr);
+  gap: 150px;
+  justify-content: center;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: 175px;
+  margin-right: 55px;
+  margin-left: 55px;
+}
+
+.carousel-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  color:white;
+  font-size: 55px;
+  background-color: rgba(0, 0, 0, 0.096);
+}
+
+/* End of Home Page */
+
+
+/* Avatar Bubbles */
+
+.avatar-bubble {
+  width: 150px;
+  height: 150px;
+  margin-top: 15px;
+}
+
+.avatar-for-home {
+  width: 11rem;
+  border-radius: 100px;
+}
+
+.avatar-text {
+  text-align: center;
+  margin: 55px;
+ 
+}
+
+/* End of Bubbles */
+
 
 /* Start of Navbar */
 
@@ -124,8 +287,6 @@ label{
   display: flex;
 }
 
-.home-button-text {
-
 #dark .home-button-text {
   font-family: serif;
   font-size: 35px;
@@ -139,11 +300,6 @@ label{
   color: #EEF4ED;
   text-shadow: black 4px  3px 3px;
   padding-bottom: 15px;
-}
-
-
-#dark .home-button-text {
-  text-shadow: black -4px  3px 3px;
 }
 
 @media (max-width: 650px) {
@@ -173,6 +329,24 @@ label{
 
 .sideMenu:hover {
   color:#f9f9f9
+}
+
+#light .light-dark-btn{
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 1000px;
+  padding: 8px;
+
+  background-color: white;
+}
+
+#dark .light-dark-btn{
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 1000px;
+  padding: 8px;
+  color: #B3A125;
+  background-color: #2a2e30;
 }
 
 .toggler {
@@ -753,4 +927,3 @@ label{
 }
 
 /* End of Register Page */
-}
