@@ -1,6 +1,8 @@
 export default [
     {
         id: 1,
+        username: "John",
+        profileUrl: "profile/john",
         firstName: "John",
         lastName: "Doe",
         email: "johndoe@example.com",
@@ -64,8 +66,8 @@ export default [
       ,
       {
         id: 4,
-        firstName: "David",
-        lastName: "Johnson",
+        firstName: "number",
+        lastName: "4",
         email: "davidjohnson@example.com",
         degree: "Bachelor of Arts",
         additionalInfo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -86,8 +88,8 @@ export default [
       ,
       {
         id: 5,
-        firstName: "David",
-        lastName: "Johnson",
+        firstName: "yes",
+        lastName: "no",
         email: "davidjohnson@example.com",
         degree: "Bachelor of Arts",
         additionalInfo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -108,8 +110,8 @@ export default [
       ,
       {
         id: 6,
-        firstName: "David",
-        lastName: "Johnson",
+        firstName: "maybe",
+        lastName: "idk",
         email: "davidjohnson@example.com",
         degree: "Bachelor of Arts",
         additionalInfo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -130,8 +132,8 @@ export default [
       ,
       {
         id: 7,
-        firstName: "David",
-        lastName: "Johnson",
+        firstName: "can",
+        lastName: "you",
         email: "davidjohnson@example.com",
         degree: "Bachelor of Arts",
         additionalInfo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -152,8 +154,8 @@ export default [
       ,
       {
         id: 8,
-        firstName: "David",
-        lastName: "Johnson",
+        firstName: "repeat",
+        lastName: "the",
         email: "davidjohnson@example.com",
         degree: "Bachelor of Arts",
         additionalInfo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -174,8 +176,8 @@ export default [
       ,
       {
         id: 9,
-        firstName: "David",
-        lastName: "Johnson",
+        firstName: "question",
+        lastName: "...",
         email: "davidjohnson@example.com",
         degree: "Bachelor of Arts",
         additionalInfo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -196,8 +198,8 @@ export default [
       ,
       {
         id: 10,
-        firstName: "David",
-        lastName: "Johnson",
+        firstName: "wow",
+        lastName: "thats",
         email: "davidjohnson@example.com",
         degree: "Bachelor of Arts",
         additionalInfo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -218,8 +220,8 @@ export default [
       ,
       {
         id: 11,
-        firstName: "David",
-        lastName: "Johnson",
+        firstName: "crazy",
+        lastName: "dude",
         email: "davidjohnson@example.com",
         degree: "Bachelor of Arts",
         additionalInfo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -240,8 +242,8 @@ export default [
       ,
       {
         id: 12,
-        firstName: "David",
-        lastName: "Johnson",
+        firstName: "last",
+        lastName: "but",
         email: "davidjohnson@example.com",
         degree: "Bachelor of Arts",
         additionalInfo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -262,8 +264,8 @@ export default [
       ,
       {
         id: 13,
-        firstName: "David",
-        lastName: "Johnson",
+        firstName: "not",
+        lastName: "least",
         email: "davidjohnson@example.com",
         degree: "Bachelor of Arts",
         additionalInfo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",

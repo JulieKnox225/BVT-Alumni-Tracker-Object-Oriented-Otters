@@ -21,6 +21,7 @@
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 76px);
+  overflow-y: auto;
   
 }
 
@@ -54,7 +55,7 @@ label{
   margin-top:2px;
 }
 
- #light .login-card{
+#light .login-card{
   background: linear-gradient(180deg, hsla(0, 0%, 100%, 1) 0%, hsla(9, 100%, 60%, 1) 100%);
   color: #FF5133;
 }
@@ -63,11 +64,17 @@ label{
   background: linear-gradient(180deg, hsla(16, 100%, 54%, 1) 0%, rgb(49, 47, 47) 100%);
   color: rgb(255, 255, 255);
 }
+
 #light .input-text{
   color: black;
 }
+
 #dark .input-text{
   color: white;
+}
+
+.fp-login{
+  margin-top: 10px;
 }
 
 #dark .fp-login{
@@ -76,17 +83,6 @@ label{
 
 #light .fp-login{
   color: black;
-}
-
-.login-text{
-  margin-top: 10px;
-}
-
-#light .login-text{
-  color: black;
-}
-#dark .login-text{
-  color: white;
 }
 
 
@@ -124,14 +120,31 @@ label{
 #light .sign-up-login{
   color: rgb(255, 255, 255);
 }
-.fp-login{
+
+#light .form-label {
+  color: rgb(0, 0, 0);
+}
+
+#dark .form-label {
+  color: rgb(255, 255, 255);
+}
+
+.login-text{
   margin-top: 10px;
+}
+
+#dark .login-text {
+  color:rgb(255, 255, 255);
+  font-size: medium;
+}
+#light .login-text {
+  color:rgb(2, 2, 2);
+  font-size: medium;
 }
 
 .error{
   color: red;
 }
-
 
 .login-icons{
   margin-top: 10px;
@@ -224,6 +237,7 @@ label{
 
 /* End of Home Page */
 
+
 /* Avatar Bubbles */
 
 .avatar-bubble {
@@ -246,6 +260,7 @@ label{
 /* End of Bubbles */
 
 
+<<<<<<< HEAD
 /* Login Page*/
 .login-container{
   display: flex;
@@ -306,6 +321,8 @@ label{
 }
 /* End of Login*/
 
+=======
+>>>>>>> 7f87b42d021141bfb17ed3d4ec6fd45eddd4315e
 /* Start of Navbar */
 
 #light .drop {
@@ -333,7 +350,6 @@ label{
   display: flex;
 }
 
-
 #dark .home-button-text {
   font-family: serif;
   font-size: 35px;
@@ -346,8 +362,20 @@ label{
   font-size: 35px;
   color: #EEF4ED;
   text-shadow: black 4px  3px 3px;
+  padding-bottom: 15px;
 }
 
+@media (max-width: 650px) {
+  .home-button-text {
+    font-size: 30px;
+   
+  }
+}
+
+.home-button-text:hover {
+  color:#CC0000;
+  text-shadow: black 4px 3px 3px;
+}
 
 .login--text {
   font-weight: 500;
@@ -366,7 +394,6 @@ label{
 .sideMenu:hover {
   color:#f9f9f9
 }
-
 
 #light .light-dark-btn{
   margin-left: 5px;
@@ -419,7 +446,6 @@ label{
   border-radius: 50%;
 
 }
-
 /* End of Navbar */
 
 /* Toggle Theme Nav */
@@ -451,7 +477,7 @@ label{
 .footer {
   padding: 25px;
   color: white;
-  background-color: #2a2b2c;
+  background-color: #FF3B1F;
 }
 
 /* Footer end */
@@ -965,4 +991,3 @@ label{
 }
 
 /* End of Register Page */
-

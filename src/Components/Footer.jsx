@@ -1,3 +1,5 @@
+import ReactSwitch from "react-switch"
+
 export const Footer = () => {
   return (
   <div className="footer">

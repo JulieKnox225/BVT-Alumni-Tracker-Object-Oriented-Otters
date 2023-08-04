@@ -12,7 +12,7 @@ export const ProfileBubble = (props) => {
     
     <div className='avatar-bubble'>
       <img className="avatar-for-home" src={avatar}  />
-      <p> {firstName} {lastName}</p>
+      <p className='avatar-names'> {firstName} {lastName}</p>
     </div>
      
     </>
