@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 import axios from '../api/axios';
 import { MDBSpinner } from 'mdb-react-ui-kit';
 import useAuth from '../hooks/useAuth';
+import { Link } from 'react-router-dom';
 import {
   MDBBtn,
   MDBContainer,
@@ -59,12 +60,12 @@ export const Login = () => {
   return (
     <MDBContainer fluid className='login-container'>
       <form onSubmit={e => handleSubmit(e)}>
-        <MDBRow className='login-d-flex justify-content-center align-items-center h-100' style={{borderRadius: '1rem', maxWidth: '400px'}} onSubmit={e => handleSubmit(e)}>
-          { isLoading && 
-            <MDBSpinner role = "status">
-              <span className='visually-hidden'>Loading...</span>
-            </MDBSpinner> 
-          }
+        <MDBRow className='d-flex justify-content-center align-items-center h-100' style={{borderRadius: '1rem', maxWidth: '400px'}}>
+        { isLoading && 
+          <MDBSpinner role = "status">
+            <span className='visually-hidden'>Loading...</span> 
+          </MDBSpinner> 
+        }
     
           { isError && 
             <p className = "error">{error.response?.data?.message || error.message }</p> 
@@ -73,9 +74,8 @@ export const Login = () => {
           <MDBCol col='12'>
             <MDBCard className='login-card' style={{borderRadius: '1rem', maxWidth: '400px'}}>
               <MDBCardBody className='p-5 d-flex flex-column align-items-center mx-auto w-100'>
-          
-                <h2 className="title-login">Login</h2>
-                {/* <p className=" mb-5">Please enter your login and password!</p> */}
+                <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
+                <p className="text-white-50 mb-5">Please enter your login and password!</p>
                 {/* type was email but changed to text for debug */}
                 <MDBInput 
                   wrapperClass='mb-4 mx-5 w-100' 
@@ -98,30 +98,34 @@ export const Login = () => {
                   value={input.password} 
                   onChange={e => setInput(prev => ({...prev, password: e.target.value}))}
                 />
-
-                <p><a className="fp-login" href="./forgotPassword">Forgot password?</a></p>
                 <MDBBtn outline className='mx-2 px-5' color='white' size='lg'>
                   Login
                 </MDBBtn>
 
-                <div className='d-flex flex-row mt-3 mb-5 '>
-                  <a href = "https://www.google.com/"><MDBBtn tag='a' color='none' className='m-3' style={{ color: 'green' }}>
+                <div className='login-icons'>
+                  <a href = "https://www.google.com/">
+                    <MDBBtn tag='a' color='none' className='m-3' style={{ color: 'green' }}>
                       <MDBIcon fab icon='google' size="lg"/>
-                    </MDBBtn></a>
+                    </MDBBtn>
+                  </a>
 
-                  <a href ="https://www.facebook.com/"><MDBBtn tag='a' color='none' className='m-3' style={{ color: '#4040ff' }}>
-                    <MDBIcon fab icon='facebook-f' size="lg"/>
-                  </MDBBtn></a>
+                  <a href ="https://www.facebook.com/">
+                    <MDBBtn tag='a' color='none' className='m-3' style={{ color: '#4040ff' }}>
+                      <MDBIcon fab icon='facebook-f' size="lg"/>
+                    </MDBBtn>
+                  </a>
 
-                  <a href='https://www.linkedin.com/feed'><MDBBtn tag='a' color='none' className='m-3' style={{ color: '#0A66C2' }}>
-                    <MDBIcon fab icon='linkedin' size="lg"/>
-                  </MDBBtn></a>
+                  <a href='https://www.linkedin.com/feed'>
+                    <MDBBtn tag='a' color='none' className='m-3' style={{ color: '#0A66C2' }}>
+                      <MDBIcon fab icon='linkedin' size="lg"/>
+                    </MDBBtn>
+                  </a>
                 </div>
 
                 <div>
-                  <p className="login-text">Don&apos;t have an account? <a href="./register" className="sign-up-login">Sign Up</a></p>
+                  <p className="login-text">Don&apos;t have an account? <Link to = '/register' className="sign-up-login">Sign Up</Link></p>
+                  <p><Link  to = '/forgotPassword' className="fp-login">Forgot password?</Link></p>
                 </div>
-                
               </MDBCardBody>
             </MDBCard>
           </MDBCol>
@@ -130,4 +134,3 @@ export const Login = () => {
     </MDBContainer>
   );
 }
-

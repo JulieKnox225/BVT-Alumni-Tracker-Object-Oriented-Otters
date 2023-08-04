@@ -11,81 +11,80 @@ const USER_REGEX = /^[a-zA-Z][a-zA-z0-9-_]{3,23}/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 export const Register = () => {
-  //Sets input field focus
-  const userRef = useRef();
+//Sets input field focus
+const userRef = useRef();
 
-  //Sets error message focus
-  const errorRef = useRef();
-  
-  const [formData, setFormData] = useState(
-    {
-      user: '',
-      password: ''
-    }
-  );
+//Sets error message focus
+const errorRef = useRef();
 
-  const [enabled, setEnabled] = useState(false);
+const [formData, setFormData] = useState(
+  {
+    user: '',
+    password: ''
+  }
+);
 
-  const [matchPassword, setMatchPassword] = useState('');
+const [enabled, setEnabled] = useState(false);
 
-  //Boolean that shows if the username and password pass the regex and if the password confirmation matches
-  const [validName, setValidName] = useState(false);
-  const [validPassword, setValidPassword] = useState(false);
-  const [validMatch, setValidMatch] = useState(false);
+const [matchPassword, setMatchPassword] = useState('');
 
-  //Sets the focus to control if error message needs to disappear
-  const [userFocus, setUserFocus] = useState(false);
-  const [passwordFocus, setPasswordFocus] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
+//Boolean that shows if the username and password pass the regex and if the password confirmation matches
+const [validName, setValidName] = useState(false);
+const [validPassword, setValidPassword] = useState(false);
+const [validMatch, setValidMatch] = useState(false);
 
-  const [errorMessage, setErrorMessage] = useState('');
+//Sets the focus to control if error message needs to disappear
+const [userFocus, setUserFocus] = useState(false);
+const [passwordFocus, setPasswordFocus] = useState(false);
+const [matchFocus, setMatchFocus] = useState(false);
 
-  const { data, isLoading, isError, error } = useQuery('createAccount', fetchRegister, { enabled });
+const [errorMessage, setErrorMessage] = useState('');
 
-  //Sets the focus to username input upon mounting
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
+const { data, isLoading, isError, error } = useQuery('createAccount', fetchRegister, { enabled });
 
-  //Checks if username is valid based on regex upon input change
-  useEffect(() => {
-    setValidName(USER_REGEX.test(formData.user));
-  }, [formData.user]);
+//Sets the focus to username input upon mounting
+useEffect(() => {
+  userRef.current.focus();
+}, []);
 
-  //Checks is password and password confirmation matches and pass regex upon input change
-  useEffect(() => {
-    setValidPassword(PWD_REGEX.test(formData.password));
-    setValidMatch(formData.password === matchPassword);
-  }, [formData.password, matchPassword]);
+//Checks if username is valid based on regex upon input change
+useEffect(() => {
+  setValidName(USER_REGEX.test(formData.user));
+}, [formData.user]);
 
-  //Removes error message if focus changes
-  useEffect(() => {
-    setErrorMessage('');
-  }, [formData.user, formData.password, matchFocus]);
-  
+//Checks is password and password confirmation matches and pass regex upon input change
+useEffect(() => {
+  setValidPassword(PWD_REGEX.test(formData.password));
+  setValidMatch(formData.password === matchPassword);
+}, [formData.password, matchPassword]);
 
-  function fetchRegister() {
-    setEnabled(false);
+//Removes error message if focus changes
+useEffect(() => {
+  setErrorMessage('');
+}, [formData.user, formData.password, matchFocus]);
 
-    return axios.post('/user', formData);
+
+function fetchRegister() {
+  setEnabled(false);
+
+  return axios.post('/user', formData);
+}
+
+async function handleSubmit(e) {
+  e.preventDefault();
+
+  //Checks if still valid due to button disabling being hackable
+  if(!USER_REGEX.test(formData.user) || !PWD_REGEX.test(formData.password)) {
+    setErrorMessage("Invalid Entry.");
+    return;
   }
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+  setEnabled(true);
+}
 
-    //Checks if still valid due to button disabling being hackable
-    if(!USER_REGEX.test(formData.user) || !PWD_REGEX.test(formData.password)) {
-      setErrorMessage("Invalid Entry.");
-      return;
-    }
-
-    setEnabled(true);
-  }
-
-  if(data) {
-    <Navigate to={'/login'} />
-  }
-
+if(data) {
+  <Navigate to={'/login'} />
+}
   return (
     <div className="register-body">
       <p ref={errorRef} className={errorMessage ? "register-errmsg" : "register-offscreen"} aria-live='assertive'>{errorMessage}</p>
@@ -132,9 +131,7 @@ export const Register = () => {
               Letters, numbers, underscores, and hyphens allowed.
             </p>
           </div>
-
           
-
           <div className="email">
             <label className="form__label" htmlFor="email">
               Email{" "}
