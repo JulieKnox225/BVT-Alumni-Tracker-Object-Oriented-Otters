@@ -840,6 +840,11 @@ label{
 /* end of Profile edit */
 
 /* Password Reset*/
+.h1-dev{
+  color: red;
+  font-weight: bold;
+  background-color: white;
+}
 .h1-fpp{
   color: white;
   margin: 50px;
@@ -868,10 +873,14 @@ label{
   color: rgb(0, 0, 0);
 }
 .forgot-pw-submit {
-  background-color: #4c00fd;
-  margin-bottom: 50px;
+  background-color: #FF7A45;
+  margin-bottom: 10px;
 
 }
+.forgot-pw-submit:hover{
+  background-color: rgb(172, 172, 172);
+}
+
 
 /* End of password reset */
 
