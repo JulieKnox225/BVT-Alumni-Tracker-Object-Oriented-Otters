@@ -27,23 +27,7 @@ export const Home = () => {
   const handleBackClick = () => {
     setStartIndex(startIndex - 6);
   }
-
-  useEffect(() => {
-    setBvtData(FakeData)
-  }, []);
-
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetch('/api/alumni/search?search=$(search)&type=fullName')
-    .then((response) => response.json())
-    .then((data) => {
-      setBvtData(data);
-
-    })
-    .catch((error) => console.error('Error fetching search results:', error));
-
-};
+  
   function fetchAllAlumni() {
     return axios.get('/');
   };
