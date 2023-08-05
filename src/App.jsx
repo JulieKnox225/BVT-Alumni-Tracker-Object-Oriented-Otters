@@ -13,18 +13,18 @@ import ReactSwitch from 'react-switch';
 import { EditProfile } from './Components/EditProfile';
 import useAuth from './hooks/useAuth';
 
-export const ThemeContext = createContext(null);
+export const ThemeContext = createContext();
 
-function App() {
-  const [theme, setTheme] = useState("dark")
+function App() {   
+  const [theme, setTheme] = useState('dark')
   const { auth, setAuth } = useAuth();
-
+ 
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
   };
+
   return (
     <Router>
-
       <ThemeContext.Provider value={{theme, toggleTheme}}> {/* Toggle Theme  */}
         <div className='site--container' id = {theme}>
           <Navbar />
@@ -32,7 +32,7 @@ function App() {
           <Routes>
               <Route path='/' element ={ <Home />} />
               {/* <<<<<<< Updated upstream */}
-              <Route path='/login' element={ <Login/> } />
+              <Route path='/login' element={<Login/> }/>
               <Route path='/addEntryPage' element ={ <AddEntryPage />} />
               <Route path='/searchPage' element= { <SearchPage /> } />
               <Route path ='/forgotPassword' element = {<ForgotPassword/>}/>
@@ -40,8 +40,9 @@ function App() {
               <Route path='/profile' element= {<Profile/> } />
               <Route path='/editProfile' element= {<EditProfile />} />
           </Routes>
+        
         </div>
-        <Footer />
+          <Footer />
       </ThemeContext.Provider>
     </Router>
   )

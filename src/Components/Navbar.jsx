@@ -1,3 +1,4 @@
+
 import Dropdown from 'react-bootstrap/Dropdown';
 import  { useContext } from 'react';
 import { ThemeContext } from '../App';
@@ -7,6 +8,8 @@ export const Navbar = () => {
   
   return (
    <div>
+    {/* <ThemeContext.Provider value={{theme, toggleTheme}}>  */}
+   <div className='App'>
      <nav className='nav-home'>
       <Dropdown>
        <Dropdown.Toggle className='drop' variant='secondary' id="dropdown-button-dark-example1">
@@ -39,7 +42,9 @@ export const Navbar = () => {
        <p className="login--text">Login</p>
       </a>
       </div>
+// ThemeContext.Provider ? 
     </nav>
    </div>
+
  )
 }

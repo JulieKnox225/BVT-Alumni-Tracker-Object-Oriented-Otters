@@ -1,6 +1,4 @@
-// import Form from 'react-bootstrap/Form';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-// import { Button } from 'react-bootstrap';
 import {
   MDBBtn,
   MDBContainer,
@@ -27,6 +25,7 @@ export const ForgotPassword = () => {
               </br>
               and we&apos;ll send a link to reset your password.</p>
               <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Email address' id='formControlLg' type='email' size="lg"/>
+
               <p className="small mb-3 pb-lg-2"><a className="text-white-50" href="#!">Back to sign in</a></p>
                 <p>or</p>
               <div className='d-flex flex-row mt-3 mb-5'>
@@ -41,7 +40,7 @@ export const ForgotPassword = () => {
                 </MDBBtn>
               </div>
               <div>
-                <p className="mb-0">Don&apos;t have an account? <a href="#!" className="text-white-50 fw-bold">Sign Up</a></p>
+                <p className="mb-0">Don&apos;t have an account? <Link to = "/register" className="text-white-50 fw-bold">Sign Up</Link></p>
               </div>
             </MDBCardBody>
           </MDBCard>
@@ -50,18 +49,3 @@ export const ForgotPassword = () => {
        </MDBContainer>
  )
 }
-{/* <Form>
-<h1 className='h1-fpp'>Password Reset</h1>
-<p className='p-fpp'>Enter the email address associated with your account,<br>
-</br>
-   and we&apos;ll send a link to reset your password.
-</p>
-<Form.Group  className="fp-email" controlId="formBasicEmail">
-   <Form.Label className = "form-label">Email address</Form.Label>
-   <Form.Control type="email" placeholder="Enter email" />
-   <Form.Text className='p-text'>
-     Well never share your email with anyone else.
-   </Form.Text>
- </Form.Group>
- <Button type='submit' className='forgot-pw-submit'>Submit</Button>
-</Form> */}
