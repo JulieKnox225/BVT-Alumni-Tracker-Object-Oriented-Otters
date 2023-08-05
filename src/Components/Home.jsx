@@ -28,24 +28,6 @@ export const Home = () => {
     setStartIndex(startIndex - 6);
   }
 
-<<<<<<< HEAD
-  useEffect(() => {
-    setBvtData(FakeData)
-  }, []);
-
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetch('/api/alumni/search?search=$(search)&type=fullName')
-    .then((response) => response.json())
-    .then((data) => {
-      setBvtData(data);
-
-    })
-    .catch((error) => console.error('Error fetching search results:', error));
-
-};
-=======
   function fetchAllAlumni() {
     return axios.get('/');
   };
@@ -69,7 +51,6 @@ export const Home = () => {
       setBvtData(data?.data?.data);
     }
   }, [data]);
->>>>>>> 7f87b42d021141bfb17ed3d4ec6fd45eddd4315e
 
 return (
   <>
