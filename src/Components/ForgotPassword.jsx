@@ -1,5 +1,4 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { Link } from 'react-router-dom'
 import {
   MDBBtn,
   MDBContainer,
@@ -26,7 +25,8 @@ export const ForgotPassword = () => {
               </br>
               and we&apos;ll send a link to reset your password.</p>
               <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Email address' id='formControlLg' type='email' size="lg"/>
-              <p className="small mb-3 pb-lg-2"><Link to = "/login" className="text-white-50" >Back to sign in</Link></p>
+
+              <p className="small mb-3 pb-lg-2"><a className="text-white-50" href="#!">Back to sign in</a></p>
                 <p>or</p>
               <div className='d-flex flex-row mt-3 mb-5'>
                 <MDBBtn tag='a' color='none' className='m-3' style={{ color: 'white' }}>
@@ -49,18 +49,3 @@ export const ForgotPassword = () => {
        </MDBContainer>
  )
 }
-{/* <Form>
-<h1 className='h1-fpp'>Password Reset</h1>
-<p className='p-fpp'>Enter the email address associated with your account,<br>
-</br>
-   and we&apos;ll send a link to reset your password.
-</p>
-<Form.Group  className="fp-email" controlId="formBasicEmail">
-   <Form.Label className = "form-label">Email address</Form.Label>
-   <Form.Control type="email" placeholder="Enter email" />
-   <Form.Text className='p-text'>
-     Well never share your email with anyone else.
-   </Form.Text>
- </Form.Group>
- <Button type='submit' className='forgot-pw-submit'>Submit</Button>
-</Form> */}
