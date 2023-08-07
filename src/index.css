@@ -925,7 +925,6 @@ label{
   font-size: 20px;
 }
 
-
 .sign-up{
   color:#ff7300;
   font-size: larger;
@@ -934,5 +933,43 @@ label{
   
   
 }
+
+.register-errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.register-offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.register-valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.register-hide {
+  display: none;
+}
+
+.register-invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.register-instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+
 
 /* End of Register Page */

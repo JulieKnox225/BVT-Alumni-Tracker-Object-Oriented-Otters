@@ -22,7 +22,11 @@ const createUser = async (req, res) => {
 
         res.status(200).json({success: true, message: `User created!`, data: null});
     } catch (error) {
-        res.status(400).json({success: false, message: error, data: null});
+        if(error?.errno == 1062) {
+            res.status(400).json({success: false, message: 'Username already taken!', data: null});
+        } else {
+            res.status(400).json({success: false, message: error, data: null});
+        }
     }
 };
 
