@@ -1,6 +1,5 @@
-// import Form from 'react-bootstrap/Form';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-// import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 import {
   MDBBtn,
   MDBContainer,
