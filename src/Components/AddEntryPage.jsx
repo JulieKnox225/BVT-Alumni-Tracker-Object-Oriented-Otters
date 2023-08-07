@@ -2,6 +2,7 @@ import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import { useEffect, useState } from 'react';
 import { MDBSpinner } from 'mdb-react-ui-kit';
 import { useQuery } from 'react-query';
+import { Navigate } from 'react-router';
 
 export const AddEntryPage = () => {  
   //Replacing: additionalInfo -> projects
@@ -64,6 +65,10 @@ export const AddEntryPage = () => {
       skills: ''
     });
   }, [data, error]);
+
+  if(data) {
+    return <Navigate to={'/profile'} />;
+  }
 
   return (
 
