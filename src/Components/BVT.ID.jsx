@@ -10,11 +10,12 @@ export const IDCards = (props) => {
     firstName, 
     lastName, 
     email, 
+    phoneNumber,
     degree, 
-    additionalInfo, 
-    experience, 
     achievements, 
-    skills
+    projects,
+    skills,
+    recommendations
   } = props
 
   //Modal state
