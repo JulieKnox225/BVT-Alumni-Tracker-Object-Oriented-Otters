@@ -4,6 +4,7 @@ import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import { MDBSpinner } from 'mdb-react-ui-kit';
 import { MDBContainer, MDBRow } from 'mdb-react-ui-kit';
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 
 
 export const Profile = () => {
@@ -13,7 +14,7 @@ export const Profile = () => {
     const { data, isLoading, isError, error } = useQuery('fetchProfile', fetchProfile);
 
     function fetchProfile() {
-        return axiosPrivate.get('/');
+        return axiosPrivate.get(`/search?search=id&type=id`);
     }
 
   return (
@@ -27,9 +28,11 @@ export const Profile = () => {
                 </MDBRow>
             </MDBContainer>
         }
-
-        { isError && 
-            <p className = "error">{error.message || error.response.data.message || 'Unknown Error'}</p> 
+        { isError &&
+            <p>{ error?.response?.data?.message == 'No records found!' 
+                ? <p>No records found! Please add profile <Link to={'/addEntryPage'}>here</Link></p> 
+                : error?.response?.data?.message || error?.message }
+            </p>
         }
 
         {data &&
@@ -37,16 +40,16 @@ export const Profile = () => {
                 <Row >
                     <Col>
                         <div className="profile-pic">
-                            <h4 className="profile-name">{data.data.data.firstName} {data.data.data.lastname}</h4>
+                            <h4 className="profile-name">{data.data.data[0].firstName} {data.data.data[0].lastname}</h4>
                             <img className="default-profile-edit-pic" src="images/pic.png" alt="Default profile picture" />
                         </div>
-                            <h4 className="profile-email">{data.data.data.email}</h4>
+                            <h4 className="profile-email">{data.data.data[0].email}</h4>
                         <div className="contact-header">
                             Contact Info
                         </div>
                         <div className="contact-container">
                             <MDBIcon far icon="envelope" />
-                            <MDBIcon fas icon="phone" /> {data.data.data.phoneNumber}
+                            <MDBIcon fas icon="phone" /> {data.data.data[0].phoneNumber}
                             <MDBIcon fab icon="linkedin" />
                         </div>
                     </Col>
@@ -55,33 +58,33 @@ export const Profile = () => {
                             About me 
                         </div>
                         <div className="about-me-text">
-                            {typeof data.data.data.skills == 'object' ?
-                                data.data.data.skills.map((skill, index) => (
+                            {typeof data.data.data[0].skills == 'object' ?
+                                data.data.data[0].skills.map((skill, index) => (
                                     <div className="profile-achievements" key={index}>{skill}</div>
                                 )) :
-                                data.data.data.skills
+                                data.data.data[0].skills
                             }
                         </div>
                         <div className="projects-header"> 
                             Projects 
                         </div>
                         <div className="projects-text">
-                            {typeof data.data.data.projects == 'object' ?
-                                data.data.data.projects.map((project, index) => (
+                            {typeof data.data.data[0].projects == 'object' ?
+                                data.data.data[0].projects.map((project, index) => (
                                     <div className="profile-achievements" key={index}>{project}</div>
                                 )) : 
-                                data.data.data.projects
+                                data.data.data[0].projects
                             }
                         </div>
                         <div className="achievements-header"> 
                             Bay Valley Tech
                         </div>
                         <div className="achievements-text">
-                            {typeof data.data.data.achievements == 'object' ? 
-                                data.data.data.achievements.map((achievement, index) => (
+                            {typeof data.data.data[0].achievements == 'object' ? 
+                                data.data.data[0].achievements.map((achievement, index) => (
                                     <div className="profile-achievements" key={index}>{achievement}</div>
                                 )) :
-                                data.data.data.achievements
+                                data.data.data[0].achievements
                             }
                         </div>
                         
