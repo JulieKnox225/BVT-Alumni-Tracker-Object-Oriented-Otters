@@ -10,11 +10,12 @@ export const IDCards = (props) => {
     firstName, 
     lastName, 
     email, 
+    phoneNumber,
     degree, 
-    additionalInfo, 
-    experience, 
     achievements, 
-    skills
+    projects,
+    skills,
+    recommendations
   } = props
 
   //Modal state
@@ -30,6 +31,7 @@ export const IDCards = (props) => {
         <div className='card--stats'>
             <p className='id--fullName'>{firstName} {lastName}</p>
             <p>{email}</p>
+            <p>{phoneNumber}</p>
             <Button style={{color: 'white', backgroundColor: '#E21304'}}
               variant='link' 
               onClick={() => setSmShow(true)}
@@ -57,35 +59,31 @@ export const IDCards = (props) => {
                 <br/>
                 {degree}
                 </p>
-                {additionalInfo && 
+                {achievements && 
                   (
                   <div className="id-text">
-                  <strong>Additional Information:</strong> 
-                  <p>{additionalInfo}</p>
+                  <strong>Achievements:</strong> 
+                  <p>{achievements}</p>
                   </div>
                   )
                 }
               <p>
-                <strong>Experience: </strong>
+                <strong>Projects: </strong>
                 <br/>
-                {experience}
-                </p>
+                {projects}
+              </p>
               <p>
-                <strong>Achievements:</strong>
-              </p>
-                <ul className="id-text">
-                  {achievements.map((achievement, index) => (
-                    <li key={index}>{achievement}</li>
-                  ))}
-                </ul>
-                <p>
                 <strong>Skills:</strong>
+                <br />
+                {skills}
               </p>
-                <ul className="id-text">
-                  {skills.map((skill, index) => (
-                    <li key={index}>{skill}</li>
-                  ))}
-                </ul>
+              {recommendations && 
+                <p>
+                  <strong>Recommendations:</strong>
+                  <br />
+                  {recommendations}
+                </p>
+              }
             </ModalBody>
           </Modal>
         </div>

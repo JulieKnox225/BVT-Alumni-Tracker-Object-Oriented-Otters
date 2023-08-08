@@ -2,20 +2,41 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
 // import { Button } from 'react-bootstrap';
 import {
-  MDBBtn,
+ 
   MDBContainer,
   MDBRow,
   MDBCol,
   MDBCard,
   MDBCardBody,
   MDBInput,
-  MDBIcon
+  
 }
 from 'mdb-react-ui-kit';
 
 export const ForgotPassword = () => {
 
  return(
+    
+    // <div>
+    //   <h1 className='h1-dev'>Forgot Password Page Is Still In Development</h1>
+    // <h1 className='h1-fpp'>Password Reset</h1>
+    // <p className='p-fpp'>Enter the email address associated with your account,<br>
+    // </br>
+    //     and we&apos;ll send a link to reset your password.
+    // </p>
+    // <Form onSubmit={(e) => {e.preventDefault()
+    //   console.log('sent email')}}>
+    // <Form.Group  className="fp-email" controlId="formBasicEmail">
+    //     <Form.Label className = "form-label">Email address</Form.Label>
+    //     <Form.Control type="email" placeholder="Enter email" />
+    //     <Form.Text className='p-text'>
+    //       We&apos;ll never share your email with anyone else.
+    //     </Form.Text>
+    //   </Form.Group>
+    //   <Button type='submit' className='forgot-pw-submit'>Submit</Button>
+    // </Form>
+    // </div>
+    
   <MDBContainer onSubmit={(e) => {e.preventDefault()
     console.log('sent email')}} fluid>
   <MDBRow className='d-flex justify-content-center align-items-center h-100'>
@@ -29,17 +50,6 @@ export const ForgotPassword = () => {
               <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Email address' id='formControlLg' type='email' size="lg"/>
               <p className="small mb-3 pb-lg-2"><a className="text-white-50" href="#!">Back to sign in</a></p>
                 <p>or</p>
-              <div className='d-flex flex-row mt-3 mb-5'>
-                <MDBBtn tag='a' color='none' className='m-3' style={{ color: 'white' }}>
-                  <MDBIcon fab icon='facebook-f' size="lg"/>
-                </MDBBtn>
-                <MDBBtn tag='a' color='none' className='m-3' style={{ color: 'white' }}>
-                  <MDBIcon fab icon='twitter' size="lg"/>
-                </MDBBtn>
-                <MDBBtn tag='a' color='none' className='m-3' style={{ color: 'white' }}>
-                  <MDBIcon fab icon='google' size="lg"/>
-                </MDBBtn>
-              </div>
               <div>
                 <p className="mb-0">Don&apos;t have an account? <a href="#!" className="text-white-50 fw-bold">Sign Up</a></p>
               </div>
@@ -50,18 +60,3 @@ export const ForgotPassword = () => {
        </MDBContainer>
  )
 }
-{/* <Form>
-<h1 className='h1-fpp'>Password Reset</h1>
-<p className='p-fpp'>Enter the email address associated with your account,<br>
-</br>
-   and we&apos;ll send a link to reset your password.
-</p>
-<Form.Group  className="fp-email" controlId="formBasicEmail">
-   <Form.Label className = "form-label">Email address</Form.Label>
-   <Form.Control type="email" placeholder="Enter email" />
-   <Form.Text className='p-text'>
-     Well never share your email with anyone else.
-   </Form.Text>
- </Form.Group>
- <Button type='submit' className='forgot-pw-submit'>Submit</Button>
-</Form> */}
