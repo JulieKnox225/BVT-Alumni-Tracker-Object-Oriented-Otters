@@ -83,7 +83,7 @@ async function handleSubmit(e) {
 }
 
 if(data) {
-  <Navigate to={'/login'} />
+  return <Navigate to={'/login'} />
 }
   return (
     <div className="register-body">
@@ -97,11 +97,11 @@ if(data) {
             </MDBSpinner> 
           }
           { isError && 
-            <p className = "error">{error.response.data.message}</p> 
+            <p className = "error">{ error.response.data.message?.message?.message || error.response.data.message }</p> 
           }
           <div className="username">
             <label className="form__label" htmlFor="userName">
-              UserName{" "}
+              UserName
               <span className={validName ? "register-valid" : "register-hide"}>
                 <i className="fa-solid fa-check"></i>
               </span>
@@ -185,10 +185,10 @@ if(data) {
           <div className="confirm-password">
             <label className="form__label" htmlFor="confirmPassword">
               Confirm Password{" "}
-              <span className={validPassword && matchPassword ? "register-valid" : "register-hide"}>
+              <span className={validMatch && matchPassword ? "register-valid" : "register-hide"}>
                 <i className="fa-solid fa-check"></i>
               </span>
-              <span className={!validPassword || matchPassword ? "register-hide" : "register-invalid"}>
+              <span className={validMatch || !matchPassword ? "register-hide" : "register-invalid"}>
                 <i className="fa-solid fa-x"></i>
               </span>
             </label>
@@ -204,14 +204,9 @@ if(data) {
               onFocus={() => setMatchFocus(true)}
               onBlur={() => setMatchFocus(false)}
             />
-            <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
+            <p id="confirmnote" className={matchFocus && !validMatch ? 'register-instructions' : 'register-offscreen'}>
               <i className="fa-solid fa-circle-info"></i> <br />
                 Must match the first password input field.
-            </p>
-            <p className="last-sentence">
-              Password must be at least 12 characters long. Weak password will
-              be marked as invalid. Password must not be greater than 128
-              characters long.
             </p>
           </div>
         </div>

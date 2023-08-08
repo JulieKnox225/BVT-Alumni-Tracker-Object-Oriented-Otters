@@ -2,19 +2,39 @@ const searchAlumni = async (req, res) => {
     try {
         const { search, type } = req.query;
         const wordsToSearchWithLike = ['firstName', 'lastName', 'email', 'degree', 'achievements', 'projects', 'skills', 'recommendations']; // Add other searchable fields here
-
+        
         let result = [];
-        if (search && wordsToSearchWithLike.includes(type)) {
-            result = await req.db.query(`SELECT * FROM alumni WHERE ${type} LIKE '%${search}%'`);
+        if(search == 'id' && type == 'id') {
+            result = await req.db.query(
+                `SELECT a.*, u.user 
+                    FROM alumni a 
+                    JOIN users u
+                    ON a.user_id = u.id
+                    WHERE user_id = ${req.user.user};`
+            );
+        } else if (search && wordsToSearchWithLike.includes(type)) {
+            result = await req.db.query(
+                `SELECT a.*, u.user 
+                    FROM alumni a  
+                    JOIN users u
+                    ON a.user_id = u.id
+                    WHERE ${type} LIKE '%${search}%';`
+            );
         } else {
-            result = await req.db.query(`SELECT * FROM alumni WHERE ${type} = ${search}`);
+            result = await req.db.query(
+                `SELECT a.*, u.user 
+                    FROM alumni a 
+                    JOIN users u
+                    ON a.user_id = u.id
+                    WHERE ${type} = ${search};`
+            );
         }
 
-        if (result[0].length === 0) {
-            return res.status(400).send({ success: false, message: 'No records found!', data: null });
+        if (result[0].length == 0) {
+            res.status(400).send({ success: false, message: 'No records found!', data: null });
+        } else {
+            res.status(200).json({ success: true, message: `Successfully retrieved data.`, data: result[0] });
         }
-
-        res.status(200).json({ success: true, message: `Successfully retrieved data.`, data: result[0] });
     } catch (error) {
         res.status(400).send({ success: false, message: error, data: null });
     }

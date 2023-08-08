@@ -36,7 +36,7 @@ export const EditProfile = () => {
   const handleShow = () => setShow(true);
 
   function fetchProfileInfo() {
-    return axiosPrivate.get('/');
+    return axiosPrivate.get('/search?search=id&type=id');
   }
 
   function fetchEditProfile() {
@@ -64,7 +64,7 @@ export const EditProfile = () => {
 
   //Fills in the input fields with retrieved data
   useEffect(() => {
-    setFormData(profileData?.data?.data);
+    setFormData(profileData?.data?.data[0]);
   }, [profileData]);
 
   useEffect(() => {
@@ -108,17 +108,17 @@ export const EditProfile = () => {
             <div className="profile-pic-edit">
                 <img style={{marginTop: '25px'}} className="default-profile-pic" src="images/pic.png" alt="Default profile picture" />
                 {/* Not a real link, needs to be updated to some sort of modal/popup to change image */}
-                <a href="/editImage">
-                  <p className="edit-image-link">Click to change image</p>
-                </a>
+                {/* <a href="/editImage" > */}
+                  <p className="edit-image-link">Profile picture currently not available</p>
+                {/* </a> */}
             </div>
             <h4 className="e-p-pic-text">Current Profile Picture</h4>
             
             <div className="e-p-social-links">
               {/* Not a real link either, same as previous link (modal/popup) */}
-              <a href='/addmodal?'>
+              {/* <a href='/addmodal?' disabled > */}
                 Edit social Links
-              </a>
+              {/* </a> */}
               <div className="social-links-icon">
                 <MDBIcon far icon="envelope" />
                 <MDBIcon fas icon="phone" />

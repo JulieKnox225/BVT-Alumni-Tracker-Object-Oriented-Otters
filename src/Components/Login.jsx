@@ -68,7 +68,7 @@ export const Login = () => {
         }
     
           { isError && 
-            <p className = "error">{error.response?.data?.message || error.message }</p> 
+            <p className = "error">{error.response?.data?.message || error.message?.message  || error.message }</p> 
           }
 
           <MDBCol col='12'>

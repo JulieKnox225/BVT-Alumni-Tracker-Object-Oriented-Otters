@@ -27,7 +27,7 @@ export const Home = () => {
   const handleBackClick = () => {
     setStartIndex(startIndex - 6);
   }
-
+  
   function fetchAllAlumni() {
     return axios.get('/');
   };

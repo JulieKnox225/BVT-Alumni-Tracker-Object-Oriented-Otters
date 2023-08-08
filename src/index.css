@@ -808,6 +808,11 @@ label{
 /* end of Profile edit */
 
 /* Password Reset*/
+.h1-dev{
+  color: red;
+  font-weight: bold;
+  background-color: white;
+}
 .h1-fpp{
   color: white;
   margin: 50px;
@@ -836,10 +841,14 @@ label{
   color: rgb(0, 0, 0);
 }
 .forgot-pw-submit {
-  background-color: #4c00fd;
-  margin-bottom: 50px;
+  background-color: #FF7A45;
+  margin-bottom: 10px;
 
 }
+.forgot-pw-submit:hover{
+  background-color: rgb(172, 172, 172);
+}
+
 
 /* End of password reset */
 
@@ -916,7 +925,6 @@ label{
   font-size: 20px;
 }
 
-
 .sign-up{
   color:#ff7300;
   font-size: larger;
@@ -925,5 +933,43 @@ label{
   
   
 }
+
+.register-errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.register-offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.register-valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.register-hide {
+  display: none;
+}
+
+.register-invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.register-instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+
 
 /* End of Register Page */

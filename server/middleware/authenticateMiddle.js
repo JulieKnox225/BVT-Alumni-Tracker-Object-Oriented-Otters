@@ -23,11 +23,7 @@ async function authenticateToken(req, res, next) {
             if (err || !user || !user.user) {
                 return res.status(403).send({ success: false, message: 'Invalid or expired token.', data: null });
             }
-            if (!req.user) {
-                return res.status(404).send({ success: false, message: 'User not found.', data: null });
-            }
             
-
             req.user = user;
             next();
         });
