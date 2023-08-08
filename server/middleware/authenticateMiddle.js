@@ -9,7 +9,7 @@ async function authenticateToken(req, res, next) {
             authHeader = req.headers['Authorization'];
 
             if (!authHeader) {
-                return res.status(401).send({ success: false, message: 'No token! - auth', data: null });
+                return res.status(401).send({ success: false, message: 'No token!', data: null });
             }
         }
 

@@ -56,7 +56,6 @@ const login = async (req, res) => {
             }
         );
 
-        console.log(process.env.ACCESS_TOKEN_SECRET)
         if(await bcrypt.compare(sentPassword, hashedPassword)) {
             const accessToken = jwt.sign({user: idResult[0][0].id}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '10m'});
             const refreshToken = jwt.sign({user: idResult[0][0].id}, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '1w'});
