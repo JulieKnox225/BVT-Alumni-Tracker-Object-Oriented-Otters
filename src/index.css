@@ -59,8 +59,13 @@ label{
   margin-top: 30px;
   margin-bottom: 30px;
 }
- #formControlLg{
-  border: black;
+ #dark #formControlLg{
+  background-color: #FF5133;
+  color: rgb(255, 255, 255);
+}
+#light #formControlLg{
+  background-color: #FF5133;
+  color: rgb(255, 255, 255);
 }
 #light .login-card{
   background: linear-gradient(180deg, hsla(0, 0%, 100%, 1) 0%, hsla(9, 100%, 60%, 1) 100%);
@@ -78,6 +83,7 @@ label{
 
 #dark .input-text{
   color: white;
+  
 }
 
 .fp-login{
@@ -129,7 +135,7 @@ label{
 }
 
 #light .form-label {
-  color: rgb(0, 0, 0);
+  color: #000000;
 }
 
 #dark .form-label {
@@ -833,7 +839,59 @@ input:-webkit-autofill:active{
 /* end of Profile edit */
 
 /* Password Reset*/
-.h1-dev{
+/* --Card Body Class Name  */
+/* #light.bg-dark_text-white_my-5_mx-auto{
+  color: #000;
+} */
+.fp-card{
+  background-color: #6b6b6b;
+  color: white;
+  display: flex;
+  margin: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+#light .fp-card{
+  background: linear-gradient(180deg, hsla(0, 0%, 100%, 1) 0%, hsla(9, 100%, 60%, 1) 100%);
+  color: #000;
+}
+#dark .fp-card{
+  background: linear-gradient(180deg, hsla(16, 100%, 54%, 1) 0%, rgb(49, 47, 47) 100%);
+  color: rgb(255, 255, 255);
+}
+#dark .fp-sign-up{
+  color: rgb(255, 98, 0);
+  font-weight: bold;
+  font-size: large;
+}
+#light .fp-sign-up{
+  color: white;
+  font-size: large;
+  font-weight: bold;
+}
+#light .fp-text{
+color: black;
+font-size: medium;
+}
+
+#dark .fp-text{
+  color: white;
+  font-size: medium;
+}
+#light .fp-sign-in{
+  color: black;
+  font-size: medium;
+}
+#dark .fp-sign-in{
+  color: white;
+  font-size: medium;
+  
+}
+/* .h1-dev{
   color: red;
   font-weight: bold;
   background-color: white;
@@ -872,7 +930,7 @@ input:-webkit-autofill:active{
 }
 .forgot-pw-submit:hover{
   background-color: rgb(172, 172, 172);
-}
+} */
 
 
 /* End of password reset */
