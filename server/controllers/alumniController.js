@@ -59,10 +59,10 @@ const createAlumni = async (req, res) => {
         const { firstName, lastName, email, phoneNumber, degree, achievements, projects, skills, recommendations } = req.body;
         
         await req.db.query(
-            `INSERT INTO alumni (firstName, lastName, email, phoneNumber, degree, achievements, projects, skills, recommendations)
-                VALUES (:firstName, :lastName, :email, :phoneNumber, :degree, :achievements, :projects, :skills, :recommendations)`,
+            `INSERT INTO alumni (firstName, lastName, email, phoneNumber, degree, achievements, projects, skills, recommendations, user_id)
+                VALUES (:firstName, :lastName, :email, :phoneNumber, :degree, :achievements, :projects, :skills, :recommendations, user)`,
             {
-                firstName, lastName, email, phoneNumber, degree, achievements, projects, skills, recommendations
+                firstName, lastName, email, phoneNumber, degree, achievements, projects, skills, recommendations, user: req.user.user
             }
         );
 
