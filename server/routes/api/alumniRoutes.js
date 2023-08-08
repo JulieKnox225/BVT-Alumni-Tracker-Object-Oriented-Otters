@@ -12,6 +12,6 @@ router.get('/', alumniController.getAllAlumni);
 // Other alumni-related endpoints
 router.post('/', alumniController.createAlumni);
 router.put('/', alumniController.updateAlumni);
-router.put('/profile', alumniController.editProfile);
+router.post('/profile', authenticateToken, alumniController.editProfile);
 
 module.exports = router;

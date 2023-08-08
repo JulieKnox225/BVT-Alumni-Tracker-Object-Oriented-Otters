@@ -64,6 +64,7 @@ export const EditProfile = () => {
 
   //Fills in the input fields with retrieved data
   useEffect(() => {
+    console.log(profileData?.data?.data[0])
     setFormData(profileData?.data?.data[0]);
   }, [profileData]);
 

@@ -2,14 +2,32 @@ const searchAlumni = async (req, res) => {
     try {
         const { search, type } = req.query;
         const wordsToSearchWithLike = ['firstName', 'lastName', 'email', 'degree', 'achievements', 'projects', 'skills', 'recommendations']; // Add other searchable fields here
-
+        
         let result = [];
         if(search == 'id' && type == 'id') {
-            result = await req.db.query(`SELECT * FROM alumni WHERE user_id = ${req.user.user}`);
+            result = await req.db.query(
+                `SELECT a.*, u.user 
+                    FROM alumni a 
+                    JOIN users u
+                    ON a.user_id = u.id
+                    WHERE user_id = ${req.user.user};`
+            );
         } else if (search && wordsToSearchWithLike.includes(type)) {
-            result = await req.db.query(`SELECT * FROM alumni WHERE ${type} LIKE '%${search}%'`);
+            result = await req.db.query(
+                `SELECT a.*, u.user 
+                    FROM alumni a  
+                    JOIN users u
+                    ON a.user_id = u.id
+                    WHERE ${type} LIKE '%${search}%';`
+            );
         } else {
-            result = await req.db.query(`SELECT * FROM alumni WHERE ${type} = ${search}`);
+            result = await req.db.query(
+                `SELECT a.*, u.user 
+                    FROM alumni a 
+                    JOIN users u
+                    ON a.user_id = u.id
+                    WHERE ${type} = ${search};`
+            );
         }
 
         if (result[0].length == 0) {
