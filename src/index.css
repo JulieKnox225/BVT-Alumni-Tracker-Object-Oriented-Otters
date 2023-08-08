@@ -51,10 +51,17 @@ label{
 
 .title-login{
   font-weight: bold;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   margin-top:2px;
 }
 
+.login-text{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+ #formControlLg{
+  border: black;
+}
 #light .login-card{
   background: linear-gradient(180deg, hsla(0, 0%, 100%, 1) 0%, hsla(9, 100%, 60%, 1) 100%);
   color: #FF5133;
@@ -147,7 +154,14 @@ label{
 }
 
 .login-icons{
-  margin-top: 10px;
+  margin-top: 0px;
+}
+
+ .connect-login-p{
+  margin-top: 30px;
+  margin-bottom: 0px;
+  padding: 0;
+  font-weight: bold;
 }
 /* End of Login*/
 
