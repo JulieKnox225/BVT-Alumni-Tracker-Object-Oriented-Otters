@@ -82,7 +82,8 @@ export const Login = () => {
                   labelClass='input-text' 
                   label='Email address' 
                   id='formControlLg' 
-                  type='text' 
+                  type='text'
+                  color='white'
                   size="lg" 
                   ref={userRef} 
                   value={input.user} 
@@ -105,7 +106,7 @@ export const Login = () => {
                 <p className="connect-login-p">Connect with Us!</p>
                 
                 <div className='login-icons'>
-                  <a href = "https://www.google.com/">
+                  <a href = "https://www.bayvalleytech.com/">
                     <MDBBtn tag='a' color='none' className='m-3' style={{ color: 'green' }}>
                       <MDBIcon fab icon='google' size="lg"/>
                     </MDBBtn>
