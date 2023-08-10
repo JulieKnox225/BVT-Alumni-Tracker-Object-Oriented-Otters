@@ -108,7 +108,7 @@ label{
   margin-left: 50px;
   border-radius: 5px;
   background-color: #2a2e30;
-  box-shadow: 10px 10px 10px #6d6d6d;
+  box-shadow: 0px 0px 30px  #f23400;
   padding: 15px;
   width: 250px;
   margin: 15px;
@@ -300,6 +300,7 @@ input:-webkit-autofill:active{
   display: flex;
   justify-content: space-between;
   max-height: 86px;
+  height:65px;
 }
 
 .home-button {
@@ -315,7 +316,7 @@ input:-webkit-autofill:active{
 #dark .home-button-text {
   font-family: serif;
   font-size: 35px;
-  color: #EEF4ED;
+  color: #ff5900;
   text-shadow: black -4px  3px 3px;
 }
 
@@ -417,7 +418,7 @@ input:-webkit-autofill:active{
 }
 
 #dark .nav-home{
-  background-color: #FF3B1F;
+  background-color: #181717;
   color: #f9f9f9;
 }
 
@@ -880,14 +881,15 @@ input:-webkit-autofill:active{
 /* Register Page */
 
 .register-body{
-  background-image: url(https://img.freepik.com/free-vector/orange-geometrical-background-design-vector_53876-62367.jpg?w=360);
+  background: linear-gradient(#FF5733, #fafafa);;
   background-size: auto;
   height: calc(100vh - 152px);
   overflow-y: scroll;
+  filter: hue-rotate(20deg)
 }
 
 .register-form{
-  background-color:rgb(15, 15, 15);
+  background-color: #1a1a1a;
   border-radius: 20px;
   width: 550px;
   margin: 20px auto;
@@ -924,9 +926,9 @@ input:-webkit-autofill:active{
 
 .form__input{
   width: 60%;
-  background-color: #1a1c1b;
-  color: rgb(255, 255, 255);
-  caret-color: #f50000;
+  background-color: #d2ddd7;
+  color: rgb(0, 0, 0);
+  caret-color: #bc2727;
   margin-top: 5px;
   text-align: center;
   margin: auto;
@@ -937,9 +939,9 @@ input:-webkit-autofill:active{
 }
 
 .create-acc-btn{
-  color:rgb(0, 0, 0);
+  color:rgb(255, 106, 0);
   border-radius: 10px;
-  background-color: rgb(255, 115, 0);
+  background-color: rgb(28, 27, 27);
   font-family: Rancho,Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -951,7 +953,7 @@ input:-webkit-autofill:active{
 }
 
 .sign-up{
-  color:#ff7300;
+  color:#ff8604;
   font-size: larger;
   font-family: Rancho, Georgia, 'Times New Roman', Times, serif;
   font-size:48px;
