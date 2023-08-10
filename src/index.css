@@ -96,7 +96,7 @@ label{
 #light .bvt--logo{
     margin-left: 50px;
     border-radius: 5px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     box-shadow: 10px 10px 10px #6d6d6d;
     padding: 15px;
     width: 250px;
@@ -108,7 +108,7 @@ label{
   margin-left: 50px;
   border-radius: 5px;
   background-color: #2a2e30;
-  box-shadow: 10px 10px 10px #6d6d6d;
+  box-shadow: 0px 0px 30px  #f23400;
   padding: 15px;
   width: 250px;
   margin: 15px;
@@ -316,7 +316,7 @@ input:-webkit-autofill:active{
   font-family: serif;
   font-size: 35px;
   color: #EEF4ED;
-  text-shadow: black -4px  3px 3px;
+  text-shadow: rgb(255, 0, 0) -4px  3px 3px;
 }
 
 #light .home-button-text {
@@ -342,7 +342,7 @@ input:-webkit-autofill:active{
 .login--text {
   font-weight: 500;
   font-family: serif;
-  color: #B3A125;
+  color: #ffaa00;
   font-size: 25px;
   text-shadow: black -4px  3px 2px;
 }
@@ -354,6 +354,13 @@ input:-webkit-autofill:active{
 
 .sideMenu:hover {
   color:#f9f9f9
+}
+
+.nav-home{
+  padding: 20px;
+  display: flex;
+  max-height: 86px;
+  height: 65px;
 }
 
 #light .light-dark-btn{
@@ -417,7 +424,7 @@ input:-webkit-autofill:active{
 }
 
 #dark .nav-home{
-  background-color: #FF3B1F;
+  background-color: #181717;
   color: #f9f9f9;
 }
 
@@ -517,13 +524,16 @@ input:-webkit-autofill:active{
   align-items: center;
   background-color: #2a2e30;
   margin-top: 25px;
-  border-radius: 10px
+  border-radius: 10px;
+  
 }
 
 .sp-search-bar-n-btn {
   display: flex;
   align-items: center;
   width: fit-content;
+  
+  
 }
 
 #light .SP-searchBar {
@@ -563,6 +573,13 @@ input:-webkit-autofill:active{
   margin: 25px;
 }
 
+.SP-button{
+
+  margin-left: 20px;
+  background-color: #fefefe;
+  color: rgb(0, 0, 0)
+}
+
 /* End Search Page */
 
 /* Add entry Page */
@@ -570,6 +587,7 @@ input:-webkit-autofill:active{
 .add-entry {
   display: flex;
   align-items: center;
+  
 }
 
 /* End of add entry */
@@ -579,6 +597,8 @@ input:-webkit-autofill:active{
 .profile-page-container {
   margin: 25px 25px 55px 0px;
 }
+
+
 
 #dark .default-profile-pic {
   width: 200px;
@@ -880,21 +900,20 @@ input:-webkit-autofill:active{
 /* Register Page */
 
 .register-body{
-  background-image: url(https://img.freepik.com/free-vector/orange-geometrical-background-design-vector_53876-62367.jpg?w=360);
-  background-size: auto;
+  background: linear-gradient(12deg,#FF5F1F, #161717);
   height: calc(100vh - 152px);
   overflow-y: scroll;
 }
 
 .register-form{
-  background-color:rgb(15, 15, 15);
-  border-radius: 20px;
-  width: 550px;
-  margin: 20px auto;
-  margin-top: 55px;
-  padding: 20px;
-  border: inset;
-  border-color: #ffffff;
+  
+  
+  background: linear-gradient( #000000, #181616);
+  border-radius: 8px;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  height: 500px;
+  margin: 6rem auto 8.1rem auto;
+  width: 500px;
   
 }
 
@@ -924,12 +943,13 @@ input:-webkit-autofill:active{
 
 .form__input{
   width: 60%;
-  background-color: #1a1c1b;
+  background-color: #ffffff;
   color: rgb(255, 255, 255);
-  caret-color: #f50000;
+  caret-color: #000000;
   margin-top: 5px;
   text-align: center;
   margin: auto;
+  
 }
 
 .submit-register{
@@ -951,7 +971,7 @@ input:-webkit-autofill:active{
 }
 
 .sign-up{
-  color:#ff7300;
+  color:#ffffff;
   font-size: larger;
   font-family: Rancho, Georgia, 'Times New Roman', Times, serif;
   font-size:48px;
