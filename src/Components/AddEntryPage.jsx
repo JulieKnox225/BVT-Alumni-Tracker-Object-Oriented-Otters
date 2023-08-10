@@ -97,6 +97,7 @@ export const AddEntryPage = () => {
                 type="text"
                 placeholder="John"
                 required
+                autoComplete='off'
                 onChange={e => handleChange(e)}
                 value={formData.firstName}
               />
@@ -109,6 +110,7 @@ export const AddEntryPage = () => {
                 type="text"
                 placeholder="Doe"
                 required
+                autoComplete='off'
                 onChange={e => handleChange(e)}
                 value={formData.lastName}
               />
@@ -123,6 +125,7 @@ export const AddEntryPage = () => {
                 type="text"
                 placeholder="(555)-555-5555"
                 required
+                autoComplete='off'
                 onChange={e => handleChange(e)}
                 value={formData.phoneNumber}
               />
@@ -135,6 +138,7 @@ export const AddEntryPage = () => {
                 type="email"
                 placeholder="JohnDoe@email.com"
                 required
+                autoComplete='off'
                 onChange={e => handleChange(e)}
                 value={formData.email}
               />
@@ -147,6 +151,7 @@ export const AddEntryPage = () => {
                 className="add-entry"
                 name="degree"
                 type='text'
+                autoComplete='off'
                 onChange={e => handleChange(e)}
                 value={formData.degree}
               />
@@ -158,6 +163,7 @@ export const AddEntryPage = () => {
               <textarea
                 className="add-entry"
                 name="projects"
+                autoComplete='off'
                 onChange={e => handleChange(e)}
                 value={formData.projects}
               />
@@ -167,6 +173,7 @@ export const AddEntryPage = () => {
               <textarea
                 className="add-entry"
                 name="experience"
+                autoComplete='off'
                 onChange={e => handleChange(e)}
                 value={formData.experience}
               />
@@ -178,6 +185,7 @@ export const AddEntryPage = () => {
               <textarea
                 className="add-entry"
                 name="achievements"
+                autoComplete='off'
                 onChange={e => handleChange(e)}
                 value={formData.achievements}
               />
@@ -187,6 +195,7 @@ export const AddEntryPage = () => {
               <textarea
                 className="add-entry"
                 name="skills"
+                autoComplete='off'
                 onChange={e => handleChange(e)}
                 value={formData.skills}
               />

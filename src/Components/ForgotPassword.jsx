@@ -1,6 +1,7 @@
 // import Form from 'react-bootstrap/Form';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 // import { Button } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import {
  
   MDBContainer,
@@ -48,10 +49,10 @@ export const ForgotPassword = () => {
               </br>
               and we&apos;ll send a link to reset your password.</p>
               <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Email address' id='formControlLg' type='email' size="lg"/>
-              <p className="small mb-3 pb-lg-2"><a className="text-white-50" href="#!">Back to sign in</a></p>
+              <p className="small mb-3 pb-lg-2"><Link to = {'/login'} >Back to sign in</Link></p>
                 <p>or</p>
               <div>
-                <p className="mb-0">Don&apos;t have an account? <a href="#!" className="text-white-50 fw-bold">Sign Up</a></p>
+                <p className="mb-0">Don&apos;t have an account? <Link to = {'/register'} className="sign-up-login">Sign Up</Link></p>
               </div>
             </MDBCardBody>
           </MDBCard>

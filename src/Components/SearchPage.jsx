@@ -3,10 +3,11 @@ import { IDCards } from './BVT.ID';
 import { useQuery } from 'react-query';
 import { MDBSpinner } from 'mdb-react-ui-kit';
 import { MDBContainer, MDBRow } from 'mdb-react-ui-kit';
-import axios from '../api/axios';
+import useAxiosPrivate from '../hooks/useAxiosPrivate';
 
 
 export const SearchPage = () => {
+  const axiosPrivate = useAxiosPrivate();
   
   const [search, setSearch] = useState('');
 
@@ -24,7 +25,7 @@ export const SearchPage = () => {
 
   function fetchSearch() {
     setEnabled(false);
-    return axios.get(`/search?search=${search}&type=${type}`);
+    return axiosPrivate.get(`/search?search=${search}&type=${type}`);
   };
 
   function handleSubmit(e) {

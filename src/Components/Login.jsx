@@ -75,7 +75,7 @@ export const Login = () => {
             <MDBCard className='login-card' style={{borderRadius: '1rem', maxWidth: '400px'}}>
               <MDBCardBody className='p-5 d-flex flex-column align-items-center mx-auto w-100'>
                 <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
-                <p className="text-white-50 mb-5">Please enter your login and password!</p>
+                <p className="login-text">Please enter your login and password</p>
                 {/* type was email but changed to text for debug */}
                 <MDBInput 
                   wrapperClass='mb-4 mx-5 w-100' 
@@ -101,7 +101,9 @@ export const Login = () => {
                 <MDBBtn outline className='mx-2 px-5' color='white' size='lg'>
                   Login
                 </MDBBtn>
-
+                
+                <p className="connect-login-p">Connect with Us!</p>
+                
                 <div className='login-icons'>
                   <a href = "https://www.google.com/">
                     <MDBBtn tag='a' color='none' className='m-3' style={{ color: 'green' }}>
@@ -109,13 +111,13 @@ export const Login = () => {
                     </MDBBtn>
                   </a>
 
-                  <a href ="https://www.facebook.com/">
+                  <a href ="https://www.facebook.com/BayValleyTech/">
                     <MDBBtn tag='a' color='none' className='m-3' style={{ color: '#4040ff' }}>
                       <MDBIcon fab icon='facebook-f' size="lg"/>
                     </MDBBtn>
                   </a>
 
-                  <a href='https://www.linkedin.com/feed'>
+                  <a href='https://www.linkedin.com/company/bay-valley-tech/mycompany/'>
                     <MDBBtn tag='a' color='none' className='m-3' style={{ color: '#0A66C2' }}>
                       <MDBIcon fab icon='linkedin' size="lg"/>
                     </MDBBtn>
@@ -123,8 +125,8 @@ export const Login = () => {
                 </div>
 
                 <div>
-                  <p className="login-text">Don&apos;t have an account? <Link to = '/register' className="sign-up-login">Sign Up</Link></p>
-                  <p><Link  to = '/forgotPassword' className="fp-login">Forgot password?</Link></p>
+                  <p className="login-text">Don&apos;t have an account? <Link to = {'/register'} className="sign-up-login">Sign Up</Link></p>
+                  <p><Link  to = {'/forgotPassword'} className="fp-login">Forgot password?</Link></p>
                 </div>
               </MDBCardBody>
             </MDBCard>
